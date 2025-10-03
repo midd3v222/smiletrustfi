@@ -80,12 +80,9 @@ export function getTabConfig(tabName) {
   return sponsorsConfig[tabName] || { fixedPlacements: {}, scoreBoosts: {} };
 }
 
-// Helper to check if a clinic is sponsored (has fixed placement or score boost)
+// Helper to check if a clinic is sponsored (has fixed placement only)
+// Score boosts are kept "underground" and don't show the verified tag
 export function isClinicSponsored(clinic, config) {
   const fixed = (config && config.fixedPlacements) || {};
-  const boosts = (config && config.scoreBoosts) || {};
-  return (
-    fixed[clinic.place_id] !== undefined ||
-    boosts[clinic.place_id] !== undefined
-  );
+  return fixed[clinic.place_id] !== undefined;
 }
