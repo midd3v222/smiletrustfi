@@ -748,9 +748,9 @@ export default function HomePage() {
                       </div>
                       <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                         {locationError === 'PERMISSION_DENIED' ? "You previously declined location access. To find nearby clinics, please enable location permission in your browser settings, then try again." :
-                         locationError === 'TIMEOUT' ? "Location request took too long to respond. Please try again or use the search feature below."
-                         locationError === 'UNAVAILABLE' ? "Location services are unavailable on your device. Please try again or use the search feature below."
-                         : "To find nearby certified dental experts, we need access to your location. Your privacy is protected and location data is not stored."
+                         locationError === 'TIMEOUT' ? "Location request took too long to respond. Please try again or use the search feature below." :
+                         locationError === 'UNAVAILABLE' ? "Location services are unavailable on your device. Please try again or use the search feature below." :
+                         "To find nearby certified dental experts, we need access to your location. Your privacy is protected and location data is not stored."
                         }
                       </p>
                       <button
