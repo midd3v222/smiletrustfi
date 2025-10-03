@@ -15,7 +15,7 @@ export const sponsorsConfig = {
   // "popular" tab (find-clinics-popular API)
   popular: {
     fixedPlacements: {
-      "ChIJueY47xKbwxQR-YxBPVFEaxc": 0, // put this clinic at the very top in popular results
+      //"ChIJueY47xKbwxQR-YxBPVFEaxc": 0, // put this clinic at the very top in popular results
       // "ChIJ...": 2, // put this clinic at index 2 in popular results
     },
     scoreBoosts: {
