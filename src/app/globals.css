@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Professional gradient background - more subtle and trustworthy */
+  --background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e0 100%);
+  --background-accent: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  
+  /* Surface colors */
+  --surface: rgba(255, 255, 255, 0.98);
+  --surface-elevated: rgba(255, 255, 255, 1);
+  --surface-glass: rgba(255, 255, 255, 0.85);
+  --surface-card: rgba(255, 255, 255, 0.95);
+  
+  /* Professional text colors */
+  --foreground: #1e293b;
+  --foreground-muted: #475569;
+  --foreground-light: #64748b;
+  --foreground-accent: #0f172a;
+  
+  /* Professional accent colors */
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --secondary: #059669;
+  --accent: #dc2626;
+  --trust-blue: #1e40af;
+  --medical-green: #059669;
+  
+  /* Status colors */
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+  --info: #0284c7;
+}
+
+@theme {
+  --color-background: var(--surface);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Subtle professional grid pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+}
+
+/* Professional dot pattern overlay */
+.bg-dots-pattern {
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Professional glass effect */
+.glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.glass-elevated {
+  background: var(--surface-elevated);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Professional card styles */
+.card {
+  background: var(--surface-card);
+  border-radius: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Professional button styles */
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.25);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--foreground);
+  border: 1.5px solid rgba(226, 232, 240, 0.8);
+  border-radius: 8px;
+  padding: 11px 23px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(248, 250, 252, 1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Subtle professional animations */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.gentle-float {
+  animation: gentle-float 8s ease-in-out infinite;
+}
+
+/* Professional text styling */
+.text-shadow {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.text-shadow-strong {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.text-professional {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--foreground-accent);
+}
+
+/* Fade-in animation for clinic cards */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+  opacity: 0;
+}
