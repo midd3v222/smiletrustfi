@@ -543,7 +543,7 @@ export default function HomePage() {
           </div>
         )}
       </header>
-      <main className="container mx-auto px-4 pt-24 pb-12">
+      <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
         <header className="text-center max-w-4xl mx-auto mb-8 md:mb-16">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight text-professional gentle-float">
             Professional <span className="text-blue-600">Smile Visualization</span> Technology
@@ -574,7 +574,7 @@ export default function HomePage() {
         </header>
 
         <div className="mt-16 max-w-5xl mx-auto">
-          <div className="glass-elevated p-10 rounded-2xl shadow-xl border border-gray-200/50">
+          <div className="glass-elevated p-6 sm:p-10 rounded-2xl shadow-xl border border-gray-200/50">
             {error && (
               <div className="text-center text-red-800 bg-red-50 p-6 rounded-xl mb-8 border border-red-200 card">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -727,25 +727,74 @@ export default function HomePage() {
                     </div>
                   )}
                 </header>
-                <nav className="flex items-center gap-3 max-w-2xl mx-auto mb-8" role="tablist" aria-label="Clinic search categories">
+                {/* Mobile: static vertical stack, no horizontal scrolling */}
+                <nav className="sm:hidden" role="tablist" aria-label="Clinic search categories">
+                  <div className="max-w-2xl mx-auto space-y-3">
+                    <button
+                      onClick={() => handleTabClick("nearby")}
+                      role="tab"
+                      aria-selected={activeTab === "nearby"}
+                      aria-controls="nearby-clinics"
+                      className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-2xl transition-all ${
+                        activeTab === "nearby" ? "btn-primary" : "btn-secondary"
+                      }`}
+                    >
+                      <Map size={16} />
+                      Near Me
+                    </button>
+                    <form onSubmit={handleSearch} className="relative w-full">
+                      <label htmlFor="clinic-search" className="sr-only">Search for dental clinics by city</label>
+                      <input
+                        id="clinic-search"
+                        type="text"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        placeholder="Search for a city (e.g., Istanbul, Mexico City, Bangkok)..."
+                        className="w-full px-4 py-2.5 text-sm text-gray-700 bg-white/90 rounded-2xl focus:outline-none focus:ring-3 focus:ring-blue-300 shadow-lg border border-white/50"
+                        role="searchbox"
+                        aria-label="Search for dental clinics by city name"
+                      />
+                      <button
+                        type="submit"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-500 transition-colors"
+                        aria-label="Search for clinics"
+                      >
+                        <Search size={18} />
+                      </button>
+                    </form>
+                    <button
+                      onClick={() => handleTabClick("popular")}
+                      role="tab"
+                      aria-selected={activeTab === "popular"}
+                      aria-controls="popular-clinics"
+                      className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-2xl transition-all ${
+                        activeTab === "popular" ? "btn-primary" : "btn-secondary"
+                      }`}
+                    >
+                      <Globe size={16} />
+                      Popular Destinations
+                    </button>
+                  </div>
+                </nav>
+
+                {/* Tablet/Desktop: single-row inline layout */}
+                <nav className="hidden sm:flex items-center gap-3 max-w-2xl mx-auto mb-8" role="tablist" aria-label="Clinic search categories">
                   <button
                     onClick={() => handleTabClick("nearby")}
                     role="tab"
                     aria-selected={activeTab === "nearby"}
                     aria-controls="nearby-clinics"
-                    className={`flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-2xl transition-all flex-shrink-0 ${
-                      activeTab === "nearby"
-                        ? "btn-primary"
-                        : "btn-secondary"
+                    className={`flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-2xl transition-all ${
+                      activeTab === "nearby" ? "btn-primary" : "btn-secondary"
                     }`}
                   >
                     <Map size={16} />
                     Near Me
                   </button>
                   <form onSubmit={handleSearch} className="relative w-full mx-2">
-                    <label htmlFor="clinic-search" className="sr-only">Search for dental clinics by city</label>
+                    <label htmlFor="clinic-search-desktop" className="sr-only">Search for dental clinics by city</label>
                     <input
-                      id="clinic-search"
+                      id="clinic-search-desktop"
                       type="text"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -767,10 +816,8 @@ export default function HomePage() {
                     role="tab"
                     aria-selected={activeTab === "popular"}
                     aria-controls="popular-clinics"
-                    className={`flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-2xl transition-all flex-shrink-0 ${
-                      activeTab === "popular"
-                        ? "btn-primary"
-                        : "btn-secondary"
+                    className={`flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-2xl transition-all ${
+                      activeTab === "popular" ? "btn-primary" : "btn-secondary"
                     }`}
                   >
                     <Globe size={16} />
