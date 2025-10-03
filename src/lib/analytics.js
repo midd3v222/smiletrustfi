@@ -1,0 +1,197 @@
+import { redisGet, redisIncr, isRedisConfigured } from './redis.js';
+import { fallbackAnalytics } from './analytics-fallback.js';
+
+// Analytics tracking class
+export class AnalyticsTracker {
+  constructor() {
+    this.isRedisEnabled = isRedisConfigured();
+  }
+
+  // Track page views
+  async trackPageView(page) {
+    if (!this.isRedisEnabled) {
+      return fallbackAnalytics.trackPageView(page);
+    }
+
+    const timestamp = new Date().toISOString();
+    const dateKey = new Date().toISOString().split('T')[0];
+    
+    try {
+      // Daily page views
+      await redisIncr(`pageview:daily:${page}:${dateKey}`);
+      
+      // Total page views
+      await redisIncr(`pageview:total:${page}`);
+      
+      // Page views by hour
+      const hour = new Date().getHours();
+      await redisIncr(`pageview:hourly:${page}:${dateKey}:${hour}`);
+      
+      // Unique visitors (simplified - using daily bucket)
+      await redisIncr(`unique:daily:${dateKey}`);
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to track page view:', error);
+      // Fallback to in-memory tracking
+      return fallbackAnalytics.trackPageView(page);
+    }
+  }
+
+  // Track user interactions
+  async trackInteraction(eventType, data = {}) {
+    const timestamp = new Date().toISOString();
+    const dateKey = new Date().toISOString().split('T')[0];
+    
+    try {
+      // Specific event tracking
+      await redisIncr(`interaction:${eventType}:daily:${dateKey}`);
+      await redisIncr(`interaction:${eventType}:total`);
+      
+      // Store additional data if provided
+      if (Object.keys(data).length > 0) {
+        const dataKey = `interaction_data:${eventType}:${timestamp}`;
+        // Store JSON data (implementation depends on Redis setup)
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to track interaction:', error);
+      return false;
+    }
+  }
+
+  // Track API usage
+  async trackApiUsage(endpoint, status = 'success') {
+    const dateKey = new Date().toISOString().split('T')[0];
+    
+    try {
+      await redisIncr(`api:${endpoint}:${status}:daily:${dateKey}`);
+      await redisIncr(`api:${endpoint}:${status}:total`);
+      await redisIncr(`api:total:requests`);
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to track API usage:', error);
+      return false;
+    }
+  }
+
+  // Track treatment interest
+  async trackTreatmentInterest(treatment, context = 'page') {
+    const dateKey = new Date().toISOString().split('T')[0];
+    
+    try {
+      await redisIncr(`treatment:${treatment}:${context}:daily:${dateKey}`);
+      await redisIncr(`treatment:${treatment}:${context}:total`);
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to track treatment interest:', error);
+      return false;
+    }
+  }
+
+  // Get statistics
+  async getStats(timeframe = '7d') {
+    const stats = {
+      timeframe,
+      timestamp: new Date().toISOString(),
+      redisEnabled: this.isRedisEnabled,
+      pageViews: {},
+      interactions: {},
+      apiUsage: {},
+      treatmentInterest: {},
+      totals: {}
+    };
+
+    if (!this.isRedisEnabled) {
+      return fallbackAnalytics.getStats(timeframe);
+    }
+
+    try {
+      // This is a simplified version - in production you'd want more sophisticated queries
+      const dateKey = new Date().toISOString().split('T')[0];
+      
+      // Page views for today
+      stats.pageViews.today = await redisGet(`pageview:daily:home:${dateKey}`) || '0';
+      
+      // Most popular treatments
+      stats.treatmentInterest.veneers = await redisGet(`treatment:veneers:page:total`) || '0';
+      stats.treatmentInterest.crowns = await redisGet(`treatment:zirconia:page:total`) || '0';
+      stats.treatmentInterest.makeover = await redisGet(`treatment:makeover:page:total`) || '0';
+      
+      // API usage
+      stats.apiUsage.generateSmile = await redisGet(`api:/api/generate-smile:success:total`) || '0';
+      stats.apiUsage.findClinics = await redisGet(`api:/api/find-clinics:success:total`) || '0';
+      
+      // Total interactions
+      stats.totals.pageViews = await redisGet(`pageview:total:home`) || '0';
+      stats.totals.generateClicks = await redisGet(`interaction:generate-click:total`) || '0';
+      stats.totals.clinicBrowses = await redisGet(`interaction:clinic-browse:total`) || '0';
+      
+      return stats;
+    } catch (error) {
+      console.error('Failed to get statistics:', error);
+      // Fallback to in-memory analytics
+      return fallbackAnalytics.getStats(timeframe);
+    }
+  }
+}
+
+// Singleton instance
+export const analyticsTracker = new AnalyticsTracker();
+
+// Server-side analytics middleware
+export async function trackRequest(req, endpoint, status = 'success') {
+  try {
+    await analyticsTracker.trackApiUsage(endpoint, status);
+    
+    // Track page view for non-API requests
+    if (!endpoint.startsWith('/api')) {
+      const page = endpoint || 'home';
+      await analyticsTracker.trackPageView(page);
+    }
+  } catch (error) {
+    console.error('Analytics tracking failed:', error);
+  }
+}
+
+// Client-side analytics helper
+export const clientAnalytics = {
+  async trackPageView(page) {
+    try {
+      await fetch('/api/analytics/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'pageview', page })
+      });
+    } catch (error) {
+      console.error('Client analytics failed:', error);
+    }
+  },
+
+  async trackInteraction(eventType, data = {}) {
+    try {
+      await fetch('/api/analytics/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'interaction', eventType, data })
+      });
+    } catch (error) {
+      console.error('Client analytics failed:', error);
+    }
+  },
+
+  async trackTreatmentInterest(treatment, context = 'button') {
+    try {
+      await fetch('/api/analytics/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'treatment', treatment, context })
+      });
+    } catch (error) {
+      console.error('Client analytics failed:', error);
+    }
+  }
+};
