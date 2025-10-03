@@ -147,9 +147,15 @@ export default function HomePage() {
   }, [clinics, isFindingClinics, showClinicBrowsing, generatedImage]);
 
   const initializeClinicSearch = () => {
-    console.log("initializeClinicSearch called");
+    console.log("🚀 initializeClinicSearch called");
+    console.log("📱 Device info:", {
+      userAgent: navigator.userAgent.substring(0, 100),
+      geolocationSupported: !!navigator.geolocation,
+      currentTab: activeTab,
+    });
+    
     if (!navigator.geolocation) {
-      console.log("Geolocation not supported, falling back to popular destinations");
+      console.log("❌ Geolocation not supported, falling back to popular destinations");
       setPopularDestinations(POPULAR_DESTINATIONS.europe);
       setActiveTab("popular");
       findPopularClinics();
@@ -164,8 +170,15 @@ export default function HomePage() {
       !window.location.hostname.includes("localhost") &&
       !window.location.hostname.includes("127.0.0.1");
 
+    console.log("🔍 Protocol check:", {
+      protocol: window.location.protocol,
+      hostname: window.location.hostname,
+      isHttpNonLocalhost,
+      url: window.location.href,
+    });
+
     if (isHttpNonLocalhost) {
-      console.log("HTTP non-localhost detected - using development fallback");
+      console.log("⚠️ HTTP non-localhost detected - using development fallback (SKIP THIS ON MOBILE!)");
       // For development: use a mock location or fallback
       const mockCoords = { lat: 36.8848, lng: 30.7044 }; // Antalya coordinates
       setUserCoords(mockCoords);
@@ -174,6 +187,8 @@ export default function HomePage() {
       findClinics(mockCoords);
       return;
     }
+
+    console.log("🌐 Proceeding with real location request for hostname:", window.location.hostname);
 
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -208,28 +223,37 @@ export default function HomePage() {
         }
       },
       (error) => {
-        console.log("Geolocation error details:", {
+        console.log("🔍 Geolocation error details:", {
           code: error.code,
           message: error.message,
           PERMISSION_DENIED: error.PERMISSION_DENIED,
           POSITION_UNAVAILABLE: error.POSITION_UNAVAILABLE,
           TIMEOUT: error.TIMEOUT,
+          userAgent: navigator.userAgent,
+          isIOS: /iPad|iPhone|iPod/.test(navigator.userAgent),
+          isSafari: /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent),
         });
 
         // Handle different error types appropriately
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        
         if (error.code === error.PERMISSION_DENIED) {
           // User denied location permission - show permission UI but stay on nearby tab
-          console.log("Location permission denied by user");
+          console.log("🚫 Location permission denied by user - staying on nearby tab");
           setLocationPermissionDenied(true);
           setPopularDestinations(POPULAR_DESTINATIONS.europe);
           setActiveTab("nearby"); // Stay on nearby tab to show permission request UI
           // Don't call findPopularClinics - let the UI show the permission request
         } else {
-          // Other errors (timeout, unavailable) - fall back to popular
-          setLocationPermissionDenied(false);
-          setPopularDestinations(POPULAR_DESTINATIONS.europe);
-          setActiveTab("popular");
-          findPopularClinics();
+          // Other errors (timeout, unavailable) - BUT DON'T go to popular!
+          console.log("⏰ Location error (timeout/unavailable) - BUT KEEPING NEARBY TAB");
+          
+          // ALWAYS stay on nearby tab for any location error
+          // This way users see the permission UI instead of automatic redirect
+          setLocationPermissionDenied(true);
+          setActiveTab("nearby");
+          
+          console.log("✅ Staying on nearby tab despite non-permission error - users can try again or use alternatives");
         }
       },
       {
@@ -331,15 +355,20 @@ export default function HomePage() {
     }
   };
   const handleTabClick = (tabKey) => {
+    console.log(`🔄 Tab clicked: ${tabKey}, current activeTab: ${activeTab}`);
     setActiveTab(tabKey);
     setError(""); // Clear any previous errors when switching tabs
     if (tabKey === "nearby") {
+      console.log(`📍 Nearby tab clicked, userCoords:`, userCoords);
       if (userCoords) {
+        console.log("✅ Have userCoords, finding clinics");
         findClinics(userCoords);
       } else {
+        console.log("❌ No userCoords, initializing location search");
         initializeClinicSearch();
       }
     } else if (tabKey === "popular") {
+      console.log("🌍 Popular tab clicked, finding popular clinics");
       findPopularClinics();
     }
   };
@@ -691,7 +720,6 @@ export default function HomePage() {
                         <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
                           <Map size={14} className="text-blue-600" />
                         </div>
-<<<<<<< HEAD
                         <h3 className="font-semibold text-gray-800">
                           {locationPermissionDenied ? "Location Permission Denied" : "Location Access Required"}
                         </h3>
