@@ -79,6 +79,7 @@ export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showClinicBrowsing, setShowClinicBrowsing] = useState(false);
   const [locationPermissionDenied, setLocationPermissionDenied] = useState(false);
+  const [locationError, setLocationError] = useState(null);
 
   // Track page view on mount
   useEffect(() => {
@@ -196,6 +197,7 @@ export default function HomePage() {
         const { latitude, longitude } = position.coords;
         const coords = { lat: latitude, lng: longitude };
         setLocationPermissionDenied(false);
+        setLocationError(null);
         setUserCoords(coords);
 
         try {
@@ -241,25 +243,26 @@ export default function HomePage() {
           // User denied location permission - show permission UI but stay on nearby tab
           console.log("🚫 Location permission denied by user - staying on nearby tab");
           setLocationPermissionDenied(true);
+          setLocationError('PERMISSION_DENIED');
           setPopularDestinations(POPULAR_DESTINATIONS.europe);
           setActiveTab("nearby"); // Stay on nearby tab to show permission request UI
           // Don't call findPopularClinics - let the UI show the permission request
         } else {
-          // Other errors (timeout, unavailable) - BUT DON'T go to popular!
+          // Other errors (timeout, unavailable) - show try again option
           console.log("⏰ Location error (timeout/unavailable) - BUT KEEPING NEARBY TAB");
           
-          // ALWAYS stay on nearby tab for any location error
-          // This way users see the permission UI instead of automatic redirect
-          setLocationPermissionDenied(true);
+          // For non-permission errors, show retry option but don't mark as permission denied
+          setLocationPermissionDenied(false); // Don't show "permission denied" text
+          setLocationError(error.code === error.TIMEOUT ? 'TIMEOUT' : 'UNAVAILABLE');
           setActiveTab("nearby");
           
           console.log("✅ Staying on nearby tab despite non-permission error - users can try again or use alternatives");
         }
       },
       {
-        timeout: 15000, // 15 second timeout
-        enableHighAccuracy: true, // Try high accuracy first
-        maximumAge: 0, // Don't use cached location, force fresh request
+        timeout: 10000, // Reduced timeout for faster fallback
+        enableHighAccuracy: false, // Try faster location first
+        maximumAge: 300000, // Allow cached location up to 5 minutes
       }
     );
   };
@@ -374,6 +377,9 @@ export default function HomePage() {
   };
 
   const handleReset = () => {
+    // Store whether we were browsing clinics before reset
+    const wasBrowsingClinics = showClinicBrowsing;
+    
     setOriginalImage(null);
     setGeneratedImage(null);
     setClinics([]);
@@ -381,12 +387,25 @@ export default function HomePage() {
     setIsLoading(false);
     setIsFindingClinics(false);
     setShowClinicBrowsing(false);
+    
+    // If we were browsing clinics before reset, restart the clinic search process
+    if (wasBrowsingClinics) {
+      console.log("🔄 Restarting clinic search after reset");
+      // Reset location permission state to allow retry
+      setLocationPermissionDenied(false);
+      setLocationError(null);
+      // Trigger clinic search initialization after state clears
+      setTimeout(() => {
+        initializeClinicSearch();
+      }, 100);
+    }
   };
 
   const handleBrowseClinics = () => {
     setError(""); // Clear any existing errors
     setClinics([]); // Clear existing clinics
     setLocationPermissionDenied(false); // Reset permission state
+    setLocationError(null); // Clear location errors
     setShowClinicBrowsing(true);
     
     // Track analytics
@@ -713,7 +732,7 @@ export default function HomePage() {
                   <ClinicListSkeleton />
                 ) : clinics.length > 0 ? (
                   <ClinicList clinics={clinics} />
-                ) : activeTab === "nearby" && !userCoords ? (
+                ) : activeTab === "nearby" && (!userCoords || locationError) ? (
                   <div className="text-center py-12">
                     <div className="glass-elevated p-8 rounded-xl max-w-lg mx-auto border border-gray-200">
                       <div className="flex items-center justify-center gap-2 mb-4">
@@ -721,13 +740,17 @@ export default function HomePage() {
                           <Map size={14} className="text-blue-600" />
                         </div>
                         <h3 className="font-semibold text-gray-800">
-                          {locationPermissionDenied ? "Location Permission Denied" : "Location Access Required"}
+                          {locationError === 'PERMISSION_DENIED' ? "Location Permission Denied" : 
+                           locationError === 'TIMEOUT' ? "Location Request Timed Out" :
+                           locationError === 'UNAVAILABLE' ? "Location Unavailable" : 
+                           "Location Access Required"}
                         </h3>
                       </div>
                       <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                        {locationPermissionDenied 
-                          ? "You previously declined location access. To find nearby clinics, please enable location permission in your browser settings, then try again."
-                          : "To show nearby certified dental experts, we need access to your location. Your privacy is protected and location data is not stored."
+                        {locationError === 'PERMISSION_DENIED' ? "You previously declined location access. To find nearby clinics, please enable location permission in your browser settings, then try again." :
+                         locationError === 'TIMEOUT' ? "Location request took too long to respond. Please try again or use the search feature below."
+                         locationError === 'UNAVAILABLE' ? "Location services are unavailable on your device. Please try again or use the search feature below."
+                         : "To find nearby certified dental experts, we need access to your location. Your privacy is protected and location data is not stored."
                         }
                       </p>
                       <button
