@@ -153,7 +153,14 @@ export default function HomePage() {
       userAgent: navigator.userAgent.substring(0, 100),
       geolocationSupported: !!navigator.geolocation,
       currentTab: activeTab,
+      currentLocationError: locationError,
+      currentPermissionDenied: locationPermissionDenied,
     });
+    
+    // Reset location states before trying again
+    console.log("🔄 Resetting location states for fresh attempt");
+    setLocationPermissionDenied(false);
+    setLocationError(null);
     
     if (!navigator.geolocation) {
       console.log("❌ Geolocation not supported, falling back to popular destinations");
@@ -163,35 +170,33 @@ export default function HomePage() {
       return;
     }
 
-    console.log("Geolocation supported, requesting permission...");
+    console.log("🌍 Geolocation supported, proceeding with permission request...");
 
-    // Check if we're on HTTP (non-localhost) - development fallback
-    const isHttpNonLocalhost =
-      window.location.protocol === "http:" &&
-      !window.location.hostname.includes("localhost") &&
-      !window.location.hostname.includes("127.0.0.1");
-
-    console.log("🔍 Protocol check:", {
+    // Always attempt real location request - no mock coordinates to avoid interference
+    console.log("🔍 Environment check:", {
       protocol: window.location.protocol,
       hostname: window.location.hostname,
-      isHttpNonLocalhost,
       url: window.location.href,
+      userAgent: navigator.userAgent.substring(0, 50),
     });
 
-    if (isHttpNonLocalhost) {
-      console.log("⚠️ HTTP non-localhost detected - using development fallback (SKIP THIS ON MOBILE!)");
-      // For development: use a mock location or fallback
-      const mockCoords = { lat: 36.8848, lng: 30.7044 }; // Antalya coordinates
-      setUserCoords(mockCoords);
-      setPopularDestinations(POPULAR_DESTINATIONS.europe);
-      setActiveTab("nearby");
-      findClinics(mockCoords);
-      return;
-    }
-
     console.log("🌐 Proceeding with real location request for hostname:", window.location.hostname);
-
-    navigator.geolocation.getCurrentPosition(
+    
+    // Check if location services are enabled before requesting
+    const requestLocationWithPermissionCheck = () => {
+      console.log("🎯 Starting location request...");
+      
+      // iOS-specific configuration for better location accuracy
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const options = {
+        timeout: 15000, // Increased timeout to give more time for permission dialog
+        enableHighAccuracy: isIOS ? true : false, // Enable high accuracy on iOS
+        maximumAge: isIOS ? 5000 : 300000, // Shorter cache for iOS
+      };
+      
+      console.log("📱 Requesting location with options:", options);
+      
+      navigator.geolocation.getCurrentPosition(
       async (position) => {
         console.log("Geolocation success:", position);
         const { latitude, longitude } = position.coords;
@@ -247,6 +252,30 @@ export default function HomePage() {
           setPopularDestinations(POPULAR_DESTINATIONS.europe);
           setActiveTab("nearby"); // Stay on nearby tab to show permission request UI
           // Don't call findPopularClinics - let the UI show the permission request
+        } else if (error.code === error.POSITION_UNAVAILABLE && isIOS) {
+          // iOS sometimes needs a retry with different settings
+          console.log("📱 iOS location unavailable, trying with basic settings...");
+          setTimeout(() => {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                console.log("iOS retry success:", position);
+                const { latitude, longitude } = position.coords;
+                const coords = { lat: latitude, lng: longitude };
+                setLocationPermissionDenied(false);
+                setLocationError(null);
+                setUserCoords(coords);
+                setActiveTab("nearby");
+                findClinics(coords);
+              },
+              (retryError) => {
+                console.log("iOS retry failed:", retryError);
+                setLocationError('UNAVAILABLE');
+                setLocationPermissionDenied(false);
+                setActiveTab("nearby");
+              },
+              { timeout: 10000, enableHighAccuracy: false, maximumAge: 0 }
+            );
+          }, 1000);
         } else {
           // Other errors (timeout, unavailable) - show try again option
           console.log("⏰ Location error (timeout/unavailable) - BUT KEEPING NEARBY TAB");
@@ -259,12 +288,33 @@ export default function HomePage() {
           console.log("✅ Staying on nearby tab despite non-permission error - users can try again or use alternatives");
         }
       },
-      {
-        timeout: 10000, // Reduced timeout for faster fallback
-        enableHighAccuracy: false, // Try faster location first
-        maximumAge: 300000, // Allow cached location up to 5 minutes
-      }
-    );
+      options
+      );
+    };
+    
+    // Check if location services are enabled before requesting
+    if (navigator.permissions && navigator.permissions.query) {
+      console.log("🔍 Checking geolocation permission state...");
+      navigator.permissions.query({ name: 'geolocation' }).then(function(permissionStatus) {
+        console.log("📋 Permission status:", permissionStatus.state);
+        if (permissionStatus.state === 'denied') {
+          console.log("❌ Geolocation permission permanently denied");
+          setLocationPermissionDenied(true);
+          setLocationError('PERMISSION_DENIED');
+          setActiveTab("nearby");
+          return;
+        } else {
+          console.log("✅ Permission state allows location request, proceeding...");
+          requestLocationWithPermissionCheck();
+        }
+      }).catch(function(error) {
+        console.log("🔍 Permission API not supported, proceeding with geolocation request:", error);
+        requestLocationWithPermissionCheck();
+      });
+    } else {
+      console.log("🔍 Permission API not available, proceeding with geolocation request");
+      requestLocationWithPermissionCheck();
+    }
   };
 
   const findClinics = async (location) => {
@@ -753,27 +803,40 @@ export default function HomePage() {
                          "To find nearby certified dental experts, we need access to your location. Your privacy is protected and location data is not stored."
                         }
                       </p>
-                      <button
-                        onClick={() => {
-                          console.log("Manual location request triggered");
-                          initializeClinicSearch();
-                        }}
-                        className="btn-primary mb-4"
-                      >
-                        <Map size={16} className="mr-2" />
-                        {locationPermissionDenied ? "Try Again" : "Enable Location Access"}
-                      </button>
+                      <div className="space-y-3">
+                        <button
+                          onClick={() => {
+                            console.log("Manual location request triggered");
+                            initializeClinicSearch();
+                          }}
+                          className="btn-primary w-full"
+                        >
+                          <Map size={16} className="mr-2" />
+                          {locationPermissionDenied ? "Try Again" : "Enable Location Access"}
+                        </button>
+                        
+                        {/* Debug information in development */}
+                        {process.env.NODE_ENV === 'development' && (
+                          <details className="text-left">
+                            <summary className="text-xs text-gray-500 cursor-pointer">Debug Info</summary>
+                            <div className="text-xs text-gray-500 mt-2 bg-gray-50 p-3 rounded">
+                              <div>Protocol: {typeof window !== 'undefined' ? window.location.protocol : 'N/A'}</div>
+                              <div>Hostname: {typeof window !== 'undefined' ? window.location.hostname : 'N/A'}</div>
+                              <div>Location Error: {locationError || 'None'}</div>
+                              <div>Permission Denied: {locationPermissionDenied ? 'Yes' : 'No'}</div>
+                              <div>User Coords: {userCoords ? `${userCoords.lat.toFixed(4)}, ${userCoords.lng.toFixed(4)}` : 'None'}</div>
+                              <div>Geolocation Support: {typeof navigator !== 'undefined' && navigator.geolocation ? 'Yes' : 'No'}</div>
+                            </div>
+                          </details>
+                        )}
+                      </div>
                       <p className="text-xs text-gray-500">
                         Alternative: Use the search bar or browse popular destinations
                       </p>
                     </div>
                   </div>
                 ) : (
-                  <div className="text-center py-12">
-                    <div className="glass-elevated p-6 rounded-xl max-w-md mx-auto border border-gray-200">
-                      <p className="text-gray-600">No clinics found. Try a different search or location.</p>
-                    </div>
-                  </div>
+                  <ClinicListSkeleton />
                 )}
               </section>
             )}
