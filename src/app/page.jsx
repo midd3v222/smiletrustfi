@@ -691,6 +691,7 @@ export default function HomePage() {
                         <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
                           <Map size={14} className="text-blue-600" />
                         </div>
+<<<<<<< HEAD
                         <h3 className="font-semibold text-gray-800">
                           {locationPermissionDenied ? "Location Permission Denied" : "Location Access Required"}
                         </h3>
@@ -698,7 +699,7 @@ export default function HomePage() {
                       <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                         {locationPermissionDenied 
                           ? "You previously declined location access. To find nearby clinics, please enable location permission in your browser settings, then try again."
-                          : "To show nearby certified dental professionals, we need access to your location. Your privacy is protected and location data is not stored."
+                          : "To show nearby certified dental experts, we need access to your location. Your privacy is protected and location data is not stored."
                         }
                       </p>
                       <button
