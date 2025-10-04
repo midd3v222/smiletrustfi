@@ -74,66 +74,66 @@ const TreatmentCard = ({ treatment }) => {
   const IconComponent = treatment.icon;
   
   return (
-    <article id={treatment.id} className="glass-elevated p-8 rounded-2xl shadow-xl border border-gray-200/50 mb-8 hover:shadow-2xl transition-shadow scroll-mt-24">
-      <header className="flex items-start gap-4 mb-6">
-        <div className={`w-16 h-16 bg-${treatment.color}-100 rounded-2xl flex items-center justify-center flex-shrink-0`}>
-          <IconComponent size={32} className={`text-${treatment.color}-600`} />
+    <article id={treatment.id} className="glass-elevated p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-200/50 mb-6 sm:mb-8 hover:shadow-2xl transition-shadow scroll-mt-24">
+      <header className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+        <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-${treatment.color}-100 rounded-2xl flex items-center justify-center flex-shrink-0`}>
+          <IconComponent size={28} className={`text-${treatment.color}-600 sm:w-8 sm:h-8`} />
         </div>
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">{treatment.title}</h2>
+        <div className="flex-1 min-w-0">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{treatment.title}</h2>
           <div className="flex items-center gap-2 mb-2">
-            <span className={`px-3 py-1 bg-${treatment.color}-100 text-${treatment.color}-700 text-sm font-medium rounded-full`}>
+            <span className={`px-2 sm:px-3 py-1 bg-${treatment.color}-100 text-${treatment.color}-700 text-xs sm:text-sm font-medium rounded-full`}>
               {treatment.category}
             </span>
           </div>
-          <p className="text-gray-700 text-lg leading-relaxed">{treatment.description}</p>
+          <p className="text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed">{treatment.description}</p>
         </div>
       </header>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        <div className="space-y-4 sm:space-y-6">
           <div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Procedure Details</h3>
-            <p className="text-gray-600 leading-relaxed">{treatment.procedure}</p>
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Procedure Details</h3>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{treatment.procedure}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <Clock size={16} className="text-gray-500" />
-                <span className="font-semibold text-gray-900 text-sm">Duration</span>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+              <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+                <Clock size={14} className="text-gray-500 sm:w-4 sm:h-4" />
+                <span className="font-semibold text-gray-900 text-xs sm:text-sm">Duration</span>
               </div>
-              <p className="text-gray-700 text-sm">{treatment.duration}</p>
+              <p className="text-gray-700 text-xs sm:text-sm">{treatment.duration}</p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <Star size={16} className="text-gray-500" />
-                <span className="font-semibold text-gray-900 text-sm">Recovery</span>
+            <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+              <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+                <Star size={14} className="text-gray-500 sm:w-4 sm:h-4" />
+                <span className="font-semibold text-gray-900 text-xs sm:text-sm">Recovery</span>
               </div>
-              <p className="text-gray-700 text-sm">{treatment.recoveryTime}</p>
+              <p className="text-gray-700 text-xs sm:text-sm">{treatment.recoveryTime}</p>
             </div>
           </div>
 
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <div className="flex items-center gap-2 mb-2">
-              <Shield size={16} className="text-gray-500" />
-              <span className="font-semibold text-gray-900 text-sm">Durability</span>
+          <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+              <Shield size={14} className="text-gray-500 sm:w-4 sm:h-4" />
+              <span className="font-semibold text-gray-900 text-xs sm:text-sm">Durability</span>
             </div>
-            <p className="text-gray-700 text-sm">{treatment.durability}</p>
+            <p className="text-gray-700 text-xs sm:text-sm">{treatment.durability}</p>
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <span className="font-semibold text-blue-900 text-sm">Cost Range:</span>
-            <span className="text-blue-800 text-sm ml-2">{treatment.costRange}</span>
+          <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-200">
+            <span className="font-semibold text-blue-900 text-xs sm:text-sm">Cost Range:</span>
+            <span className="text-blue-800 text-xs sm:text-sm ml-2">{treatment.costRange}</span>
           </div>
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Ideal For</h3>
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Ideal For</h3>
           <ul className="space-y-2">
             {treatment.bestFor.map((item, index) => (
-              <li key={index} className="flex items-center gap-3 text-gray-700">
-                <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+              <li key={index} className="flex items-center gap-2 sm:gap-3 text-gray-700 text-sm sm:text-base">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                 <span>{item}</span>
               </li>
             ))}
@@ -168,15 +168,15 @@ export default function TreatmentsPage() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        <header className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Users size={16} />
+        <header className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+            <Users size={14} className="sm:w-4 sm:h-4" />
             Comprehensive Treatment Guide
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
             Dental Treatment <span className="text-blue-600">Options & Procedures</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto px-2">
             Discover detailed information about cosmetic dental treatments including porcelain veneers, zirconia crowns, 
             and complete smile makeovers. Learn about procedures, costs, recovery, and find the right treatment for your needs.
           </p>
@@ -190,25 +190,25 @@ export default function TreatmentsPage() {
         </section>
 
         {/* Additional Resources */}
-        <section className="mt-16 max-w-4xl mx-auto">
-          <div className="glass-elevated p-8 rounded-2xl shadow-xl border border-gray-200/50">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+        <section className="mt-8 sm:mt-12 lg:mt-16 max-w-4xl mx-auto">
+          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
               Find Certified Dental Professionals
             </h2>
-            <p className="text-gray-700 text-center mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-700 text-center mb-6 sm:mb-8 leading-relaxed px-2">
               Ready to start your smile transformation? Connect with trusted dental professionals who specialize in 
               cosmetic dentistry and have extensive experience with these treatments.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link 
                 href="/"
-                className="btn-primary text-center px-8 py-3"
+                className="btn-primary text-center px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base"
               >
                 View Dental Professionals
               </Link>
               <Link 
                 href="/destinations"
-                className="btn-secondary text-center px-8 py-3"
+                className="btn-secondary text-center px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base"
               >
                 Browse Popular Destinations
               </Link>

@@ -55,29 +55,53 @@ export default function AnalyticsDashboard() {
     </div>
   );
 
-  const ProcessChart = ({ title, data }) => (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
-      <div className="space-y-3">
-        {Object.entries(data).map(([key, value]) => (
-          <div key={key} className="flex items-center justify-between">
-            <span className="text-sm text-gray-600 capitalize">
-              {key.replace(/([A-Z])/g, ' $1').trim()}
-            </span>
-            <div className="flex items-center">
-              <div className="bg-gray-200 rounded-full h-2 w-32 mr-3">
-                <div 
-                  className="bg-blue-600 h-2 rounded-full" 
-                  style={{ width: `${Math.min(100, (parseInt(value) / Math.max(...Object.values(data).map(v => parseInt(v)))) * 100)}%` }}
-                />
+  const ProcessChart = ({ title, data }) => {
+    // Filter out empty or invalid data
+    const validEntries = Object.entries(data || {}).filter(([key, value]) => {
+      const numValue = parseInt(value);
+      return !isNaN(numValue) && numValue >= 0;
+    });
+    
+    if (validEntries.length === 0) {
+      return (
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
+          <p className="text-sm text-gray-500">No data available</p>
+        </div>
+      );
+    }
+    
+    const maxValue = Math.max(...validEntries.map(([_, v]) => parseInt(v)));
+    
+    return (
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
+        <div className="space-y-3">
+          {validEntries.map(([key, value]) => {
+            const numValue = parseInt(value);
+            const percentage = maxValue > 0 ? (numValue / maxValue) * 100 : 0;
+            
+            return (
+              <div key={key} className="flex items-center justify-between">
+                <span className="text-sm text-gray-600 capitalize">
+                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                </span>
+                <div className="flex items-center">
+                  <div className="bg-gray-200 rounded-full h-2 w-32 mr-3">
+                    <div 
+                      className="bg-blue-600 h-2 rounded-full transition-all" 
+                      style={{ width: `${Math.min(100, percentage)}%` }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-gray-900 min-w-[40px] text-right">{value}</span>
+                </div>
               </div>
-              <span className="text-sm font-medium text-gray-900">{value}</span>
-            </div>
-          </div>
-        ))}
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   if (loading) {
     return (
@@ -146,36 +170,42 @@ export default function AnalyticsDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard 
           title="Total Page Views"
-          value={stats.totals.pageViews}
+          value={stats.totals?.pageViews || '0'}
           subtitle="All time"
         />
         <StatCard 
           title="Today's Page Views"
-          value={stats.pageViews.today}
+          value={stats.pageViews?.today || '0'}
           subtitle="Current day"
         />
         <StatCard 
-          title="Smile Generations"
-          value={stats.apiUsage.generateSmile}
-          subtitle="AI processing requests"
+          title="Clinic Clicks"
+          value={stats.clinicClicks?.total || '0'}
+          subtitle="Total clinic engagements"
         />
         <StatCard 
-          title="Clinic Searches"
-          value={stats.apiUsage.findClinics}
-          subtitle="Location-based queries"
+          title="Smile Generations"
+          value={stats.apiUsage?.generateSmile || '0'}
+          subtitle="AI processing requests"
         />
       </div>
 
       {/* Treatment Interest */}
       <ProcessChart 
         title="Treatment Interest"
-        data={stats.treatmentInterest}
+        data={stats.treatmentInterest || {}}
+      />
+
+      {/* Clinic Engagement */}
+      <ProcessChart 
+        title="Clinic Engagement"
+        data={stats.clinicClicks || {}}
       />
 
       {/* User Interactions */}
       <ProcessChart 
         title="User Interactions"
-        data={stats.totals}
+        data={stats.totals || {}}
       />
 
       {/* Website Performance */}
@@ -184,13 +214,21 @@ export default function AnalyticsDashboard() {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">Home Page</span>
-            <span className="text-sm font-medium text-gray-900">{stats.pageViews.today}</span>
+            <span className="text-sm font-medium text-gray-900">{stats.pageViews?.today || '0'}</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">Treatment Pages</span>
             <span className="text-sm font-medium text-gray-900">
-              {parseInt(stats.treatmentInterest.veneers || 0) + parseInt(stats.treatmentInterest.crowns || 0)}
+              {parseInt(stats.treatmentInterest?.veneers || 0) + parseInt(stats.treatmentInterest?.crowns || 0)}
             </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600">About Page</span>
+            <span className="text-sm font-medium text-gray-900">{stats.pageViews?.about || '0'}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600">Destinations Page</span>
+            <span className="text-sm font-medium text-gray-900">{stats.pageViews?.destinations || '0'}</span>
           </div>
         </div>
       </div>
@@ -206,7 +244,10 @@ export default function AnalyticsDashboard() {
           <div className="ml-3">
             <p className="text-sm text-blue-800">
               <strong>Analytics Status:</strong> {stats.redisEnabled ? 'Active' : 'Limited'} 
-              {stats.redisEnabled ? ' - Full tracking enabled' : ' - Basic tracking only'}
+              {stats.redisEnabled ? ' - Full tracking enabled with Redis' : ' - Basic in-memory tracking only'}
+            </p>
+            <p className="text-xs text-blue-700 mt-1">
+              Last updated: {new Date(stats.timestamp).toLocaleString()}
             </p>
           </div>
         </div>

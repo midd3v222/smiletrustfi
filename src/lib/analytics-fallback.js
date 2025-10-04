@@ -7,7 +7,8 @@ class InMemoryAnalytics {
       pageViews: {},
       interactions: {},
       treatmentInterest: {},
-      apiUsage: {}
+      apiUsage: {},
+      clinicClicks: {}
     };
   }
 
@@ -71,6 +72,40 @@ class InMemoryAnalytics {
     return true;
   }
 
+  // Track clinic clicks
+  trackClinicClick(clickType, data = {}) {
+    const today = new Date().toISOString().split('T')[0];
+    
+    // Daily clinic clicks
+    const dailyKey = `${clickType}:${today}`;
+    this.data.clinicClicks[dailyKey] = (this.data.clinicClicks[dailyKey] || 0) + 1;
+    
+    // Total clinic clicks
+    const totalKey = `${clickType}:total`;
+    this.data.clinicClicks[totalKey] = (this.data.clinicClicks[totalKey] || 0) + 1;
+    
+    // Track all clinic clicks
+    const allKey = 'all:total';
+    this.data.clinicClicks[allKey] = (this.data.clinicClicks[allKey] || 0) + 1;
+    
+    // Track sponsored vs organic
+    if (data.isSponsored) {
+      const sponsoredKey = 'sponsored:total';
+      this.data.clinicClicks[sponsoredKey] = (this.data.clinicClicks[sponsoredKey] || 0) + 1;
+    } else {
+      const organicKey = 'organic:total';
+      this.data.clinicClicks[organicKey] = (this.data.clinicClicks[organicKey] || 0) + 1;
+    }
+    
+    // Track by specific clinic
+    if (data.clinicId) {
+      const clinicKey = `clinic:${data.clinicId}:total`;
+      this.data.clinicClicks[clinicKey] = (this.data.clinicClicks[clinicKey] || 0) + 1;
+    }
+    
+    return true;
+  }
+
   // Get statistics
   getStats(timeframe = '7d') {
     const today = new Date().toISOString().split('T')[0];
@@ -80,15 +115,40 @@ class InMemoryAnalytics {
       timestamp: new Date().toISOString(),
       redisEnabled: false,
       pageViews: {
-        today: this.data.pageViews[`home:${today}`] || '0'
+        today: String(this.data.pageViews[`home:${today}`] || 0),
+        about: String(this.data.pageViews['about:total'] || 0),
+        treatments: String(this.data.pageViews['treatments:total'] || 0),
+        destinations: String(this.data.pageViews['destinations:total'] || 0)
       },
-      interactions: {},
-      apiUsage: {},
-      treatmentInterest: {},
+      interactions: {
+        generateClick: String(this.data.interactions['generate-click:total'] || 0),
+        clinicBrowse: String(this.data.interactions['clinic-browse:total'] || 0),
+        imageUpload: String(this.data.interactions['image-upload:total'] || 0)
+      },
+      apiUsage: {
+        generateSmile: String(this.data.apiUsage['/api/generate-smile:success:total'] || 0),
+        findClinics: String(this.data.apiUsage['/api/find-clinics:success:total'] || 0),
+        getLocation: String(this.data.apiUsage['/api/get-location-details:success:total'] || 0)
+      },
+      treatmentInterest: {
+        veneers: String(this.data.treatmentInterest['veneers:page:total'] || 0),
+        crowns: String(this.data.treatmentInterest['zirconia:page:total'] || 0),
+        makeover: String(this.data.treatmentInterest['makeover:page:total'] || 0),
+        implants: String(this.data.treatmentInterest['implants:page:total'] || 0)
+      },
+      clinicClicks: {
+        total: String(this.data.clinicClicks['all:total'] || 0),
+        cardClicks: String(this.data.clinicClicks['clinic-card-click:total'] || 0),
+        mapsClicks: String(this.data.clinicClicks['clinic-maps-click:total'] || 0),
+        sponsored: String(this.data.clinicClicks['sponsored:total'] || 0),
+        organic: String(this.data.clinicClicks['organic:total'] || 0)
+      },
       totals: {
-        pageViews: this.data.pageViews['home:total'] || '0',
-        generateClicks: this.data.interactions['generate-click:total'] || '0',
-        clinicBrowses: this.data.interactions['clinic-browse:total'] || '0'
+        pageViews: String(this.data.pageViews['home:total'] || 0),
+        generateClicks: String(this.data.interactions['generate-click:total'] || 0),
+        clinicBrowses: String(this.data.interactions['clinic-browse:total'] || 0),
+        imageUploads: String(this.data.interactions['image-upload:total'] || 0),
+        clinicClicks: String(this.data.clinicClicks['all:total'] || 0)
       }
     };
   }

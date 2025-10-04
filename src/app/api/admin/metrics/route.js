@@ -20,19 +20,15 @@ export async function GET(request) {
       return NextResponse.json({
         timeframe,
         summary: {
-          totalPageViews: metrics.totals.pageViews,
-          todayPageViews: metrics.pageViews.today,
+          totalPageViews: metrics.totals?.pageViews || '0',
+          todayPageViews: metrics.pageViews?.today || '0',
           topTreatment: getTopTreatment(metrics.treatmentInterest),
-          apiUsage: metrics.apiUsage
+          apiUsage: metrics.apiUsage || {}
         }
       });
     }
 
-    return NextResponse.json({
-      timeframe,
-      timestamp: new Date().toISOString(),
-      ...metrics
-    });
+    return NextResponse.json(metrics);
   } catch (error) {
     console.error('Metrics API error:', error);
     return NextResponse.json({ error: 'Failed to fetch metrics' }, { status: 500 });

@@ -21,6 +21,10 @@ export async function POST(request) {
         await analyticsTracker.trackApiUsage(endpoint, status);
         break;
         
+      case 'clinic-click':
+        await analyticsTracker.trackClinicClick(eventType, data);
+        break;
+        
       default:
         return Response.json({ error: 'Unknown tracking type' }, { status: 400 });
     }

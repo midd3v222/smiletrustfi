@@ -1,13 +1,101 @@
+'use client';
+
 import { Star, MapPin, ExternalLink, Shield, Users } from "lucide-react";
 
 function ClinicCard({ clinic }) {
   const destinationUrl = clinic.website || clinic.maps_url;
+
+  const handleClinicClick = async () => {
+    // Track clinic card click
+    try {
+      const clinicData = {
+        clinicId: clinic.place_id,
+        clinicName: clinic.name,
+        rating: clinic.rating,
+        isSponsored: clinic.isSponsored || false,
+        clickType: 'card',
+        timestamp: new Date().toISOString()
+      };
+      
+      // Track the click
+      await fetch('/api/analytics/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'clinic-click',
+          eventType: 'clinic-card-click',
+          data: clinicData
+        })
+      });
+      
+      // Store clinic metadata for admin dashboard
+      await fetch('/api/admin/clinic-stats', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'update-metadata',
+          clinicId: clinic.place_id,
+          clinicName: clinic.name,
+          rating: clinic.rating,
+          isSponsored: clinic.isSponsored || false
+        })
+      });
+    } catch (error) {
+      console.error('Failed to track clinic click:', error);
+    }
+  };
+
+  const handleMapsClick = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Track maps button click
+    try {
+      const clinicData = {
+        clinicId: clinic.place_id,
+        clinicName: clinic.name,
+        rating: clinic.rating,
+        isSponsored: clinic.isSponsored || false,
+        clickType: 'maps-button',
+        timestamp: new Date().toISOString()
+      };
+      
+      // Track the click
+      await fetch('/api/analytics/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'clinic-click',
+          eventType: 'clinic-maps-click',
+          data: clinicData
+        })
+      });
+      
+      // Store clinic metadata for admin dashboard
+      await fetch('/api/admin/clinic-stats', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'update-metadata',
+          clinicId: clinic.place_id,
+          clinicName: clinic.name,
+          rating: clinic.rating,
+          isSponsored: clinic.isSponsored || false
+        })
+      });
+    } catch (error) {
+      console.error('Failed to track maps click:', error);
+    }
+    
+    window.open(clinic.maps_url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <a
       href={destinationUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClinicClick}
       className="block card p-4 sm:p-6 hover:shadow-lg transition-all duration-200 group relative overflow-hidden"
     >
       {/* Professional hover overlay */}
@@ -55,11 +143,7 @@ function ClinicCard({ clinic }) {
 
         <div className="flex items-center justify-between pt-2.5 sm:pt-4 border-t border-gray-100">
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              window.open(clinic.maps_url, '_blank', 'noopener,noreferrer');
-            }}
+            onClick={handleMapsClick}
             className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-lg transition-colors"
           >
             <MapPin size={16} />

@@ -72,3 +72,8 @@ function getWindowResetAtMs() {
   );
   return reset.getTime();
 }
+
+export function resetAllQuotas() {
+  quotaStore.clear();
+  return { cleared: true, timestamp: new Date().toISOString() };
+}

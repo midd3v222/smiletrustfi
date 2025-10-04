@@ -1,4 +1,6 @@
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
+import AdminQuickActions from '@/components/AdminQuickActions';
+import ClinicStatsPanel from '@/components/ClinicStatsPanel';
 
 export const metadata = {
   title: 'Admin Dashboard - SmileTrust Analytics',
@@ -74,6 +76,11 @@ export default async function AdminPage({ searchParams }) {
         {/* Analytics Dashboard */}
         <AnalyticsDashboard />
 
+        {/* Clinic Statistics */}
+        <div className="mt-8">
+          <ClinicStatsPanel />
+        </div>
+
         {/* Additional Admin Tools */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* System Status */}
@@ -102,23 +109,7 @@ export default async function AdminPage({ searchParams }) {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-            <div className="space-y-3">
-              <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
-                Export Analytics Data
-              </button>
-              <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
-                Clear Cache
-              </button>
-              <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
-                Reset Quota Limits
-              </button>
-              <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
-                Test Email Notifications
-              </button>
-            </div>
-          </div>
+          <AdminQuickActions />
         </div>
 
         {/* Footer */}

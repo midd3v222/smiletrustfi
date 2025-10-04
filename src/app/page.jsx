@@ -490,6 +490,12 @@ export default function HomePage() {
               Destinations
             </Link>
             <Link 
+              href="/blog"
+              className="hover:text-blue-600 transition-colors font-medium"
+            >
+              Blog
+            </Link>
+            <Link 
               href="/about"
               className="hover:text-blue-600 transition-colors font-medium"
             >
@@ -497,7 +503,7 @@ export default function HomePage() {
             </Link>
             <span className="flex items-center gap-1">
               <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-              HIPAA Compliant
+              GDPR Compliant
             </span>
           </nav>
 
@@ -529,6 +535,13 @@ export default function HomePage() {
                 Destinations
               </Link>
               <Link 
+                href="/blog"
+                className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Blog
+              </Link>
+              <Link 
                 href="/about"
                 className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -537,7 +550,7 @@ export default function HomePage() {
               </Link>
               <div className="flex items-center gap-2 text-sm text-gray-600 pt-2 border-t border-gray-200">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                HIPAA Compliant
+                GDPR Compliant
               </div>
             </div>
           </div>
@@ -711,7 +724,7 @@ export default function HomePage() {
                     Certified Dental Professionals
                   </h2>
                   <p className="text-gray-600 max-w-2xl mx-auto">
-                    Connect with verified, top-rated dental clinics specializing in cosmetic dentistry, veneer procedures, and zirconia crowns worldwide. Our HIPAA-compliant platform ensures your privacy while helping you find the best dental professionals.
+                    Connect with verified, top-rated dental clinics specializing in cosmetic dentistry, veneer procedures, and zirconia crowns worldwide. Our GDPR-compliant platform ensures your privacy while helping you find the best dental professionals.
                   </p>
                   {showClinicBrowsing && !generatedImage && (
                     <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200 max-w-lg mx-auto">

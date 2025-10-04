@@ -92,6 +92,39 @@ export class AnalyticsTracker {
     }
   }
 
+  // Track clinic clicks
+  async trackClinicClick(clickType, data = {}) {
+    if (!this.isRedisEnabled) {
+      return fallbackAnalytics.trackClinicClick(clickType, data);
+    }
+
+    const dateKey = new Date().toISOString().split('T')[0];
+    
+    try {
+      // Track overall clinic clicks
+      await redisIncr(`clinic-click:${clickType}:daily:${dateKey}`);
+      await redisIncr(`clinic-click:${clickType}:total`);
+      await redisIncr(`clinic-click:all:total`);
+      
+      // Track sponsored vs non-sponsored clicks
+      if (data.isSponsored) {
+        await redisIncr(`clinic-click:sponsored:total`);
+      } else {
+        await redisIncr(`clinic-click:organic:total`);
+      }
+      
+      // Track by specific clinic
+      if (data.clinicId) {
+        await redisIncr(`clinic:${data.clinicId}:clicks:total`);
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to track clinic click:', error);
+      return fallbackAnalytics.trackClinicClick(clickType, data);
+    }
+  }
+
   // Get statistics
   async getStats(timeframe = '7d') {
     const stats = {
@@ -102,6 +135,7 @@ export class AnalyticsTracker {
       interactions: {},
       apiUsage: {},
       treatmentInterest: {},
+      clinicClicks: {},
       totals: {}
     };
 
@@ -115,20 +149,36 @@ export class AnalyticsTracker {
       
       // Page views for today
       stats.pageViews.today = await redisGet(`pageview:daily:home:${dateKey}`) || '0';
+      stats.pageViews.about = await redisGet(`pageview:total:about`) || '0';
+      stats.pageViews.treatments = await redisGet(`pageview:total:treatments`) || '0';
+      stats.pageViews.destinations = await redisGet(`pageview:total:destinations`) || '0';
       
       // Most popular treatments
       stats.treatmentInterest.veneers = await redisGet(`treatment:veneers:page:total`) || '0';
       stats.treatmentInterest.crowns = await redisGet(`treatment:zirconia:page:total`) || '0';
       stats.treatmentInterest.makeover = await redisGet(`treatment:makeover:page:total`) || '0';
+      stats.treatmentInterest.implants = await redisGet(`treatment:implants:page:total`) || '0';
       
       // API usage
       stats.apiUsage.generateSmile = await redisGet(`api:/api/generate-smile:success:total`) || '0';
       stats.apiUsage.findClinics = await redisGet(`api:/api/find-clinics:success:total`) || '0';
+      stats.apiUsage.getLocation = await redisGet(`api:/api/get-location-details:success:total`) || '0';
+      
+      // Clinic clicks
+      stats.clinicClicks = {
+        total: await redisGet(`clinic-click:all:total`) || '0',
+        cardClicks: await redisGet(`clinic-click:clinic-card-click:total`) || '0',
+        mapsClicks: await redisGet(`clinic-click:clinic-maps-click:total`) || '0',
+        sponsored: await redisGet(`clinic-click:sponsored:total`) || '0',
+        organic: await redisGet(`clinic-click:organic:total`) || '0'
+      };
       
       // Total interactions
       stats.totals.pageViews = await redisGet(`pageview:total:home`) || '0';
       stats.totals.generateClicks = await redisGet(`interaction:generate-click:total`) || '0';
       stats.totals.clinicBrowses = await redisGet(`interaction:clinic-browse:total`) || '0';
+      stats.totals.imageUploads = await redisGet(`interaction:image-upload:total`) || '0';
+      stats.totals.clinicClicks = await redisGet(`clinic-click:all:total`) || '0';
       
       return stats;
     } catch (error) {
