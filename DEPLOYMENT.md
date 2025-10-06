@@ -9,19 +9,21 @@ This guide will help you deploy your SmileTrust Next.js application to productio
    - Google Generative AI API Key
    - Google Maps API Key
    - Google Analytics ID (optional)
-3. **Domain**: Domain name (smiletrust.com)
+3. **Domain**: Domain name (smiletrustclinic.com)
 
 ## Deployment Options
 
 ### Option 1: Vercel (Recommended)
 
 #### Step 1: Push to GitHub
+
 1. Initialize git repository if not already done
 2. Add all files: `git add .`
 3. Commit: `git commit -m "Initial commit"`
 4. Connect to GitHub repository and push
 
 #### Step 2: Deploy with Vercel
+
 1. Go to [vercel.com](https://vercel.com)
 2. Sign up/sign in with your GitHub account
 3. Click "New Project"
@@ -29,7 +31,9 @@ This guide will help you deploy your SmileTrust Next.js application to productio
 5. Deploy!
 
 #### Step 3: Configure Environment Variables
+
 In Vercel dashboard:
+
 1. Go to Project Settings > Environment Variables
 2. Add these variables:
    ```
@@ -37,12 +41,13 @@ In Vercel dashboard:
    GOOGLE_MAPS_API_KEY=your_google_maps_api_key
    NEXT_PUBLIC_GA_ID=your_google_analytics_id
    REDIS_URL=your_redis_url (if using)
-   NEXT_PUBLIC_APP_URL=https://smiletrust.com
+   NEXT_PUBLIC_APP_URL=https://smiletrustclinic.com
    ```
 
 #### Step 4: Custom Domain
+
 1. In Vercel dashboard, go to Domains
-2. Add your custom domain (smiletrust.com)
+2. Add your custom domain (smiletrustclinic.com)
 3. Follow DNS configuration instructions
 
 ### Option 2: Netlify
@@ -86,12 +91,14 @@ Make sure you have these environment variables set in your hosting platform:
 ## Troubleshooting
 
 ### Common Issues:
+
 1. **API Key Errors**: Ensure all environment variables are set
 2. **Build Failures**: Check that all dependencies are in package.json
 3. **Image Upload Issues**: Verify file upload limits in hosting platform
 4. **Domain Issues**: Allow 24-48 hours for DNS propagation
 
 ### Support:
+
 - Check Vercel/netlify logs for deployment errors
 - Verify all environment variables are correctly set
 - Test locally with `npm run build && npm start`
