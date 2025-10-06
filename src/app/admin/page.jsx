@@ -1,6 +1,7 @@
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import AdminQuickActions from '@/components/AdminQuickActions';
 import ClinicStatsPanel from '@/components/ClinicStatsPanel';
+import CountryStatsPanel from '@/components/CountryStatsPanel';
 
 export const metadata = {
   title: 'Admin Dashboard - SmileTrust Analytics',
@@ -79,6 +80,11 @@ export default async function AdminPage({ searchParams }) {
         {/* Clinic Statistics */}
         <div className="mt-8">
           <ClinicStatsPanel />
+        </div>
+
+        {/* Country Statistics */}
+        <div className="mt-8">
+          <CountryStatsPanel />
         </div>
 
         {/* Additional Admin Tools */}

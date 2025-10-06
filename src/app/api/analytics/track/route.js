@@ -2,11 +2,13 @@ import { analyticsTracker } from '@/lib/analytics.js';
 
 export async function POST(request) {
   try {
-    const { type, page, eventType, data, treatment, context, endpoint, status } = await request.json();
+    const { type, page, eventType, data, treatment, context, endpoint, status, country } = await request.json();
+
+    console.log(`Analytics tracking: ${type} for ${page} from ${country}`);
 
     switch (type) {
       case 'pageview':
-        await analyticsTracker.trackPageView(page || 'unknown');
+        await analyticsTracker.trackPageView(page || 'unknown', country || 'unknown');
         break;
         
       case 'interaction':

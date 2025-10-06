@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, MapPin, Star, Clock, DollarSign, Globe, Plane } from "lucide-react";
+import { PageViewTracker } from "@/components/PageViewTracker";
 
 export const metadata = {
   title: "Top Dental Tourism Destinations - Turkey, Mexico, Thailand & More | SmileTrust",
@@ -255,6 +256,8 @@ const DestinationCard = ({ destination }) => {
 
 export default function DestinationsPage() {
   return (
+    <>
+      <PageViewTracker pageName="destinations" />
     <div className="min-h-screen w-full bg-grid-pattern relative">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
@@ -369,5 +372,6 @@ export default function DestinationsPage() {
         </section>
       </main>
     </div>
+    </>
   );
 }

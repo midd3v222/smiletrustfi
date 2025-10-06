@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { 
   ArrowLeft, 
@@ -15,9 +13,12 @@ import {
   Globe,
   Lock
 } from "lucide-react";
+import { PageViewTracker } from "@/components/PageViewTracker";
 
 export default function AboutPage() {
   return (
+    <>
+      <PageViewTracker pageName="about" />
     <div className="min-h-screen w-full bg-grid-pattern relative">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
@@ -285,5 +286,6 @@ export default function AboutPage() {
         </div>
       </main>
     </div>
+    </>
   );
 }

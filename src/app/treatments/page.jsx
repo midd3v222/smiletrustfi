@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, Shield, Star, Users, Clock, Award } from "lucide-react";
+import { PageViewTracker } from "@/components/PageViewTracker";
+import { TreatmentTracker } from "@/components/TreatmentTracker";
 
 export const metadata = {
   title: "Dental Treatment Options - Veneers, Crowns & Complete Smile Makeovers | SmileTrust",
@@ -34,7 +36,12 @@ const treatments = [
     duration: "2-3 visits over 2-3 weeks",
     recoveryTime: "2-3 days for sensitivity",
     durability: "10-15 years with proper care",
-    costRange: "$1,000-$2,500 per tooth",
+    costRange: {
+      usd: "$1,000-$2,500 per tooth",
+      gbp: "£750-£1,875 per tooth",
+      eur: "€850-€2,125 per tooth",
+      turkey: "$300-$600 per tooth (Turkey)"
+    },
     bestFor: ["Discolored teeth", "Slight misalignment", "Gaps between teeth", "Worn teeth"],
     category: "Cosmetic Enhancement",
     icon: Star,
@@ -48,7 +55,12 @@ const treatments = [
     duration: "2 visits over 1-2 weeks",
     recoveryTime: "Immediate functionality",
     durability: "15-20 years",
-    costRange: "$1,200-$3,000 per crown",
+    costRange: {
+      usd: "$1,200-$3,000 per crown",
+      gbp: "£900-£2,250 per crown",
+      eur: "€1,020-€2,550 per crown",
+      turkey: "$400-$800 per crown (Turkey)"
+    },
     bestFor: ["Broken teeth", "Severe decay", "Root canal treatment", "Large fillings"],
     category: "Restoration",
     icon: Shield,
@@ -62,7 +74,12 @@ const treatments = [
     duration: "3-6 months",
     recoveryTime: "Gradual improvement throughout treatment",
     durability: "15+ years with maintenance",
-    costRange: "$8,000-$25,000 full mouth",
+    costRange: {
+      usd: "$8,000-$25,000 full mouth",
+      gbp: "£6,000-£18,750 full mouth",
+      eur: "€6,800-€21,250 full mouth",
+      turkey: "$3,000-$8,000 full mouth (Turkey)"
+    },
     bestFor: ["Multiple cosmetic concerns", "Complete aesthetic goals", "Complex cases", "Restorative needs"],
     category: "Full Treatment",
     icon: Award,
@@ -75,6 +92,7 @@ const TreatmentCard = ({ treatment }) => {
   
   return (
     <article id={treatment.id} className="glass-elevated p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-200/50 mb-6 sm:mb-8 hover:shadow-2xl transition-shadow scroll-mt-24">
+      <TreatmentTracker treatmentId={treatment.id} />
       <header className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
         <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-${treatment.color}-100 rounded-2xl flex items-center justify-center flex-shrink-0`}>
           <IconComponent size={28} className={`text-${treatment.color}-600 sm:w-8 sm:h-8`} />
@@ -123,8 +141,25 @@ const TreatmentCard = ({ treatment }) => {
           </div>
 
           <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-200">
-            <span className="font-semibold text-blue-900 text-xs sm:text-sm">Cost Range:</span>
-            <span className="text-blue-800 text-xs sm:text-sm ml-2">{treatment.costRange}</span>
+            <h4 className="font-semibold text-blue-900 text-xs sm:text-sm mb-2">Cost Range:</h4>
+            <div className="space-y-1">
+              <div className="flex justify-between items-center">
+                <span className="text-blue-800 text-xs sm:text-sm">USD:</span>
+                <span className="text-blue-800 text-xs sm:text-sm font-medium">{treatment.costRange.usd}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-blue-800 text-xs sm:text-sm">GBP:</span>
+                <span className="text-blue-800 text-xs sm:text-sm font-medium">{treatment.costRange.gbp}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-blue-800 text-xs sm:text-sm">EUR:</span>
+                <span className="text-blue-800 text-xs sm:text-sm font-medium">{treatment.costRange.eur}</span>
+              </div>
+              <div className="flex justify-between items-center border-t border-blue-200 pt-1 mt-1">
+                <span className="text-green-700 text-xs sm:text-sm font-semibold">Turkey:</span>
+                <span className="text-green-700 text-xs sm:text-sm font-semibold">{treatment.costRange.turkey}</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -146,6 +181,8 @@ const TreatmentCard = ({ treatment }) => {
 
 export default function TreatmentsPage() {
   return (
+    <>
+      <PageViewTracker pageName="treatments" />
     <div className="min-h-screen w-full bg-grid-pattern relative">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
@@ -189,6 +226,71 @@ export default function TreatmentsPage() {
           ))}
         </section>
 
+        {/* Price Comparison Section */}
+        <section className="mt-8 sm:mt-12 lg:mt-16 max-w-6xl mx-auto">
+          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
+              International Price Comparison
+            </h2>
+            <p className="text-sm sm:text-base text-gray-700 text-center mb-6 sm:mb-8 leading-relaxed px-2">
+              Compare treatment costs across different countries and discover significant savings opportunities 
+              while maintaining high-quality care standards.
+            </p>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm sm:text-base">
+                <thead>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left py-3 px-2 font-semibold text-gray-900">Treatment</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900">UK/US</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900">Turkey</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900">Mexico</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900">India</th>
+                    <th className="text-right py-3 px-2 font-semibold text-green-700">Savings</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr>
+                    <td className="py-3 px-2 font-medium text-gray-900">Porcelain Veneers (per tooth)</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$1,000-$2,500</td>
+                    <td className="py-3 px-2 text-right text-green-700 font-semibold">$300-$600</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$500-$1,200</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$200-$500</td>
+                    <td className="py-3 px-2 text-right text-green-700 font-semibold">Up to 80%</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-2 font-medium text-gray-900">Zirconia Crowns (per crown)</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$1,200-$3,000</td>
+                    <td className="py-3 px-2 text-right text-green-700 font-semibold">$400-$800</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$600-$1,500</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$300-$800</td>
+                    <td className="py-3 px-2 text-right text-green-700 font-semibold">Up to 75%</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-2 font-medium text-gray-900">Complete Smile Makeover</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$8,000-$25,000</td>
+                    <td className="py-3 px-2 text-right text-green-700 font-semibold">$3,000-$8,000</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$5,000-$15,000</td>
+                    <td className="py-3 px-2 text-right text-gray-700">$2,000-$8,000</td>
+                    <td className="py-3 px-2 text-right text-green-700 font-semibold">Up to 70%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">Why Choose Medical Tourism?</h3>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>• Significant cost savings without compromising quality</li>
+                <li>• Internationally certified dental professionals</li>
+                <li>• Modern facilities with advanced technology</li>
+                <li>• Comprehensive treatment packages including accommodation</li>
+                <li>• Opportunity to combine treatment with vacation</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Additional Resources */}
         <section className="mt-8 sm:mt-12 lg:mt-16 max-w-4xl mx-auto">
           <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50">
@@ -217,5 +319,6 @@ export default function TreatmentsPage() {
         </section>
       </main>
     </div>
+    </>
   );
 }

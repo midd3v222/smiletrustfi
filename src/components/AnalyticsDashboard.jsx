@@ -199,7 +199,12 @@ export default function AnalyticsDashboard() {
       {/* Clinic Engagement */}
       <ProcessChart 
         title="Clinic Engagement"
-        data={stats.clinicClicks || {}}
+        data={{
+          'Card Clicks': stats.clinicClicks?.cardClicks || '0',
+          'Maps Clicks': stats.clinicClicks?.mapsClicks || '0',
+          'Sponsored': stats.clinicClicks?.sponsored || '0',
+          'Organic': stats.clinicClicks?.organic || '0'
+        }}
       />
 
       {/* User Interactions */}
@@ -214,17 +219,15 @@ export default function AnalyticsDashboard() {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">Home Page</span>
-            <span className="text-sm font-medium text-gray-900">{stats.pageViews?.today || '0'}</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">Treatment Pages</span>
-            <span className="text-sm font-medium text-gray-900">
-              {parseInt(stats.treatmentInterest?.veneers || 0) + parseInt(stats.treatmentInterest?.crowns || 0)}
-            </span>
+            <span className="text-sm font-medium text-gray-900">{stats.pageViews?.home || '0'}</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">About Page</span>
             <span className="text-sm font-medium text-gray-900">{stats.pageViews?.about || '0'}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600">Treatments Page</span>
+            <span className="text-sm font-medium text-gray-900">{stats.pageViews?.treatments || '0'}</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">Destinations Page</span>

@@ -13,7 +13,7 @@ class InMemoryAnalytics {
   }
 
   // Track page views
-  trackPageView(page) {
+  trackPageView(page, country = 'unknown') {
     const today = new Date().toISOString().split('T')[0];
     
     // Daily page views
@@ -23,6 +23,11 @@ class InMemoryAnalytics {
     // Total page views
     const totalKey = `${page}:total`;
     this.data.pageViews[totalKey] = (this.data.pageViews[totalKey] || 0) + 1;
+    
+    // Country tracking
+    const countryKey = `${country}:total`;
+    this.data.countries = this.data.countries || {};
+    this.data.countries[countryKey] = (this.data.countries[countryKey] || 0) + 1;
     
     return true;
   }
@@ -116,6 +121,7 @@ class InMemoryAnalytics {
       redisEnabled: false,
       pageViews: {
         today: String(this.data.pageViews[`home:${today}`] || 0),
+        home: String(this.data.pageViews['home:total'] || 0),
         about: String(this.data.pageViews['about:total'] || 0),
         treatments: String(this.data.pageViews['treatments:total'] || 0),
         destinations: String(this.data.pageViews['destinations:total'] || 0)
@@ -149,6 +155,19 @@ class InMemoryAnalytics {
         clinicBrowses: String(this.data.interactions['clinic-browse:total'] || 0),
         imageUploads: String(this.data.interactions['image-upload:total'] || 0),
         clinicClicks: String(this.data.clinicClicks['all:total'] || 0)
+      },
+      countries: {
+        'United States': String(this.data.countries?.['US:total'] || 0),
+        'United Kingdom': String(this.data.countries?.['GB:total'] || 0),
+        'Canada': String(this.data.countries?.['CA:total'] || 0),
+        'Germany': String(this.data.countries?.['DE:total'] || 0),
+        'France': String(this.data.countries?.['FR:total'] || 0),
+        'Australia': String(this.data.countries?.['AU:total'] || 0),
+        'Netherlands': String(this.data.countries?.['NL:total'] || 0),
+        'Sweden': String(this.data.countries?.['SE:total'] || 0),
+        'Norway': String(this.data.countries?.['NO:total'] || 0),
+        'Denmark': String(this.data.countries?.['DK:total'] || 0),
+        'Unknown': String(this.data.countries?.['unknown:total'] || 0)
       }
     };
   }
