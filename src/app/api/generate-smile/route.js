@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 import { checkAndIncrementDailyQuota } from "@/lib/quota";
+import { analyticsTracker } from "@/lib/analytics.js";
 
 // Force dynamic rendering for this route
 export const dynamic = 'force-dynamic';
@@ -91,6 +92,9 @@ export async function POST(request) {
 
     if (!editedImagePart) {
       // Handle cases where the model might have refused to generate an image or returned text instead.
+      // Track this as a failed generation
+      await analyticsTracker.trackApiUsage('/api/generate-smile', 'error');
+      
       return NextResponse.json(
         { error: "Please upload a valid image." },
         { status: 500 }
@@ -101,6 +105,9 @@ export async function POST(request) {
     const editedImageBase64 = editedImagePart.inlineData.data;
     const mimeType = editedImagePart.inlineData.mimeType;
 
+    // Track successful smile generation
+    await analyticsTracker.trackApiUsage('/api/generate-smile', 'success');
+
     const res = NextResponse.json({
       imageData: `data:${mimeType};base64,${editedImageBase64}`,
     });
@@ -110,6 +117,10 @@ export async function POST(request) {
     return res;
   } catch (error) {
     console.error("Error in generate-smile API:", error);
+    
+    // Track failed smile generation
+    await analyticsTracker.trackApiUsage('/api/generate-smile', 'error');
+    
     return NextResponse.json(
       { error: "Failed to generate image. Please try again." },
       { status: 500 }

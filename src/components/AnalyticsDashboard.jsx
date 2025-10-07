@@ -7,13 +7,25 @@ export default function AnalyticsDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [timeframe, setTimeframe] = useState('7d');
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   useEffect(() => {
     fetchStats();
   }, [timeframe]);
 
-  const fetchStats = async () => {
-    setLoading(true);
+  // Auto-refresh every 30 seconds to keep data current
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchStats(false); // Don't show loading during auto-refresh
+    }, 30000); // 30 seconds
+
+    return () => clearInterval(interval);
+  }, [timeframe]);
+
+  const fetchStats = async (showLoading = true) => {
+    if (showLoading) {
+      setLoading(true);
+    }
     setError(null);
     
     try {
@@ -25,10 +37,13 @@ export default function AnalyticsDashboard() {
       }
       
       setStats(data);
+      setLastUpdated(new Date());
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(false);
+      if (showLoading) {
+        setLoading(false);
+      }
     }
   };
 
@@ -158,11 +173,16 @@ export default function AnalyticsDashboard() {
             <option value="90d">Last 90 days</option>
           </select>
           <button 
-            onClick={fetchStats}
+            onClick={() => fetchStats(true)}
             className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors text-sm"
           >
             Refresh
           </button>
+          {lastUpdated && (
+            <span className="text-xs text-gray-500">
+              Last updated: {lastUpdated.toLocaleTimeString()}
+            </span>
+          )}
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import { Client } from "@googlemaps/google-maps-services-js";
 import { NextResponse } from "next/server";
 import { getCache, setCache, makeCacheKey } from "@/lib/cache";
+import { analyticsTracker } from "@/lib/analytics.js";
 
 // Force dynamic rendering for this route
 export const dynamic = 'force-dynamic';
@@ -114,9 +115,17 @@ export async function GET(request) {
 
     const payload = { continent };
     setCache(cacheKey, payload, 60 * 60); // cache for 1 hour
+    
+    // Track successful location details request
+    await analyticsTracker.trackApiUsage('/api/get-location-details', 'success');
+    
     return NextResponse.json(payload);
   } catch (error) {
     console.error("Error in get-location-details API:", error.message);
+    
+    // Track failed location details request
+    await analyticsTracker.trackApiUsage('/api/get-location-details', 'error');
+    
     return NextResponse.json(
       { error: "Failed to determine location details." },
       { status: 500 }

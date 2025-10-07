@@ -1,6 +1,7 @@
 import { Client } from "@googlemaps/google-maps-services-js";
 import { NextResponse } from "next/server";
 import { getCache, setCache, makeCacheKey } from "@/lib/cache";
+import { analyticsTracker } from "@/lib/analytics.js";
 import {
   rankingConfig,
   filterClinics,
@@ -149,12 +150,20 @@ export async function GET(request) {
 
     // Cache the formatted clinics for 24 hours
     setCache(cacheKey, formattedClinics, 60 * 60 * 24);
+    
+    // Track successful clinic search
+    await analyticsTracker.trackApiUsage('/api/find-clinics', 'success');
+    
     return NextResponse.json(formattedClinics);
   } catch (error) {
     console.error(
       "Error in find-clinics API:",
       error.response?.data || error.message
     );
+    
+    // Track failed clinic search
+    await analyticsTracker.trackApiUsage('/api/find-clinics', 'error');
+    
     return NextResponse.json(
       { error: "Failed to fetch clinic data." },
       { status: 500 }

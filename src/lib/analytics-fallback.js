@@ -137,10 +137,26 @@ class InMemoryAnalytics {
         getLocation: String(this.data.apiUsage['/api/get-location-details:success:total'] || 0)
       },
       treatmentInterest: {
-        veneers: String(this.data.treatmentInterest['veneers:page:total'] || 0),
-        crowns: String(this.data.treatmentInterest['zirconia:page:total'] || 0),
-        makeover: String(this.data.treatmentInterest['makeover:page:total'] || 0),
-        implants: String(this.data.treatmentInterest['implants:page:total'] || 0)
+        veneers: String(
+          (this.data.treatmentInterest['veneers:button:total'] || 0) + 
+          (this.data.treatmentInterest['veneers:page:total'] || 0) + 
+          (this.data.treatmentInterest['veneers:page-view:total'] || 0)
+        ),
+        crowns: String(
+          (this.data.treatmentInterest['zirconia:button:total'] || 0) + 
+          (this.data.treatmentInterest['zirconia:page:total'] || 0) + 
+          (this.data.treatmentInterest['zirconia-crowns:page-view:total'] || 0)
+        ),
+        makeover: String(
+          (this.data.treatmentInterest['makeover:button:total'] || 0) + 
+          (this.data.treatmentInterest['makeover:page:total'] || 0) + 
+          (this.data.treatmentInterest['smile-makeover:page-view:total'] || 0)
+        ),
+        implants: String(
+          (this.data.treatmentInterest['implants:button:total'] || 0) + 
+          (this.data.treatmentInterest['implants:page:total'] || 0) + 
+          (this.data.treatmentInterest['implants:page-view:total'] || 0)
+        )
       },
       clinicClicks: {
         total: String(this.data.clinicClicks['all:total'] || 0),

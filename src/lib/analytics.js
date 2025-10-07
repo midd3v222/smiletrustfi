@@ -159,11 +159,26 @@ export class AnalyticsTracker {
       stats.pageViews.treatments = await redisGet(`pageview:total:treatments`) || '0';
       stats.pageViews.destinations = await redisGet(`pageview:total:destinations`) || '0';
       
-      // Most popular treatments
-      stats.treatmentInterest.veneers = await redisGet(`treatment:veneers:page:total`) || '0';
-      stats.treatmentInterest.crowns = await redisGet(`treatment:zirconia:page:total`) || '0';
-      stats.treatmentInterest.makeover = await redisGet(`treatment:makeover:page:total`) || '0';
-      stats.treatmentInterest.implants = await redisGet(`treatment:implants:page:total`) || '0';
+      // Most popular treatments (check all contexts and variations)
+      const veneersButton = await redisGet(`treatment:veneers:button:total`) || '0';
+      const veneersPage = await redisGet(`treatment:veneers:page:total`) || '0';
+      const veneersPageView = await redisGet(`treatment:veneers:page-view:total`) || '0';
+      stats.treatmentInterest.veneers = String(parseInt(veneersButton) + parseInt(veneersPage) + parseInt(veneersPageView));
+      
+      const zirconiaButton = await redisGet(`treatment:zirconia:button:total`) || '0';
+      const zirconiaPage = await redisGet(`treatment:zirconia:page:total`) || '0';
+      const zirconiaCrownsPageView = await redisGet(`treatment:zirconia-crowns:page-view:total`) || '0';
+      stats.treatmentInterest.crowns = String(parseInt(zirconiaButton) + parseInt(zirconiaPage) + parseInt(zirconiaCrownsPageView));
+      
+      const makeoverButton = await redisGet(`treatment:makeover:button:total`) || '0';
+      const makeoverPage = await redisGet(`treatment:makeover:page:total`) || '0';
+      const smileMakeoverPageView = await redisGet(`treatment:smile-makeover:page-view:total`) || '0';
+      stats.treatmentInterest.makeover = String(parseInt(makeoverButton) + parseInt(makeoverPage) + parseInt(smileMakeoverPageView));
+      
+      const implantsButton = await redisGet(`treatment:implants:button:total`) || '0';
+      const implantsPage = await redisGet(`treatment:implants:page:total`) || '0';
+      const implantsPageView = await redisGet(`treatment:implants:page-view:total`) || '0';
+      stats.treatmentInterest.implants = String(parseInt(implantsButton) + parseInt(implantsPage) + parseInt(implantsPageView));
       
       // API usage
       stats.apiUsage.generateSmile = await redisGet(`api:/api/generate-smile:success:total`) || '0';
