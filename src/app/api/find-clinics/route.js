@@ -15,6 +15,8 @@ import {
   isClinicSponsored,
 } from "@/lib/sponsors";
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 const mapsClient = new Client({});

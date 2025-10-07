@@ -1,5 +1,8 @@
 import { analyticsTracker } from '@/lib/analytics.js';
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 export async function POST(request) {
   try {
     const { type, page, eventType, data, treatment, context, endpoint, status, country } = await request.json();

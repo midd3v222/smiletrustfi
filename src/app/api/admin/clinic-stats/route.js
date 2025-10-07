@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { redisGet, isRedisConfigured } from '@/lib/redis.js';
 import { redisSetJSON, redisGetJSON, redisScan } from '@/lib/redis-helpers.js';
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 // In-memory store for clinic metadata (fallback when Redis is not configured)
 class ClinicMetadataStore {
   constructor() {

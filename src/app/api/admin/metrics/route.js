@@ -1,6 +1,9 @@
 import { analyticsTracker } from '@/lib/analytics.js';
 import { NextResponse } from 'next/server';
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 export async function GET(request) {
   try {
     // Check for admin authentication (you may want to implement proper auth)

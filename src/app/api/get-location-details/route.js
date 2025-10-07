@@ -2,6 +2,9 @@ import { Client } from "@googlemaps/google-maps-services-js";
 import { NextResponse } from "next/server";
 import { getCache, setCache, makeCacheKey } from "@/lib/cache";
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 const mapsClient = new Client({});
 
 // A simple function to map a country code to a continent

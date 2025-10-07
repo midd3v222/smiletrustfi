@@ -2,6 +2,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 import { checkAndIncrementDailyQuota } from "@/lib/quota";
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 // Initialize the Google Generative AI client with the API key
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 

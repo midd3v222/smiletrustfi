@@ -1,5 +1,8 @@
 import { analyticsTracker } from '@/lib/analytics.js';
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 export async function GET(request) {
   try {
     const url = new URL(request.url);

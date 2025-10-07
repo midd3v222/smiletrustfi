@@ -4,6 +4,9 @@ import { isRedisConfigured } from '@/lib/redis.js';
 import { clearCache } from '@/lib/cache.js';
 import { resetAllQuotas } from '@/lib/quota.js';
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 export async function POST(request, { params }) {
   try {
     const { action } = params;
