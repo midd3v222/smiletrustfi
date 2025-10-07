@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
-  <!-- Blue background box with rounded corners for iOS -->
-  <rect width="180" height="180" fill="#2563eb" rx="40"/>
-  
-  <!-- White "ST" text -->
-  <text x="90" y="115" font-family="Arial, sans-serif" font-size="72" font-weight="bold" text-anchor="middle" fill="white">ST</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <!-- Blue rounded square background -->
+  <rect x="30" y="30" width="120" height="120" rx="20" fill="#2563eb"/>
+  <!-- White ST text -->
+  <text x="90" y="110" font-family="Inter, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">ST</text>
 </svg>
