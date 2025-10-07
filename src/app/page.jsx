@@ -558,10 +558,10 @@ export default function HomePage() {
       </header>
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
         <header className="text-center max-w-4xl mx-auto mb-8 md:mb-16">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight text-professional gentle-float">
+          <h1 className="heading-hero text-shadow-apple gentle-float">
             Professional <span className="text-blue-600">Smile Visualization</span> Technology
           </h1>
-          <p className="mt-4 md:mt-6 text-lg md:text-xl text-gray-700 font-medium max-w-3xl mx-auto">
+          <p className="mt-4 md:mt-6 text-body-lg text-gray-700 max-w-3xl mx-auto">
             Discover your smile transformation potential with our advanced AI technology. 
             Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations.
           </p>
@@ -570,16 +570,16 @@ export default function HomePage() {
           <section className="mt-5 md:mt-8">
             <h2 className="sr-only">Available Treatment Options</h2>
             <div className="inline-flex gap-3 md:gap-4 flex-wrap justify-center">
-              <Link href="/treatments#veneers" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full text-xs md:text-sm font-medium transition-colors">
+              <Link href="/treatments#veneers" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full btn-text-sm transition-colors">
                 Veneers Specialist
               </Link>
-              <Link href="/treatments#zirconia-crowns" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full text-xs md:text-sm font-medium transition-colors">
+              <Link href="/treatments#zirconia-crowns" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full btn-text-sm transition-colors">
                 Zirconia Crowns
               </Link>
-              <Link href="/treatments#smile-makeover" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-full text-xs md:text-sm font-medium transition-colors">
+              <Link href="/treatments#smile-makeover" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-full btn-text-sm transition-colors">
                 Full Smile Makeover
               </Link>
-              <Link href="/destinations" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full text-xs md:text-sm font-medium transition-colors">
+              <Link href="/destinations" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full btn-text-sm transition-colors">
                 Top Destinations
               </Link>
             </div>
@@ -594,11 +594,11 @@ export default function HomePage() {
                   <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
                     <span className="text-white text-xs font-bold">!</span>
                   </div>
-                  <p className="font-semibold">
+                  <p className="text-emphasis">
                     {error.includes("quota") || error.includes("Daily") ? "Daily Limit Reached" : "Processing Error"}
                   </p>
                 </div>
-                <p className="text-sm text-red-700 mb-4">{error}</p>
+                <p className="text-body-sm text-red-700 mb-4">{error}</p>
                 <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
                   <button
                     onClick={handleReset}
@@ -618,7 +618,7 @@ export default function HomePage() {
                   )}
                 </div>
                 {(error.includes("quota") || error.includes("Daily")) && (
-                  <p className="text-xs text-gray-600 mt-4">
+                  <p className="text-caption text-gray-600 mt-4">
                     You can still browse and find dental clinics without generating a smile preview
                   </p>
                 )}
@@ -641,7 +641,7 @@ export default function HomePage() {
                     <Building size={16} />
                     Browse Clinics Without Preview
                   </button>
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-caption text-gray-500 mt-2">
                     Skip the AI preview and find dental professionals directly
                   </p>
                 </div>

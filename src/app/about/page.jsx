@@ -27,7 +27,7 @@ export default function AboutPage() {
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">ST</span>
             </div>
-            <span className="text-xl font-bold text-gray-800">SmileTrust</span>
+            <span className="heading-md text-gray-800">SmileTrust</span>
           </div>
           <Link 
             href="/"
@@ -47,10 +47,10 @@ export default function AboutPage() {
             <Shield size={14} className="sm:w-4 sm:h-4" />
             Independent & Trustworthy
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
+          <h1 className="heading-hero text-gray-900 mb-4 sm:mb-6">
             About <span className="text-blue-600">SmileTrust</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto px-2">
+          <p className="text-body-lg text-gray-700 leading-relaxed max-w-3xl mx-auto px-2">
             We believe everyone deserves access to genuine, trustworthy dental care information. 
             Our mission is to connect you with the most dependable dental professionals, 
             free from manipulation and bias.

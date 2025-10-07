@@ -105,11 +105,11 @@ function ClinicCard({ clinic }) {
         <div className="flex justify-between items-start gap-4 mb-4 sm:flex-row flex-col">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 sm:gap-3 mb-2">
-              <h3 className="font-semibold text-gray-900 text-base sm:text-lg group-hover:text-blue-700 transition-colors leading-snug line-clamp-2">
+              <h3 className="heading-sm text-gray-900 group-hover:text-blue-700 transition-colors leading-snug line-clamp-2">
                 {clinic.name}
               </h3>
               {clinic.isSponsored && (
-                <div className="flex items-center gap-1 text-[10px] sm:text-xs bg-blue-600 text-white font-medium px-2 py-1 rounded-md whitespace-nowrap">
+                <div className="flex items-center gap-1 text-caption bg-blue-600 text-white btn-text-sm px-2 py-1 rounded-md whitespace-nowrap">
                   <Shield size={12} />
                   <span>Verified</span>
                 </div>
@@ -117,15 +117,15 @@ function ClinicCard({ clinic }) {
             </div>
           </div>
           <div className="flex sm:flex-col mt-1 sm:mt-0 items-center sm:items-end gap-2 sm:gap-1">
-            <div className="flex items-center gap-1 text-xs sm:text-sm bg-green-100 text-green-800 font-semibold px-2.5 sm:px-3 py-1 rounded-lg border border-green-200">
+            <div className="flex items-center gap-1 text-body-sm bg-green-100 text-green-800 text-emphasis px-2.5 sm:px-3 py-1 rounded-lg border border-green-200">
               <Star size={14} fill="currentColor" />
               <span>{clinic.rating.toFixed(1)}</span>
             </div>
-            <span className="text-[10px] sm:text-xs text-gray-500">Trusted Rating</span>
+            <span className="text-caption text-gray-500">Trusted Rating</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-gray-600">
+        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-body-sm text-gray-600">
           <span className="flex items-center gap-1">
             <Users size={14} />
             {clinic.user_ratings_total.toLocaleString()} patients
@@ -138,13 +138,13 @@ function ClinicCard({ clinic }) {
 
         <div className="flex items-start gap-2.5 sm:gap-3 mb-2.5 sm:mb-4 text-gray-700">
           <MapPin size={18} className="flex-shrink-0 mt-0.5 text-gray-500" />
-          <span className="text-xs sm:text-sm leading-relaxed line-clamp-2">{clinic.address}</span>
+          <span className="text-body-sm leading-relaxed line-clamp-2">{clinic.address}</span>
         </div>
 
         <div className="flex items-center justify-between pt-2.5 sm:pt-4 border-t border-gray-100">
           <button
             onClick={handleMapsClick}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-lg transition-colors"
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white btn-text px-3.5 sm:px-4 py-2 rounded-lg transition-colors"
           >
             <MapPin size={16} />
             <span>Show on Maps</span>
