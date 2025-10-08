@@ -151,10 +151,10 @@ You should see a success message!
 
 ### Week 1: Setup
 
-- [ ] Verify ownership
-- [ ] Submit sitemap
-- [ ] Enable email notifications
-- [ ] Link to Google Analytics (if you have it)
+- [x] Verify ownership
+- [x] Submit sitemap
+- [x] Enable email notifications
+- [x] Link to Google Analytics (if you have it)
 
 ### Week 2: First Check
 

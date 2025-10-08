@@ -65,11 +65,12 @@ export async function POST(request) {
     const imagePart = await fileToGenerativePart(imageFile);
 
     const prompt = `
-      You are a world-class dental simulation AI. Your task is to realistically edit the user's smile in the provided photo.
+      You are a world-class dental simulation AI. Your task is to realistically edit the user's smile without overdoing the brightness of the teeth color in the provided photo.
       The user has selected the "${treatmentType}" treatment.
-      - If the treatment is "veneers", apply perfectly shaped, natural-looking porcelain veneers (color A1/BL2).
-      - If the treatment is "zirconia crowns", apply perfectly shaped, natural-looking zirconia crowns (color A1/BL2).
+      - If the treatment is "veneers", apply perfectly shaped, natural-looking porcelain veneers, natural looking colors with natural brightness.(color A1/BL4).
+      - If the treatment is "zirconia crowns", apply perfectly shaped, natural-looking zirconia crowns, natural looking colors with natural brightness.(color A1/BL4).
       - CRITICAL: Only modify the teeth. Do not alter the gums, lips, skin, or any other part of the face.
+      - IMPORTANT FOR IMMERSION: The teeth should not be too white. Don't make it over the top white this will make the image look fake.
       - Ensure the lighting, shadows, and reflections on the new teeth match the original photo perfectly.
       - The result must be photorealistic and indistinguishable from a real dental procedure.
       - Output ONLY the edited image, with no additional text or commentary.

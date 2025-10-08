@@ -628,6 +628,44 @@ export default function HomePage() {
             {!originalImage && !error && !showClinicBrowsing && (
               <div>
                 <ImageUploader onImageUpload={handleImageUpload} />
+                
+                {/* Encouragement to check examples */}
+                <div className="text-center mt-8 mb-6">
+                  <div className="glass-elevated p-4 md:p-6 rounded-xl border border-gray-200/50 max-w-lg mx-auto">
+                    <p className="text-body-sm text-gray-600 mb-4">
+                      Not sure what to expect? Check out our transformation examples below to see the amazing results our AI can create!
+                    </p>
+                    <button
+                      onClick={() => {
+                        // Scroll to the examples section
+                        const examplesSection = document.querySelector('[aria-label="Smile transformation examples"]');
+                        if (examplesSection) {
+                          examplesSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                          });
+                        }
+                      }}
+                      className="btn-secondary flex items-center gap-2 mx-auto text-sm"
+                    >
+                      <span>See Examples</span>
+                      <svg 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                        className="animate-bounce"
+                      >
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
                 <div className="text-center mt-8">
                   <div className="flex items-center gap-4 justify-center mb-4">
                     <div className="h-px bg-gray-300 flex-1"></div>
@@ -902,6 +940,133 @@ export default function HomePage() {
             )}
           </div>
         </div>
+
+        {/* Before/After Results Section */}
+        <section className="max-w-6xl mx-auto mt-16 md:mt-20 mb-16 md:mb-20" aria-label="Smile transformation examples">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="heading-lg text-gray-900 mb-4">
+              See the <span className="text-blue-600">Transformation</span> Potential
+            </h2>
+            <p className="text-body text-gray-600 max-w-2xl mx-auto">
+              Real results from our AI-powered smile visualization technology. 
+              See what's possible with professional dental treatments.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Example 1 - Veneers Treatment */}
+            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 hover:shadow-xl transition-all duration-300">
+              <div className="relative mb-4">
+                <img 
+                  src="/examples/before-after/veneers-before-1.jpg" 
+                  alt="Before veneers treatment"
+                  className="aspect-square w-full object-cover rounded-xl"
+                />
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">→</span>
+                </div>
+              </div>
+              <div className="relative">
+                <img 
+                  src="/examples/before-after/veneers-after-1.jpg" 
+                  alt="After veneers treatment"
+                  className="aspect-square w-full object-cover rounded-xl mb-4"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="font-semibold text-gray-900 mb-1">Veneers Treatment</h3>
+                <p className="text-sm text-gray-600">Professional smile enhancement</p>
+              </div>
+            </div>
+
+            {/* Example 2 - Zirconia Crowns */}
+            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 hover:shadow-xl transition-all duration-300">
+              <div className="relative mb-4">
+                <img 
+                  src="/examples/before-after/zirconia-before-1.jpg" 
+                  alt="Before zirconia crowns treatment"
+                  className="aspect-square w-full object-cover rounded-xl"
+                />
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">→</span>
+                </div>
+              </div>
+              <div className="relative">
+                <img 
+                  src="/examples/before-after/zirconia-after-1.jpg" 
+                  alt="After zirconia crowns treatment"
+                  className="aspect-square w-full object-cover rounded-xl mb-4"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="font-semibold text-gray-900 mb-1">Zirconia Crowns</h3>
+                <p className="text-sm text-gray-600">Durable restoration solution</p>
+              </div>
+            </div>
+
+            {/* Example 3 - Full Smile Makeover */}
+            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-1">
+              <div className="relative mb-4">
+                <img 
+                  src="/examples/before-after/makeover-before-1.jpg" 
+                  alt="Before full smile makeover"
+                  className="aspect-square w-full object-cover rounded-xl"
+                />
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">→</span>
+                </div>
+              </div>
+              <div className="relative">
+                <img 
+                  src="/examples/before-after/makeover-after-1.jpg" 
+                  alt="After full smile makeover"
+                  className="aspect-square w-full object-cover rounded-xl mb-4"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="font-semibold text-gray-900 mb-1">Full Smile Makeover</h3>
+                <p className="text-sm text-gray-600">Complete transformation</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-8 md:mt-12">
+            <div className="glass-elevated p-6 md:p-8 rounded-2xl border border-gray-200/50 max-w-2xl mx-auto">
+              <h3 className="heading-md text-gray-900 mb-3">
+                Ready to See <span className="text-blue-600">Your</span> Transformation?
+              </h3>
+              <p className="text-body text-gray-600 mb-6">
+                Upload your photo and get your personalized AI-powered smile preview in seconds. 
+                See what's possible for your own smile makeover.
+              </p>
+              <button
+                onClick={() => {
+                  // Scroll to the upload section (the main glass-elevated container)
+                  const uploadSection = document.querySelector('.glass-elevated.p-6');
+                  if (uploadSection) {
+                    uploadSection.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+                className="btn-primary px-8 py-4 text-lg flex items-center gap-3 mx-auto transform hover:scale-105 transition-all duration-200"
+              >
+                <Camera size={24} />
+                Try Now
+              </button>
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mt-6">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>100% Free Preview</span>
+                <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                <span>No Registration Required</span>
+                <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                <span>Privacy Protected</span>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
