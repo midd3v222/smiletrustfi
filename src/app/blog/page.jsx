@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Clock, X, ArrowRight } from "lucide-react";
+import Banner from "@/components/Banner";
+import Header from "@/components/Header";
 
 // Full blog post content with complete articles
 const blogPostsData = [
@@ -720,36 +722,18 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen w-full bg-grid-pattern relative">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">ST</span>
-            </div>
-            <span className="text-xl font-bold text-gray-800">SmileTrust</span>
-          </Link>
-          <Link 
-            href="/"
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span className="hidden sm:inline">Back to Home</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        {/* Hero Section */}
-        <header className="text-center max-w-4xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-            Dental Tourism <span className="text-blue-600">Blog & Resources</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-            Expert guides, cost comparisons, and real patient stories to help you make informed decisions about dental care abroad.
-          </p>
-        </header>
+        <Banner 
+          title={
+            <>
+              Dental Tourism <span className="text-blue-600">Blog & Resources</span>
+            </>
+          }
+          subtitle="Expert guides, cost comparisons, and real patient stories to help you make informed decisions about dental care abroad."
+        />
 
         {/* Categories */}
         <nav className="flex flex-wrap justify-center gap-3 mb-12" aria-label="Blog categories">

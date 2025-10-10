@@ -7,6 +7,8 @@ import ResultDisplay from "../components/ResultDisplay";
 import ClinicList from "../components/ClinicList";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ClinicListSkeleton from "../components/ClinicListSkeleton"; // Import the new skeleton component
+import Banner from "../components/Banner";
+import Header from "../components/Header";
 import { clientAnalytics } from "../lib/analytics";
 import {
   Sparkles,
@@ -466,108 +468,19 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen w-full bg-grid-pattern relative">
-      <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">ST</span>
-            </div>
-            <span className="text-xl font-bold text-gray-800">SmileTrust</span>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600" role="navigation" aria-label="Main navigation">
-            <Link 
-              href="/treatments"
-              className="hover:text-blue-600 transition-colors font-medium"
-            >
-              Treatments
-            </Link>
-            <Link 
-              href="/destinations"
-              className="hover:text-blue-600 transition-colors font-medium"
-            >
-              Destinations
-            </Link>
-            <Link 
-              href="/blog"
-              className="hover:text-blue-600 transition-colors font-medium"
-            >
-              Blog
-            </Link>
-            <Link 
-              href="/about"
-              className="hover:text-blue-600 transition-colors font-medium"
-            >
-              About Us
-            </Link>
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-              GDPR Compliant
-            </span>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden glass-elevated border-t border-gray-200/20">
-            <div className="container mx-auto px-6 py-4 space-y-4">
-              <Link 
-                href="/treatments"
-                className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Treatments
-              </Link>
-              <Link 
-                href="/destinations"
-                className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Destinations
-              </Link>
-              <Link 
-                href="/blog"
-                className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Blog
-              </Link>
-              <Link 
-                href="/about"
-                className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About Us
-              </Link>
-              <div className="flex items-center gap-2 text-sm text-gray-600 pt-2 border-t border-gray-200">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                GDPR Compliant
-              </div>
-            </div>
-          </div>
-        )}
-      </header>
+      <Header showBackButton={false} />
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        <header className="text-center max-w-4xl mx-auto mb-8 md:mb-16">
-          <h1 className="heading-hero text-shadow-apple gentle-float">
-            Professional <span className="text-blue-600">Smile Visualization</span> Technology
-          </h1>
-          <p className="mt-4 md:mt-6 text-body-lg text-gray-700 max-w-3xl mx-auto">
-            Discover your smile transformation potential with our advanced AI technology. 
-            Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations.
-          </p>
+        <Banner 
+          title={
+            <>
+              Professional <span className="text-blue-600">Smile Visualization</span> Technology
+            </>
+          }
+          subtitle="Discover your smile transformation potential with our advanced AI technology. Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations."
+        />
           
           {/* SEO-optimized treatment options */}
-          <section className="mt-5 md:mt-8">
+          <section className="mt-5 md:mt-8 text-center">
             <h2 className="sr-only">Available Treatment Options</h2>
             <div className="inline-flex gap-3 md:gap-4 flex-wrap justify-center">
               <Link href="/treatments#veneers" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full btn-text-sm transition-colors">
@@ -584,7 +497,6 @@ export default function HomePage() {
               </Link>
             </div>
           </section>
-        </header>
 
         <div className="mt-16 max-w-5xl mx-auto">
           <div className="glass-elevated p-6 sm:p-10 rounded-2xl shadow-xl border border-gray-200/50">
@@ -703,7 +615,7 @@ export default function HomePage() {
                       alt="Your smile"
                       className="max-w-xs w-full rounded-lg shadow-md"
                     />
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <button
                         onClick={() => {
                           setTreatment("veneers");

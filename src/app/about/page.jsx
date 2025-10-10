@@ -14,30 +14,14 @@ import {
   Lock
 } from "lucide-react";
 import { PageViewTracker } from "@/components/PageViewTracker";
+import Header from "@/components/Header";
 
 export default function AboutPage() {
   return (
     <>
       <PageViewTracker pageName="about" />
     <div className="min-h-screen w-full bg-grid-pattern relative">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">ST</span>
-            </div>
-            <span className="heading-md text-gray-800">SmileTrust</span>
-          </div>
-          <Link 
-            href="/"
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span className="hidden sm:inline">Back to Home</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
@@ -51,8 +35,8 @@ export default function AboutPage() {
             About <span className="text-blue-600">SmileTrust</span>
           </h1>
           <p className="text-body-lg text-gray-700 leading-relaxed max-w-3xl mx-auto px-2">
-            We believe everyone deserves access to genuine, trustworthy dental care information. 
-            Our mission is to connect you with the most dependable dental professionals, 
+            I believe everyone deserves access to genuine, trustworthy dental care information. 
+            My mission is to connect you with the most dependable dental professionals, 
             free from manipulation and bias.
           </p>
         </div>
@@ -63,20 +47,20 @@ export default function AboutPage() {
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
               <Heart size={20} className="text-white sm:w-6 sm:h-6" />
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Our Mission</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">My Mission</h2>
           </div>
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
             <p className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-6">
-              <strong>A smile is the first thing you notice about someone.</strong> It's more than just aesthetics—it's confidence, health, and happiness. That's why we created SmileTrust.
+              <strong>A smile is the first thing you notice about someone.</strong> It's more than just aesthetics—it's confidence, health, and happiness. That's why I created SmileTrust.
             </p>
             <p className="text-sm sm:text-base mb-4 sm:mb-6">
-              We understand that choosing the right dental professional for cosmetic treatments is one of the most important decisions you'll make. Unfortunately, the dental industry is plagued with manipulated reviews, inflated ratings, and biased recommendations that prioritize profit over patient care.
+              With years of experience in dental and aesthetic tourism, and coming from a family deeply rooted in the tourism industry, I've witnessed firsthand the challenges patients face when seeking quality dental care abroad. Having written and curated all the content on this platform, I understand that choosing the right dental professional for cosmetic treatments is one of the most important decisions you'll make. Unfortunately, the dental industry is plagued with manipulated reviews, inflated ratings, and biased recommendations that prioritize profit over patient care.
             </p>
             <p className="text-sm sm:text-base mb-4 sm:mb-6">
-              While we do accept sponsorships from select clinics to keep our service free for users, we maintain strict editorial independence. Our ranking algorithm is never influenced by sponsorship status, and all sponsored content is clearly labeled for complete transparency.
+              While I do accept sponsorships from select clinics to keep my service free for users, I maintain strict editorial independence. My ranking algorithm is never influenced by sponsorship status, and all sponsored content is clearly labeled for complete transparency.
             </p>
             <p className="text-sm sm:text-base font-medium text-gray-900">
-              SmileTrust exists to change that. We are your independent, unbiased guide to finding genuine dental excellence.
+              SmileTrust exists to change that. I am your independent, unbiased guide to finding genuine dental excellence, backed by real industry experience and my personal commitment to authentic, trustworthy information.
             </p>
           </div>
         </div>
@@ -90,7 +74,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Editorial Independence</h3>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-              While we accept transparent sponsorships to keep our service free, our ranking algorithm remains completely independent. Sponsored listings are clearly marked and don't influence our quality-based rankings.
+              While I accept transparent sponsorships to keep my service free, my ranking algorithm remains completely independent. Sponsored listings are clearly marked and don't influence my quality-based rankings.
             </p>
           </div>
 
@@ -101,7 +85,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Transparent Algorithm</h3>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-              Our ranking system combats manipulative rating boosting. We use advanced algorithms to identify and filter out fake reviews and inflated ratings.
+              My ranking system combats manipulative rating boosting. I use advanced algorithms to identify and filter out fake reviews and inflated ratings.
             </p>
           </div>
 
@@ -112,7 +96,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Patient-Centered</h3>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-              Every decision we make prioritizes patient welfare. We believe you deserve the treatment you need, not what generates the most profit for clinics.
+              Every decision I make prioritizes patient welfare. I believe you deserve the treatment you need, not what generates the most profit for clinics.
             </p>
           </div>
         </div>
@@ -123,7 +107,7 @@ export default function AboutPage() {
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
               <Lightbulb size={20} className="text-white sm:w-6 sm:h-6" />
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">How We Ensure Quality</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">How I Ensure Quality</h2>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
@@ -135,7 +119,7 @@ export default function AboutPage() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1.5 sm:mb-2 text-sm sm:text-base">Authentic Review Analysis</h4>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    We analyze review patterns, timing, and authenticity markers to identify and exclude manipulated ratings.
+                    I analyze review patterns, timing, and authenticity markers to identify and exclude manipulated ratings.
                   </p>
                 </div>
               </div>
@@ -147,7 +131,7 @@ export default function AboutPage() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1.5 sm:mb-2 text-sm sm:text-base">Quality Metrics</h4>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    Our algorithm considers multiple factors including patient outcomes, professional credentials, and genuine patient feedback.
+                    My algorithm considers multiple factors including patient outcomes, professional credentials, and genuine patient feedback.
                   </p>
                 </div>
               </div>
@@ -159,7 +143,7 @@ export default function AboutPage() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1.5 sm:mb-2 text-sm sm:text-base">Continuous Monitoring</h4>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    We continuously update our database and refine our algorithms to maintain the highest standards of accuracy.
+                    I continuously update my database and refine my algorithms to maintain the highest standards of accuracy.
                   </p>
                 </div>
               </div>
@@ -173,7 +157,7 @@ export default function AboutPage() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1.5 sm:mb-2 text-sm sm:text-base">Professional Verification</h4>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    We verify professional credentials, certifications, and specializations to ensure you're connected with qualified practitioners.
+                    I verify professional credentials, certifications, and specializations to ensure you're connected with qualified practitioners.
                   </p>
                 </div>
               </div>
@@ -185,7 +169,7 @@ export default function AboutPage() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1.5 sm:mb-2 text-sm sm:text-base">Global Standards</h4>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    We apply consistent quality standards across all regions, ensuring reliable recommendations worldwide.
+                    I apply consistent quality standards across all regions, ensuring reliable recommendations worldwide.
                   </p>
                 </div>
               </div>
@@ -197,7 +181,7 @@ export default function AboutPage() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1.5 sm:mb-2 text-sm sm:text-base">Complete Privacy Protection</h4>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    We never store your photos in our databases. All images are processed temporarily and automatically deleted after generating your smile preview. Your privacy is our priority.
+                    I never store your photos in my databases. All images are processed temporarily and automatically deleted after generating your smile preview. Your privacy is my priority.
                   </p>
                 </div>
               </div>
@@ -211,7 +195,7 @@ export default function AboutPage() {
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
               <CheckCircle size={20} className="text-white sm:w-6 sm:h-6" />
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Our Commitment to Transparency</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">My Commitment to Transparency</h2>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
@@ -219,15 +203,15 @@ export default function AboutPage() {
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Sponsorship Transparency</h3>
               <div className="space-y-3 sm:space-y-4 text-gray-700">
                 <p className="text-sm sm:text-base leading-relaxed">
-                  We believe in complete transparency about our business model. SmileTrust accepts sponsorships from select dental clinics to keep our service free for users.
+                  I believe in complete transparency about my business model. SmileTrust accepts sponsorships from select dental clinics to keep my service free for users.
                 </p>
                 <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-200">
                   <p className="text-xs sm:text-sm font-medium text-blue-900 mb-2">Important:</p>
                   <ul className="text-xs sm:text-sm text-blue-800 space-y-1">
                     <li>• Sponsored clinics are clearly marked with "Verified" badges</li>
-                    <li>• Sponsorship never influences our ranking algorithm</li>
+                    <li>• Sponsorship never influences my ranking algorithm</li>
                     <li>• Quality metrics remain the primary ranking factor</li>
-                    <li>• We maintain editorial independence in all recommendations</li>
+                    <li>• I maintain editorial independence in all recommendations</li>
                   </ul>
                 </div>
               </div>
@@ -237,12 +221,12 @@ export default function AboutPage() {
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Data Privacy Guarantee</h3>
               <div className="space-y-3 sm:space-y-4 text-gray-700">
                 <p className="text-sm sm:text-base leading-relaxed">
-                  Your privacy and data security are non-negotiable. We've built our system with privacy-first principles.
+                  Your privacy and data security are non-negotiable. I've built my system with privacy-first principles.
                 </p>
                 <div className="bg-green-50 p-3 sm:p-4 rounded-lg border border-green-200">
                   <p className="text-xs sm:text-sm font-medium text-green-900 mb-2">Privacy Promise:</p>
                   <ul className="text-xs sm:text-sm text-green-800 space-y-1">
-                    <li>• Photos are never stored in our databases</li>
+                    <li>• Photos are never stored in my databases</li>
                     <li>• All images are processed temporarily and deleted immediately</li>
                     <li>• No personal data is shared with third parties</li>
                     <li>• HIPAA-compliant processing standards</li>
@@ -259,11 +243,11 @@ export default function AboutPage() {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
               <Heart size={24} className="text-white sm:w-8 sm:h-8" />
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Our Promise to You</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">My Promise to You</h2>
             <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
               <p className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6">
-                We promise to remain independent, transparent, and dedicated to your best interests. 
-                We will never compromise our integrity for financial gain.
+                I promise to remain independent, transparent, and dedicated to your best interests. 
+                I will never compromise my integrity for financial gain.
               </p>
               <p className="font-medium text-gray-900 text-base sm:text-lg lg:text-xl">
                 Your smile matters. Your trust matters. Your health matters.

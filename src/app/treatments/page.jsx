@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowLeft, Shield, Star, Users, Clock, Award } from "lucide-react";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import { TreatmentTracker } from "@/components/TreatmentTracker";
+import Banner from "@/components/Banner";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "Dental Treatment Options - Veneers, Crowns & Complete Smile Makeovers | SmileTrust",
@@ -184,40 +186,18 @@ export default function TreatmentsPage() {
     <>
       <PageViewTracker pageName="treatments" />
     <div className="min-h-screen w-full bg-grid-pattern relative">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">ST</span>
-            </div>
-            <span className="text-xl font-bold text-gray-800">SmileTrust</span>
-          </Link>
-          <Link 
-            href="/"
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span className="hidden sm:inline">Back to Home</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        <header className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-            <Users size={14} className="sm:w-4 sm:h-4" />
-            Comprehensive Treatment Guide
-          </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
-            Dental Treatment <span className="text-blue-600">Options & Procedures</span>
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto px-2">
-            Discover detailed information about cosmetic dental treatments including porcelain veneers, zirconia crowns, 
-            and complete smile makeovers. Learn about procedures, costs, recovery, and find the right treatment for your needs.
-          </p>
-        </header>
+        <Banner 
+          title={
+            <>
+              Dental Treatment <span className="text-blue-600">Options & Procedures</span>
+            </>
+          }
+          subtitle="Discover detailed information about cosmetic dental treatments including porcelain veneers, zirconia crowns, and complete smile makeovers. Learn about procedures, costs, recovery, and find the right treatment for your needs."
+        />
 
         {/* Treatment Grid */}
         <section className="max-w-6xl mx-auto">

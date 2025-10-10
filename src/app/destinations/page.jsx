@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft, MapPin, Star, Clock, DollarSign, Globe, Plane } from "lucide-react";
 import { PageViewTracker } from "@/components/PageViewTracker";
+import Banner from "@/components/Banner";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "Top Dental Tourism Destinations - Turkey, Mexico, Thailand & More | SmileTrust",
@@ -259,40 +261,18 @@ export default function DestinationsPage() {
     <>
       <PageViewTracker pageName="destinations" />
     <div className="min-h-screen w-full bg-grid-pattern relative">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 glass z-10 shadow-lg border-b border-gray-200/20">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">ST</span>
-            </div>
-            <span className="text-xl font-bold text-gray-800">SmileTrust</span>
-          </Link>
-          <Link 
-            href="/"
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span className="hidden sm:inline">Back to Home</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        <header className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-            <Plane size={14} className="sm:w-4 sm:h-4" />
-            Dental Tourism Guide
-          </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
-            Top Dental Tourism <span className="text-blue-600">Destinations</span>
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto px-2">
-            Explore the world's premier destinations for quality dental care. From Turkey's technological excellence 
-            to Mexico's proximity advantages, discover where to find the best dental treatments with significant savings.
-          </p>
-        </header>
+        <Banner 
+          title={
+            <>
+              Top Dental Tourism <span className="text-blue-600">Destinations</span>
+            </>
+          }
+          subtitle="Explore the world's premier destinations for quality dental care. From Turkey's technological excellence to Mexico's proximity advantages, discover where to find the best dental treatments with significant savings."
+        />
 
         {/* Destination Grid */}
         <section className="max-w-6xl mx-auto">
