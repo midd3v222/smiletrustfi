@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* Professional gradient background - more subtle and trustworthy */
+  /* Light mode colors */
   --background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e0 100%);
   --background-accent: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
 
@@ -33,6 +33,76 @@
   --warning: #d97706;
   --error: #dc2626;
   --info: #0284c7;
+
+  /* Border colors */
+  --border: rgba(226, 232, 240, 0.6);
+  --border-light: rgba(226, 232, 240, 0.3);
+  --border-strong: rgba(226, 232, 240, 0.8);
+
+  /* Shadow colors */
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --shadow-strong: rgba(0, 0, 0, 0.16);
+
+  /* Background variants */
+  --bg-blue-50: #eff6ff;
+  --bg-green-50: #f0fdf4;
+  --bg-red-50: #fef2f2;
+  --bg-yellow-50: #fefce8;
+  --bg-gray-50: #f9fafb;
+  --bg-gray-100: #f3f4f6;
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  /* Dark gradient background */
+  --background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  --background-accent: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+
+  /* Dark surface colors */
+  --surface: rgba(15, 23, 42, 0.98);
+  --surface-elevated: rgba(15, 23, 42, 1);
+  --surface-glass: rgba(15, 23, 42, 0.85);
+  --surface-card: rgba(15, 23, 42, 0.95);
+
+  /* Dark text colors */
+  --foreground: #e2e8f0;
+  --foreground-muted: #cbd5e1;
+  --foreground-light: #94a3b8;
+  --foreground-accent: #f8fafc;
+
+  /* Dark accent colors (adjusted for better contrast) */
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #2563eb;
+  --secondary: #10b981;
+  --accent: #ef4444;
+  --trust-blue: #3b82f6;
+  --medical-green: #10b981;
+
+  /* Dark status colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #06b6d4;
+
+  /* Dark border colors */
+  --border: rgba(51, 65, 85, 0.6);
+  --border-light: rgba(51, 65, 85, 0.3);
+  --border-strong: rgba(51, 65, 85, 0.8);
+
+  /* Dark shadow colors */
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+
+  /* Dark background variants */
+  --bg-blue-50: rgba(30, 64, 175, 0.1);
+  --bg-green-50: rgba(16, 185, 129, 0.1);
+  --bg-red-50: rgba(239, 68, 68, 0.1);
+  --bg-yellow-50: rgba(245, 158, 11, 0.1);
+  --bg-gray-50: rgba(51, 65, 85, 0.1);
+  --bg-gray-100: rgba(51, 65, 85, 0.2);
 }
 
 @theme {
@@ -40,6 +110,10 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -62,17 +136,17 @@ body {
   background-size: 40px 40px;
   background-image: linear-gradient(
       to right,
-      rgba(148, 163, 184, 0.08) 1px,
+      var(--border-light) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    linear-gradient(to bottom, var(--border-light) 1px, transparent 1px);
 }
 
 /* Professional dot pattern overlay */
 .bg-dots-pattern {
   background-image: radial-gradient(
     circle,
-    rgba(148, 163, 184, 0.15) 1px,
+    var(--border-light) 1px,
     transparent 1px
   );
   background-size: 20px 20px;
@@ -113,30 +187,30 @@ body {
 .glass {
   background: var(--surface-glass);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 16px var(--shadow-light);
 }
 
 .glass-elevated {
   background: var(--surface-elevated);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(226, 232, 240, 0.5);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px var(--shadow-light), 0 4px 16px var(--shadow-light);
 }
 
 /* Professional card styles */
 .card {
   background: var(--surface-card);
   border-radius: 12px;
-  border: 1px solid rgba(226, 232, 240, 0.6);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow-light), 0 1px 3px var(--shadow-light);
   transition: all 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
-  border-color: rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 16px var(--shadow-medium), 0 2px 6px var(--shadow-light);
+  border-color: var(--primary);
 }
 
 /* Professional button styles */
@@ -163,7 +237,7 @@ body {
 .btn-secondary {
   background: var(--surface);
   color: var(--foreground);
-  border: 1.5px solid rgba(226, 232, 240, 0.8);
+  border: 1.5px solid var(--border-strong);
   border-radius: 8px;
   padding: 11px 23px;
   font-weight: 400;
@@ -175,7 +249,7 @@ body {
 }
 
 .btn-secondary:hover {
-  background: rgba(248, 250, 252, 1);
+  background: var(--bg-gray-50);
   border-color: var(--primary);
   color: var(--primary);
 }
@@ -197,15 +271,15 @@ body {
 
 /* Apple-style Text Effects */
 .text-shadow {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  text-shadow: 0 1px 2px var(--shadow-light);
 }
 
 .text-shadow-strong {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  text-shadow: 0 2px 4px var(--shadow-medium);
 }
 
 .text-shadow-apple {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  text-shadow: 0 1px 3px var(--shadow-light), 0 1px 2px var(--shadow-light);
 }
 
 /* Legacy text classes for backward compatibility */

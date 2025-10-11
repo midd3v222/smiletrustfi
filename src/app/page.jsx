@@ -2,13 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 import ImageUploader from "../components/ImageUploader";
 import ResultDisplay from "../components/ResultDisplay";
 import ClinicList from "../components/ClinicList";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ClinicListSkeleton from "../components/ClinicListSkeleton"; // Import the new skeleton component
+import BeforeAfterComparison from "../components/BeforeAfterComparison";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
+import { HeroHighlight, Highlight } from "../components/ui/hero-highlight";
 import { clientAnalytics } from "../lib/analytics";
 import {
   Sparkles,
@@ -82,10 +85,29 @@ export default function HomePage() {
   const [showClinicBrowsing, setShowClinicBrowsing] = useState(false);
   const [locationPermissionDenied, setLocationPermissionDenied] = useState(false);
   const [locationError, setLocationError] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Track page view on mount
   useEffect(() => {
     clientAnalytics.trackPageView('home');
+  }, []);
+
+  // Handle scroll detection for animations
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Trigger animations when user scrolls past hero section
+      if (scrollPosition > windowHeight * 0.3) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleImageUpload = (file) => {
@@ -469,39 +491,149 @@ export default function HomePage() {
   return (
     <div className="min-h-screen w-full bg-grid-pattern relative">
       <Header showBackButton={false} />
-      <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        <Banner 
-          title={
-            <>
-              Professional <span className="text-blue-600">Smile Visualization</span> Technology
-            </>
-          }
-          subtitle="Discover your smile transformation potential with our advanced AI technology. Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations."
-        />
+      
+      {/* Hero Section - Full Viewport */}
+      <section className="min-h-screen flex items-center justify-center relative pt-20 z-0">
+        <HeroHighlight>
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 50,
+            }}
+            animate={{
+              opacity: 1,
+              y: [50, -10, 0],
+            }}
+            transition={{
+              duration: 1,
+              ease: [0.4, 0.0, 0.2, 1],
+            }}
+            className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto"
+          >
+            Professional{" "}
+            <Highlight className="text-black dark:text-white">
+              Smile Visualization
+            </Highlight>{" "}
+            Technology
+          </motion.h1>
           
-          {/* SEO-optimized treatment options */}
-          <section className="mt-5 md:mt-8 text-center">
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: [30, -5, 0],
+            }}
+            transition={{
+              duration: 1,
+              ease: [0.4, 0.0, 0.2, 1],
+              delay: 0.3,
+            }}
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mt-6 leading-relaxed"
+          >
+            Discover your smile transformation potential with our advanced AI technology. Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations.
+          </motion.p>
+          
+          {/* Inviting CTA Button */}
+          <motion.div 
+            className="mt-16"
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            animate={{
+              opacity: 1,
+              y: [40, -10, 0],
+            }}
+            transition={{
+              duration: 1,
+              ease: [0.4, 0.0, 0.2, 1],
+              delay: 0.6,
+            }}
+          >
+            <div className="flex flex-col items-center gap-4">
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                Ready to see your smile transformation? Upload your photo and discover what's possible with our AI-powered technology.
+              </p>
+              <button
+                onClick={() => {
+                  // Trigger animations immediately when button is clicked
+                  setIsScrolled(true);
+                  
+                  // Scroll to the image uploader section
+                  setTimeout(() => {
+                    const uploadSection = document.getElementById('image-uploader');
+                    if (uploadSection) {
+                      uploadSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                      });
+                    }
+                  }, 100);
+                }}
+                className="btn-primary px-12 py-4 text-lg flex items-center gap-3 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <Camera size={24} />
+                <span>Try AI Smile Preview</span>
+                <Sparkles size={20} />
+              </button>
+              <div className="flex items-center justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>100% Free</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>No Registration</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                  <span>Privacy Protected</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </HeroHighlight>
+      </section>
+
+      {/* Main Content - Hidden initially, revealed on scroll */}
+      <main className="container mx-auto px-4 sm:px-6 pb-12 relative z-0">
+        {/* Treatment Options Section */}
+        <section className={`transition-all duration-1000 ease-out ${
+          isScrolled 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="text-center mb-8">
             <h2 className="sr-only">Available Treatment Options</h2>
             <div className="inline-flex gap-3 md:gap-4 flex-wrap justify-center">
-              <Link href="/treatments#veneers" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full btn-text-sm transition-colors">
+              <Link href="/treatments#veneers" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full btn-text-sm transition-colors">
                 Veneers Specialist
               </Link>
-              <Link href="/treatments#zirconia-crowns" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full btn-text-sm transition-colors">
+              <Link href="/treatments#zirconia-crowns" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full btn-text-sm transition-colors">
                 Zirconia Crowns
               </Link>
-              <Link href="/treatments#smile-makeover" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-full btn-text-sm transition-colors">
+              <Link href="/treatments#smile-makeover" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-full btn-text-sm transition-colors">
                 Full Smile Makeover
               </Link>
-              <Link href="/destinations" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full btn-text-sm transition-colors">
+              <Link href="/destinations" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full btn-text-sm transition-colors">
                 Top Destinations
               </Link>
             </div>
-          </section>
+          </div>
+        </section>
 
-        <div className="mt-16 max-w-5xl mx-auto">
-          <div className="glass-elevated p-6 sm:p-10 rounded-2xl shadow-xl border border-gray-200/50">
+        {/* Main Upload Section */}
+        <div id="image-uploader" className={`mt-16 max-w-5xl mx-auto transition-all duration-1000 ease-out delay-200 ${
+          isScrolled 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="glass-elevated p-6 sm:p-10 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
             {error && (
-              <div className="text-center text-red-800 bg-red-50 p-6 rounded-xl mb-8 border border-red-200 card">
+              <div className="text-center text-red-800 dark:text-red-200 bg-red-50 dark:bg-red-900/20 p-6 rounded-xl mb-8 border border-red-200 dark:border-red-800 card">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
                     <span className="text-white text-xs font-bold">!</span>
@@ -510,7 +642,7 @@ export default function HomePage() {
                     {error.includes("quota") || error.includes("Daily") ? "Daily Limit Reached" : "Processing Error"}
                   </p>
                 </div>
-                <p className="text-body-sm text-red-700 mb-4">{error}</p>
+                <p className="text-body-sm text-red-700 dark:text-red-300 mb-4">{error}</p>
                 <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
                   <button
                     onClick={handleReset}
@@ -668,12 +800,16 @@ export default function HomePage() {
 
             {/* Clinic browsing section - works with or without image */}
             {(generatedImage || showClinicBrowsing) && (
-              <section className="mt-16" aria-label="Dental Professionals Directory">
+              <section className={`mt-16 transition-all duration-1000 ease-out delay-400 ${
+                isScrolled 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`} aria-label="Dental Professionals Directory">
                 <header className="text-center mb-10">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                     Certified Dental Professionals
                   </h2>
-                  <p className="text-gray-600 max-w-2xl mx-auto">
+                  <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                     Connect with verified, top-rated dental clinics specializing in cosmetic dentistry, veneer procedures, and zirconia crowns worldwide. Our GDPR-compliant platform ensures your privacy while helping you find the best dental professionals.
                   </p>
                   {showClinicBrowsing && !generatedImage && (
@@ -854,7 +990,11 @@ export default function HomePage() {
         </div>
 
         {/* Before/After Results Section */}
-        <section className="max-w-6xl mx-auto mt-16 md:mt-20 mb-16 md:mb-20" aria-label="Smile transformation examples">
+        <section className={`max-w-6xl mx-auto mt-16 md:mt-20 mb-16 md:mb-20 transition-all duration-1000 ease-out delay-600 ${
+          isScrolled 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`} aria-label="Smile transformation examples">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="heading-lg text-gray-900 mb-4">
               See the <span className="text-blue-600">Transformation</span> Potential
@@ -867,22 +1007,13 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Example 1 - Veneers Treatment */}
-            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 hover:shadow-xl transition-all duration-300">
-              <div className="relative mb-4">
-                <img 
-                  src="/examples/before-after/veneers-before-1.jpg" 
-                  alt="Before veneers treatment"
-                  className="aspect-square w-full object-cover rounded-xl"
-                />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">→</span>
-                </div>
-              </div>
-              <div className="relative">
-                <img 
-                  src="/examples/before-after/veneers-after-1.jpg" 
-                  alt="After veneers treatment"
-                  className="aspect-square w-full object-cover rounded-xl mb-4"
+            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+              <div className="mb-4">
+                <BeforeAfterComparison
+                  beforeImage="/examples/before-after/veneers-before-1.jpg"
+                  afterImage="/examples/before-after/veneers-after-1.jpg"
+                  beforeAlt="Before veneers treatment"
+                  afterAlt="After veneers treatment"
                 />
               </div>
               <div className="text-center">
@@ -892,22 +1023,13 @@ export default function HomePage() {
             </div>
 
             {/* Example 2 - Zirconia Crowns */}
-            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 hover:shadow-xl transition-all duration-300">
-              <div className="relative mb-4">
-                <img 
-                  src="/examples/before-after/zirconia-before-1.jpg" 
-                  alt="Before zirconia crowns treatment"
-                  className="aspect-square w-full object-cover rounded-xl"
-                />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">→</span>
-                </div>
-              </div>
-              <div className="relative">
-                <img 
-                  src="/examples/before-after/zirconia-after-1.jpg" 
-                  alt="After zirconia crowns treatment"
-                  className="aspect-square w-full object-cover rounded-xl mb-4"
+            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+              <div className="mb-4">
+                <BeforeAfterComparison
+                  beforeImage="/examples/before-after/zirconia-before-1.jpg"
+                  afterImage="/examples/before-after/zirconia-after-1.jpg"
+                  beforeAlt="Before zirconia crowns treatment"
+                  afterAlt="After zirconia crowns treatment"
                 />
               </div>
               <div className="text-center">
@@ -917,22 +1039,13 @@ export default function HomePage() {
             </div>
 
             {/* Example 3 - Full Smile Makeover */}
-            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-1">
-              <div className="relative mb-4">
-                <img 
-                  src="/examples/before-after/makeover-before-1.jpg" 
-                  alt="Before full smile makeover"
-                  className="aspect-square w-full object-cover rounded-xl"
-                />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">→</span>
-                </div>
-              </div>
-              <div className="relative">
-                <img 
-                  src="/examples/before-after/makeover-after-1.jpg" 
-                  alt="After full smile makeover"
-                  className="aspect-square w-full object-cover rounded-xl mb-4"
+            <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-1">
+              <div className="mb-4">
+                <BeforeAfterComparison
+                  beforeImage="/examples/before-after/makeover-before-1.jpg"
+                  afterImage="/examples/before-after/makeover-after-1.jpg"
+                  beforeAlt="Before full smile makeover"
+                  afterAlt="After full smile makeover"
                 />
               </div>
               <div className="text-center">

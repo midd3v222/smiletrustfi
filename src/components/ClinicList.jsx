@@ -1,6 +1,7 @@
 'use client';
 
 import { Star, MapPin, ExternalLink, Shield, Users } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 function ClinicCard({ clinic }) {
   const destinationUrl = clinic.website || clinic.maps_url;
@@ -91,25 +92,33 @@ function ClinicCard({ clinic }) {
   };
 
   return (
-    <a
-      href={destinationUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={handleClinicClick}
-      className="block card p-4 sm:p-6 hover:shadow-lg transition-all duration-200 group relative overflow-hidden"
-    >
-      {/* Professional hover overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-gray-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-      
-      <div className="relative z-10">
-        <div className="flex justify-between items-start gap-4 mb-4 sm:flex-row flex-col">
+    <div className="relative rounded-2xl border border-gray-200 dark:border-gray-700 p-2">
+      <GlowingEffect
+        spread={30}
+        glow={true}
+        disabled={false}
+        proximity={64}
+        inactiveZone={0.01}
+      />
+      <a
+        href={destinationUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClinicClick}
+        className="block card p-3 sm:p-4 hover:shadow-lg transition-all duration-200 group relative overflow-hidden rounded-xl"
+      >
+        {/* Professional hover overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-gray-50/30 dark:from-blue-900/20 dark:to-gray-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+        
+        <div className="relative z-10">
+        <div className="flex justify-between items-start gap-3 mb-3 sm:flex-row flex-col">
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 sm:gap-3 mb-2">
-              <h3 className="heading-sm text-gray-900 group-hover:text-blue-700 transition-colors leading-snug line-clamp-2">
+            <div className="flex items-center gap-2 sm:gap-3 mb-1.5">
+              <h3 className="heading-sm text-gray-900 dark:text-gray-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
                 {clinic.name}
               </h3>
               {clinic.isSponsored && (
-                <div className="flex items-center gap-1 text-caption bg-blue-600 text-white btn-text-sm px-2 py-1 rounded-md whitespace-nowrap">
+                <div className="flex items-center gap-1 text-caption bg-blue-600 dark:bg-blue-500 text-white btn-text-sm px-2 py-1 rounded-md whitespace-nowrap">
                   <Shield size={12} />
                   <span>Verified</span>
                 </div>
@@ -117,15 +126,15 @@ function ClinicCard({ clinic }) {
             </div>
           </div>
           <div className="flex sm:flex-col mt-1 sm:mt-0 items-center sm:items-end gap-2 sm:gap-1">
-            <div className="flex items-center gap-1 text-body-sm bg-green-100 text-green-800 text-emphasis px-2.5 sm:px-3 py-1 rounded-lg border border-green-200">
+            <div className="flex items-center gap-1 text-body-sm bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 text-emphasis px-2.5 sm:px-3 py-1 rounded-lg border border-green-200 dark:border-green-800">
               <Star size={14} fill="currentColor" />
               <span>{clinic.rating.toFixed(1)}</span>
             </div>
-            <span className="text-caption text-gray-500">Trusted Rating</span>
+            <span className="text-caption text-gray-500 dark:text-gray-400">Trusted Rating</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-body-sm text-gray-600">
+        <div className="flex items-center gap-3 sm:gap-4 mb-2.5 text-body-sm text-gray-600 dark:text-gray-300">
           <span className="flex items-center gap-1">
             <Users size={14} />
             {clinic.user_ratings_total.toLocaleString()} patients
@@ -136,15 +145,15 @@ function ClinicCard({ clinic }) {
           </span>
         </div>
 
-        <div className="flex items-start gap-2.5 sm:gap-3 mb-2.5 sm:mb-4 text-gray-700">
-          <MapPin size={18} className="flex-shrink-0 mt-0.5 text-gray-500" />
+        <div className="flex items-start gap-2.5 sm:gap-3 mb-2.5 text-gray-700 dark:text-gray-300">
+          <MapPin size={18} className="flex-shrink-0 mt-0.5 text-gray-500 dark:text-gray-400" />
           <span className="text-body-sm leading-relaxed line-clamp-2">{clinic.address}</span>
         </div>
 
-        <div className="flex items-center justify-between pt-2.5 sm:pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
           <button
             onClick={handleMapsClick}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white btn-text px-3.5 sm:px-4 py-2 rounded-lg transition-colors"
+            className="flex items-center gap-2 bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 text-white btn-text px-3.5 sm:px-4 py-2 rounded-lg transition-colors"
           >
             <MapPin size={16} />
             <span>Show on Maps</span>
@@ -152,7 +161,8 @@ function ClinicCard({ clinic }) {
           </button>
         </div>
       </div>
-    </a>
+      </a>
+    </div>
   );
 }
 
@@ -160,17 +170,17 @@ export default function ClinicList({ clinics, treatmentType = null, location = n
   if (!clinics || clinics.length === 0) {
     return (
       <div className="text-center mt-12">
-        <div className="glass-elevated p-8 rounded-xl max-w-lg mx-auto border border-gray-200">
+        <div className="glass-elevated p-8 rounded-xl max-w-lg mx-auto border border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center">
-              <MapPin size={14} className="text-gray-500" />
+            <div className="w-6 h-6 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+              <MapPin size={14} className="text-gray-500 dark:text-gray-400" />
             </div>
-            <h3 className="font-semibold text-gray-800">No Clinics Found</h3>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-200">No Clinics Found</h3>
           </div>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
             We couldn't find any certified dental professionals in this area.
           </p>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-500 dark:text-gray-400 text-xs">
             Try expanding your search radius or browse popular dental tourism destinations.
           </p>
         </div>
@@ -180,14 +190,14 @@ export default function ClinicList({ clinics, treatmentType = null, location = n
 
   return (
     <section className="mt-10" aria-label="Dental clinics directory">
-      <div className="mb-8 p-4 bg-blue-50 rounded-xl border border-blue-100">
+      <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-800">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+          <div className="w-5 h-5 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center">
             <Shield size={12} className="text-white" />
           </div>
-          <h3 className="font-semibold text-blue-900">Verified Professionals</h3>
+          <h3 className="font-semibold text-blue-900 dark:text-blue-100">Verified Professionals</h3>
         </div>
-        <p className="text-blue-800 text-sm">
+        <p className="text-blue-800 dark:text-blue-200 text-sm">
           Found {clinics.length} certified dental clinic{clinics.length !== 1 ? 's' : ''} specializing in cosmetic dentistry
           {treatmentType && ` • ${treatmentType} specialists`}
           {location && ` • Located near ${location}`}

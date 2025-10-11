@@ -96,81 +96,81 @@ const TreatmentCard = ({ treatment }) => {
     <article id={treatment.id} className="glass-elevated p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-200/50 mb-6 sm:mb-8 hover:shadow-2xl transition-shadow scroll-mt-24">
       <TreatmentTracker treatmentId={treatment.id} />
       <header className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-        <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-${treatment.color}-100 rounded-2xl flex items-center justify-center flex-shrink-0`}>
-          <IconComponent size={28} className={`text-${treatment.color}-600 sm:w-8 sm:h-8`} />
+        <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-${treatment.color}-100 dark:bg-${treatment.color}-900/20 rounded-2xl flex items-center justify-center flex-shrink-0`}>
+          <IconComponent size={28} className={`text-${treatment.color}-600 dark:text-${treatment.color}-400 sm:w-8 sm:h-8`} />
         </div>
         <div className="flex-1 min-w-0">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{treatment.title}</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">{treatment.title}</h2>
           <div className="flex items-center gap-2 mb-2">
-            <span className={`px-2 sm:px-3 py-1 bg-${treatment.color}-100 text-${treatment.color}-700 text-xs sm:text-sm font-medium rounded-full`}>
+            <span className={`px-2 sm:px-3 py-1 bg-${treatment.color}-100 dark:bg-${treatment.color}-900/20 text-${treatment.color}-700 dark:text-${treatment.color}-300 text-xs sm:text-sm font-medium rounded-full`}>
               {treatment.category}
             </span>
           </div>
-          <p className="text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed">{treatment.description}</p>
+          <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">{treatment.description}</p>
         </div>
       </header>
 
       <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         <div className="space-y-4 sm:space-y-6">
           <div>
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Procedure Details</h3>
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{treatment.procedure}</p>
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">Procedure Details</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">{treatment.procedure}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+            <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
               <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-                <Clock size={14} className="text-gray-500 sm:w-4 sm:h-4" />
-                <span className="font-semibold text-gray-900 text-xs sm:text-sm">Duration</span>
+                <Clock size={14} className="text-gray-500 dark:text-gray-400 sm:w-4 sm:h-4" />
+                <span className="font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Duration</span>
               </div>
-              <p className="text-gray-700 text-xs sm:text-sm">{treatment.duration}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{treatment.duration}</p>
             </div>
-            <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+            <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
               <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-                <Star size={14} className="text-gray-500 sm:w-4 sm:h-4" />
-                <span className="font-semibold text-gray-900 text-xs sm:text-sm">Recovery</span>
+                <Star size={14} className="text-gray-500 dark:text-gray-400 sm:w-4 sm:h-4" />
+                <span className="font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Recovery</span>
               </div>
-              <p className="text-gray-700 text-xs sm:text-sm">{treatment.recoveryTime}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{treatment.recoveryTime}</p>
             </div>
           </div>
 
-          <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+          <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
             <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-              <Shield size={14} className="text-gray-500 sm:w-4 sm:h-4" />
-              <span className="font-semibold text-gray-900 text-xs sm:text-sm">Durability</span>
+              <Shield size={14} className="text-gray-500 dark:text-gray-400 sm:w-4 sm:h-4" />
+              <span className="font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Durability</span>
             </div>
-            <p className="text-gray-700 text-xs sm:text-sm">{treatment.durability}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{treatment.durability}</p>
           </div>
 
-          <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-200">
-            <h4 className="font-semibold text-blue-900 text-xs sm:text-sm mb-2">Cost Range:</h4>
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-3 sm:p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+            <h4 className="font-semibold text-blue-900 dark:text-blue-100 text-xs sm:text-sm mb-2">Cost Range:</h4>
             <div className="space-y-1">
               <div className="flex justify-between items-center">
-                <span className="text-blue-800 text-xs sm:text-sm">USD:</span>
-                <span className="text-blue-800 text-xs sm:text-sm font-medium">{treatment.costRange.usd}</span>
+                <span className="text-blue-800 dark:text-blue-200 text-xs sm:text-sm">USD:</span>
+                <span className="text-blue-800 dark:text-blue-200 text-xs sm:text-sm font-medium">{treatment.costRange.usd}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-blue-800 text-xs sm:text-sm">GBP:</span>
-                <span className="text-blue-800 text-xs sm:text-sm font-medium">{treatment.costRange.gbp}</span>
+                <span className="text-blue-800 dark:text-blue-200 text-xs sm:text-sm">GBP:</span>
+                <span className="text-blue-800 dark:text-blue-200 text-xs sm:text-sm font-medium">{treatment.costRange.gbp}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-blue-800 text-xs sm:text-sm">EUR:</span>
-                <span className="text-blue-800 text-xs sm:text-sm font-medium">{treatment.costRange.eur}</span>
+                <span className="text-blue-800 dark:text-blue-200 text-xs sm:text-sm">EUR:</span>
+                <span className="text-blue-800 dark:text-blue-200 text-xs sm:text-sm font-medium">{treatment.costRange.eur}</span>
               </div>
-              <div className="flex justify-between items-center border-t border-blue-200 pt-1 mt-1">
-                <span className="text-green-700 text-xs sm:text-sm font-semibold">Turkey:</span>
-                <span className="text-green-700 text-xs sm:text-sm font-semibold">{treatment.costRange.turkey}</span>
+              <div className="flex justify-between items-center border-t border-blue-200 dark:border-blue-800 pt-1 mt-1">
+                <span className="text-green-700 dark:text-green-300 text-xs sm:text-sm font-semibold">Turkey:</span>
+                <span className="text-green-700 dark:text-green-300 text-xs sm:text-sm font-semibold">{treatment.costRange.turkey}</span>
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Ideal For</h3>
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">Ideal For</h3>
           <ul className="space-y-2">
             {treatment.bestFor.map((item, index) => (
-              <li key={index} className="flex items-center gap-2 sm:gap-3 text-gray-700 text-sm sm:text-base">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+              <li key={index} className="flex items-center gap-2 sm:gap-3 text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 dark:bg-blue-400 rounded-full flex-shrink-0"></div>
                 <span>{item}</span>
               </li>
             ))}
@@ -208,59 +208,59 @@ export default function TreatmentsPage() {
 
         {/* Price Comparison Section */}
         <section className="mt-8 sm:mt-12 lg:mt-16 max-w-6xl mx-auto">
-          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
+          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6 text-center">
               International Price Comparison
             </h2>
-            <p className="text-sm sm:text-base text-gray-700 text-center mb-6 sm:mb-8 leading-relaxed px-2">
-              Compare treatment costs across different countries and discover significant savings opportunities 
+            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 text-center mb-6 sm:mb-8 leading-relaxed px-2">
+              Compare treatment costs across different countries and discover significant savings opportunities
               while maintaining high-quality care standards.
             </p>
             
             <div className="overflow-x-auto">
               <table className="w-full text-sm sm:text-base">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-2 font-semibold text-gray-900">Treatment</th>
-                    <th className="text-right py-3 px-2 font-semibold text-gray-900">UK/US</th>
-                    <th className="text-right py-3 px-2 font-semibold text-gray-900">Turkey</th>
-                    <th className="text-right py-3 px-2 font-semibold text-gray-900">Mexico</th>
-                    <th className="text-right py-3 px-2 font-semibold text-gray-900">India</th>
-                    <th className="text-right py-3 px-2 font-semibold text-green-700">Savings</th>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <th className="text-left py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">Treatment</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">UK/US</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">Turkey</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">Mexico</th>
+                    <th className="text-right py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">India</th>
+                    <th className="text-right py-3 px-2 font-semibold text-green-700 dark:text-green-300">Savings</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                   <tr>
-                    <td className="py-3 px-2 font-medium text-gray-900">Porcelain Veneers (per tooth)</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$1,000-$2,500</td>
-                    <td className="py-3 px-2 text-right text-green-700 font-semibold">$300-$600</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$500-$1,200</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$200-$500</td>
-                    <td className="py-3 px-2 text-right text-green-700 font-semibold">Up to 80%</td>
+                    <td className="py-3 px-2 font-medium text-gray-900 dark:text-gray-100">Porcelain Veneers (per tooth)</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$1,000-$2,500</td>
+                    <td className="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">$300-$600</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$500-$1,200</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$200-$500</td>
+                    <td className="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">Up to 80%</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-2 font-medium text-gray-900">Zirconia Crowns (per crown)</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$1,200-$3,000</td>
-                    <td className="py-3 px-2 text-right text-green-700 font-semibold">$400-$800</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$600-$1,500</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$300-$800</td>
-                    <td className="py-3 px-2 text-right text-green-700 font-semibold">Up to 75%</td>
+                    <td className="py-3 px-2 font-medium text-gray-900 dark:text-gray-100">Zirconia Crowns (per crown)</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$1,200-$3,000</td>
+                    <td className="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">$400-$800</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$600-$1,500</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$300-$800</td>
+                    <td className="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">Up to 75%</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-2 font-medium text-gray-900">Complete Smile Makeover</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$8,000-$25,000</td>
-                    <td className="py-3 px-2 text-right text-green-700 font-semibold">$3,000-$8,000</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$5,000-$15,000</td>
-                    <td className="py-3 px-2 text-right text-gray-700">$2,000-$8,000</td>
-                    <td className="py-3 px-2 text-right text-green-700 font-semibold">Up to 70%</td>
+                    <td className="py-3 px-2 font-medium text-gray-900 dark:text-gray-100">Complete Smile Makeover</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$8,000-$25,000</td>
+                    <td className="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">$3,000-$8,000</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$5,000-$15,000</td>
+                    <td className="py-3 px-2 text-right text-gray-700 dark:text-gray-300">$2,000-$8,000</td>
+                    <td className="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">Up to 70%</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             
-            <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Why Choose Medical Tourism?</h3>
-              <ul className="text-sm text-green-800 space-y-1">
+            <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+              <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">Why Choose Medical Tourism?</h3>
+              <ul className="text-sm text-green-800 dark:text-green-200 space-y-1">
                 <li>• Significant cost savings without compromising quality</li>
                 <li>• Internationally certified dental professionals</li>
                 <li>• Modern facilities with advanced technology</li>
@@ -273,12 +273,12 @@ export default function TreatmentsPage() {
 
         {/* Additional Resources */}
         <section className="mt-8 sm:mt-12 lg:mt-16 max-w-4xl mx-auto">
-          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
+          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6 text-center">
               Find Certified Dental Professionals
             </h2>
-            <p className="text-sm sm:text-base text-gray-700 text-center mb-6 sm:mb-8 leading-relaxed px-2">
-              Ready to start your smile transformation? Connect with trusted dental professionals who specialize in 
+            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 text-center mb-6 sm:mb-8 leading-relaxed px-2">
+              Ready to start your smile transformation? Connect with trusted dental professionals who specialize in
               cosmetic dentistry and have extensive experience with these treatments.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">

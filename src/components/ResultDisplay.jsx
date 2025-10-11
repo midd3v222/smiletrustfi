@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import BeforeAfterComparison from "./BeforeAfterComparison";
 import { Camera } from "lucide-react";
 
 export default function ResultDisplay({
@@ -8,27 +8,14 @@ export default function ResultDisplay({
 }) {
   return (
     <div className="flex flex-col items-center gap-8 w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full">
-        <div className="text-center">
-          <h3 className="heading-sm text-gray-600 dark:text-gray-300 mb-2">
-            Before
-          </h3>
-          <img
-            src={URL.createObjectURL(originalImage)}
-            alt="Original smile"
-            className="rounded-lg shadow-md aspect-square object-cover"
-          />
-        </div>
-        <div className="text-center">
-          <h3 className="heading-sm text-green-600 dark:text-green-400 mb-2">
-            After ✨
-          </h3>
-          <img
-            src={generatedImage}
-            alt="AI generated smile"
-            className="rounded-lg shadow-md aspect-square object-cover"
-          />
-        </div>
+      <div className="w-full max-w-md">
+        <BeforeAfterComparison
+          beforeImage={URL.createObjectURL(originalImage)}
+          afterImage={generatedImage}
+          beforeAlt="Original smile"
+          afterAlt="AI generated smile"
+          className="aspect-square"
+        />
       </div>
       <button
         onClick={onReset}

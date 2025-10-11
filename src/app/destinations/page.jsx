@@ -161,36 +161,36 @@ const DestinationCard = ({ destination }) => {
   const IconComponent = destination.icon;
   
   return (
-    <article className="glass-elevated p-5 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-200/50 mb-6 sm:mb-8 hover:shadow-2xl transition-shadow">
+    <article className="glass-elevated p-5 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 mb-6 sm:mb-8 hover:shadow-2xl transition-shadow">
       <header className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-        <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-${destination.color}-100 rounded-2xl flex items-center justify-center flex-shrink-0`}>
-          <IconComponent size={24} className={`text-${destination.color}-600 sm:w-8 sm:h-8`} />
+        <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-${destination.color}-100 dark:bg-${destination.color}-900/20 rounded-2xl flex items-center justify-center flex-shrink-0`}>
+          <IconComponent size={24} className={`text-${destination.color}-600 dark:text-${destination.color}-400 sm:w-8 sm:h-8`} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 sm:gap-3 mb-2">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{destination.name}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">{destination.name}</h2>
             <span className="text-2xl sm:text-3xl">{destination.flag}</span>
           </div>
           <div className="flex items-center gap-2 mb-2 sm:mb-3 flex-wrap">
             <div className="flex items-center gap-1">
               <Star size={14} className="text-yellow-500 fill-current sm:w-4 sm:h-4" />
-              <span className="font-semibold text-gray-700 text-sm sm:text-base">{destination.quality}</span>
+              <span className="font-semibold text-gray-700 dark:text-gray-300 text-sm sm:text-base">{destination.quality}</span>
             </div>
-            <span className="text-gray-500 text-xs">•</span>
-            <span className={`px-2 sm:px-3 py-1 bg-${destination.color}-100 text-${destination.color}-700 text-xs sm:text-sm font-medium rounded-full`}>
+            <span className="text-gray-500 dark:text-gray-400 text-xs">•</span>
+            <span className={`px-2 sm:px-3 py-1 bg-${destination.color}-100 dark:bg-${destination.color}-900/20 text-${destination.color}-700 dark:text-${destination.color}-300 text-xs sm:text-sm font-medium rounded-full`}>
               Save {destination.avgCostSavings}
             </span>
           </div>
-          <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">{destination.description}</p>
+          <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">{destination.description}</p>
         </div>
       </header>
 
       <div className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-4 sm:mb-6">
         <div>
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Popular Cities</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">Popular Cities</h3>
           <div className="flex flex-wrap gap-2">
             {destination.cities.map((city, index) => (
-              <span key={index} className="px-2 sm:px-3 py-1 bg-gray-100 text-gray-700 text-xs sm:text-sm rounded-full">
+              <span key={index} className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs sm:text-sm rounded-full">
                 {city}
               </span>
             ))}
@@ -198,11 +198,11 @@ const DestinationCard = ({ destination }) => {
         </div>
 
         <div>
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Specialties</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">Specialties</h3>
           <ul className="space-y-1">
             {destination.specialties.map((specialty, index) => (
-              <li key={index} className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full"></div>
+              <li key={index} className="flex items-center gap-2 text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 dark:bg-blue-400 rounded-full"></div>
                 {specialty}
               </li>
             ))}
@@ -210,10 +210,10 @@ const DestinationCard = ({ destination }) => {
         </div>
 
         <div>
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Treatment Costs</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">Treatment Costs</h3>
           <ul className="space-y-1.5 sm:space-y-2">
             {destination.popularTreatments.map((treatment, index) => (
-              <li key={index} className="text-gray-700 text-xs sm:text-sm">
+              <li key={index} className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
                 <span className="font-medium">{treatment.name}:</span>
                 <span className="ml-1 sm:ml-2">{treatment.cost}</span>
               </li>
@@ -224,11 +224,11 @@ const DestinationCard = ({ destination }) => {
 
       <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
         <div>
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Key Advantages</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">Key Advantages</h3>
           <ul className="space-y-1.5 sm:space-y-2">
             {destination.advantages.map((advantage, index) => (
-              <li key={index} className="flex items-start gap-2 text-gray-700 text-xs sm:text-sm">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></div>
+              <li key={index} className="flex items-start gap-2 text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
+                <div className="w-1.5 h-1.5 bg-green-500 dark:bg-green-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></div>
                 {advantage}
               </li>
             ))}
@@ -236,19 +236,19 @@ const DestinationCard = ({ destination }) => {
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+          <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
             <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-              <Clock size={14} className="text-gray-500 sm:w-4 sm:h-4" />
-              <span className="font-semibold text-gray-900 text-xs sm:text-sm">Typical Stay</span>
+              <Clock size={14} className="text-gray-500 dark:text-gray-400 sm:w-4 sm:h-4" />
+              <span className="font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Typical Stay</span>
             </div>
-            <p className="text-gray-700 text-xs sm:text-sm">{destination.avgStayDuration}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{destination.avgStayDuration}</p>
           </div>
-          <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+          <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
             <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-              <MapPin size={14} className="text-gray-500 sm:w-4 sm:h-4" />
-              <span className="font-semibold text-gray-900 text-xs sm:text-sm">Languages</span>
+              <MapPin size={14} className="text-gray-500 dark:text-gray-400 sm:w-4 sm:h-4" />
+              <span className="font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Languages</span>
             </div>
-            <p className="text-gray-700 text-xs sm:text-sm">{destination.languageSupport}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{destination.languageSupport}</p>
           </div>
         </div>
       </div>
@@ -265,10 +265,10 @@ export default function DestinationsPage() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        <Banner 
+        <Banner
           title={
             <>
-              Top Dental Tourism <span className="text-blue-600">Destinations</span>
+              Top Dental Tourism <span className="text-blue-600 dark:text-blue-400">Destinations</span>
             </>
           }
           subtitle="Explore the world's premier destinations for quality dental care. From Turkey's technological excellence to Mexico's proximity advantages, discover where to find the best dental treatments with significant savings."
@@ -283,39 +283,39 @@ export default function DestinationsPage() {
 
         {/* Comparison Table */}
         <section className="mt-8 sm:mt-12 lg:mt-16 max-w-6xl mx-auto">
-          <div className="glass-elevated p-5 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-200/50">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">Quick Comparison</h2>
+          <div className="glass-elevated p-5 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6 text-center">Quick Comparison</h2>
             <div className="overflow-x-auto -mx-5 sm:-mx-6 lg:-mx-8 px-5 sm:px-6 lg:px-8">
               <table className="w-full text-left min-w-[600px]">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 text-xs sm:text-sm">Destination</th>
-                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 text-xs sm:text-sm">Quality</th>
-                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 text-xs sm:text-sm">Savings</th>
-                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 text-xs sm:text-sm">Stay</th>
-                    <th className="py-2 sm:py-3 text-left font-semibold text-gray-900 text-xs sm:text-sm">Popular For</th>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Destination</th>
+                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Quality</th>
+                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Savings</th>
+                    <th className="py-2 sm:py-3 pr-4 sm:pr-6 text-left font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Stay</th>
+                    <th className="py-2 sm:py-3 text-left font-semibold text-gray-900 dark:text-gray-100 text-xs sm:text-sm">Popular For</th>
                   </tr>
                 </thead>
                 <tbody>
                   {destinations.map((dest) => (
-                    <tr key={dest.id} className="border-b border-gray-100">
+                    <tr key={dest.id} className="border-b border-gray-100 dark:border-gray-700">
                       <td className="py-3 sm:py-4 pr-4 sm:pr-6">
                         <div className="flex items-center gap-1.5 sm:gap-2">
                           <span className="text-lg sm:text-xl">{dest.flag}</span>
-                          <span className="font-medium text-gray-900 text-xs sm:text-sm">{dest.name}</span>
+                          <span className="font-medium text-gray-900 dark:text-gray-100 text-xs sm:text-sm">{dest.name}</span>
                         </div>
                       </td>
                       <td className="py-3 sm:py-4 pr-4 sm:pr-6">
                         <div className="flex items-center gap-1">
                           <Star size={12} className="text-yellow-500 fill-current sm:w-3.5 sm:h-3.5" />
-                          <span className="text-gray-700 text-xs sm:text-sm">{dest.quality}</span>
+                          <span className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{dest.quality}</span>
                         </div>
                       </td>
                       <td className="py-3 sm:py-4 pr-4 sm:pr-6">
-                        <span className="font-medium text-green-600 text-xs sm:text-sm">{dest.avgCostSavings}</span>
+                        <span className="font-medium text-green-600 dark:text-green-400 text-xs sm:text-sm">{dest.avgCostSavings}</span>
                       </td>
-                      <td className="py-3 sm:py-4 pr-4 sm:pr-6 text-gray-700 text-xs sm:text-sm">{dest.avgStayDuration}</td>
-                      <td className="py-3 sm:py-4 text-gray-700 text-xs sm:text-sm">{dest.specialties[0]}</td>
+                      <td className="py-3 sm:py-4 pr-4 sm:pr-6 text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{dest.avgStayDuration}</td>
+                      <td className="py-3 sm:py-4 text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{dest.specialties[0]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -326,12 +326,12 @@ export default function DestinationsPage() {
 
         {/* Call to Action */}
         <section className="mt-8 sm:mt-12 lg:mt-16 max-w-4xl mx-auto">
-          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50 text-center">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
+          <div className="glass-elevated p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 text-center">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
               Find Clinics in Your Preferred Destination
             </h2>
-            <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-8 leading-relaxed px-2">
-              Ready to start your dental tourism journey? Browse certified dental professionals 
+            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed px-2">
+              Ready to start your dental tourism journey? Browse certified dental professionals
               in these top destinations and plan your treatment abroad.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
