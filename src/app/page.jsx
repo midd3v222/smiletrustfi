@@ -493,7 +493,7 @@ export default function HomePage() {
       <Header showBackButton={false} />
       
       {/* Hero Section - Full Viewport */}
-      <section className="min-h-screen flex items-center justify-center relative pt-20 z-0">
+      <section className="min-h-screen flex items-center justify-center relative pt-16 sm:pt-20 z-0">
         <HeroHighlight>
           <motion.h1
             initial={{
@@ -508,7 +508,7 @@ export default function HomePage() {
               duration: 1,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto"
+            className="text-xl px-4 sm:text-2xl md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-tight sm:leading-relaxed lg:leading-snug text-center mx-auto"
           >
             Professional{" "}
             <Highlight className="text-black dark:text-white">
@@ -531,14 +531,14 @@ export default function HomePage() {
               ease: [0.4, 0.0, 0.2, 1],
               delay: 0.3,
             }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mt-6 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mt-4 sm:mt-6 px-4 leading-relaxed"
           >
             Discover your smile transformation potential with our advanced AI technology. Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations.
           </motion.p>
           
           {/* Inviting CTA Button */}
           <motion.div 
-            className="mt-16"
+            className="mt-12 sm:mt-16"
             initial={{
               opacity: 0,
               y: 40,
@@ -553,8 +553,8 @@ export default function HomePage() {
               delay: 0.6,
             }}
           >
-            <div className="flex flex-col items-center gap-4">
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            <div className="flex flex-col items-center gap-4 px-4">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
                 Ready to see your smile transformation? Upload your photo and discover what's possible with our AI-powered technology.
               </p>
               <button
@@ -573,13 +573,13 @@ export default function HomePage() {
                     }
                   }, 100);
                 }}
-                className="btn-primary px-12 py-4 text-lg flex items-center gap-3 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="btn-primary px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg flex items-center gap-2 sm:gap-3 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
               >
-                <Camera size={24} />
+                <Camera size={20} className="sm:w-6 sm:h-6" />
                 <span>Try AI Smile Preview</span>
-                <Sparkles size={20} />
+                <Sparkles size={18} className="sm:w-5 sm:h-5" />
               </button>
-              <div className="flex items-center justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   <span>100% Free</span>

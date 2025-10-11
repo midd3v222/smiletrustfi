@@ -31,17 +31,17 @@ export default function Header({ showBackButton = true }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed top-4 left-4 right-4 glass z-10 shadow-lg border border-gray-200/20 dark:border-gray-700/20 rounded-full"
+            className="fixed top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 glass z-10 shadow-lg border border-gray-200/20 dark:border-gray-700/20 rounded-full"
           >
-            <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-              <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ST</span>
+            <div className="container mx-auto px-3 py-2 sm:px-6 sm:py-3 flex justify-between items-center">
+              <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xs sm:text-sm">ST</span>
                 </div>
-                <span className="heading-md text-gray-800 dark:text-gray-100">SmileTrust</span>
+                <span className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100">SmileTrust</span>
               </Link>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 sm:gap-4">
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600 dark:text-gray-300" role="navigation" aria-label="Main navigation">
                   <Link 
@@ -95,9 +95,9 @@ export default function Header({ showBackButton = true }) {
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="md:hidden p-1.5 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
-                  {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                  {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
               </div>
             </div>
@@ -114,14 +114,14 @@ export default function Header({ showBackButton = true }) {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -100, scale: 0.8 }}
               transition={{ duration: 0.5, ease: "easeInOut", delay: 0.1 }}
-              className="fixed top-4 left-4 glass z-10 shadow-lg border border-gray-200/20 dark:border-gray-700/20 rounded-full"
+              className="fixed top-2 left-2 sm:top-4 sm:left-4 glass z-10 shadow-lg border border-gray-200/20 dark:border-gray-700/20 rounded-full"
             >
-              <div className="px-4 py-2 flex items-center">
-                <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <div className="w-6 h-6 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
+              <div className="px-3 py-1.5 sm:px-4 sm:py-2 flex items-center">
+                <Link href="/" className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-xs">ST</span>
                   </div>
-                  <span className="text-sm font-semibold text-gray-800 dark:text-gray-100">SmileTrust</span>
+                  <span className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-100">SmileTrust</span>
                 </Link>
               </div>
             </motion.header>
@@ -133,9 +133,9 @@ export default function Header({ showBackButton = true }) {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 100, scale: 0.8 }}
               transition={{ duration: 0.5, ease: "easeInOut", delay: 0.1 }}
-              className="fixed top-4 right-4 glass z-10 shadow-lg border border-gray-200/20 dark:border-gray-700/20 rounded-full"
+              className="fixed top-2 right-2 sm:top-4 sm:right-4 glass z-10 shadow-lg border border-gray-200/20 dark:border-gray-700/20 rounded-full"
             >
-              <div className="px-4 py-2 flex items-center gap-3">
+              <div className="px-3 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 sm:gap-3">
                 {/* Theme Toggle */}
                 <ThemeToggle />
 
@@ -171,7 +171,7 @@ export default function Header({ showBackButton = true }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="glass-elevated border border-gray-200/20 dark:border-gray-700/20 rounded-2xl shadow-lg fixed top-20 right-4 z-20 w-auto min-w-fit"
+            className="glass-elevated border border-gray-200/20 dark:border-gray-700/20 rounded-2xl shadow-lg fixed top-16 right-2 sm:top-20 sm:right-4 z-20 w-auto min-w-fit"
           >
             <div className="px-4 py-3 space-y-3">
               <Link 
