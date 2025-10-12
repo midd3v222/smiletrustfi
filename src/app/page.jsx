@@ -12,6 +12,7 @@ import BeforeAfterComparison from "../components/BeforeAfterComparison";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import { HeroHighlight, Highlight } from "../components/ui/hero-highlight";
+import LightRays from "../components/LightRays";
 import { clientAnalytics } from "../lib/analytics";
 import {
   Sparkles,
@@ -86,13 +87,14 @@ export default function HomePage() {
   const [locationPermissionDenied, setLocationPermissionDenied] = useState(false);
   const [locationError, setLocationError] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lightRaysOpacity, setLightRaysOpacity] = useState(1.0);
 
   // Track page view on mount
   useEffect(() => {
     clientAnalytics.trackPageView('home');
   }, []);
 
-  // Handle scroll detection for animations
+  // Handle scroll detection for animations and light rays opacity
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -104,9 +106,21 @@ export default function HomePage() {
       } else {
         setIsScrolled(false);
       }
+
+      // Calculate light rays opacity based on scroll position
+      const scrollThreshold = 100; // Start fading after 100px of scroll
+      const fadeDistance = 200; // Fade over 200px
+      
+      let opacity = 1.0;
+      if (scrollPosition > scrollThreshold) {
+        const fadeProgress = Math.min(1, (scrollPosition - scrollThreshold) / fadeDistance);
+        opacity = Math.max(0, 1.0 - fadeProgress);
+      }
+      
+      setLightRaysOpacity(opacity);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -485,15 +499,45 @@ export default function HomePage() {
     // Track analytics
     clientAnalytics.trackInteraction('clinic-browse');
     
+    // Scroll to the clinic list section
+    setTimeout(() => {
+      const clinicSection = document.querySelector('[aria-label="Dental Professionals Directory"]');
+      if (clinicSection) {
+        clinicSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
+    
     // The useEffect will handle initializeClinicSearch when showClinicBrowsing changes
   };
 
   return (
     <div className="min-h-screen w-full bg-grid-pattern relative">
+      {/* Light Rays Background Effect */}
+      <div 
+        className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-300 ease-out"
+        style={{ opacity: lightRaysOpacity }}
+      >
+        <LightRays
+          raysOrigin="top-center"
+          raysSpeed={1.2}
+          lightSpread={0.6}
+          rayLength={1.5}
+          followMouse={true}
+          mouseInfluence={0.05}
+          noiseAmount={0.02}
+          distortion={0.01}
+          opacity={1.0}
+          className="w-full h-full"
+        />
+      </div>
+      
       <Header showBackButton={false} />
       
       {/* Hero Section - Full Viewport */}
-      <section className="min-h-screen flex items-center justify-center relative pt-16 sm:pt-20 z-0">
+      <section className="min-h-screen flex items-center justify-center relative pt-16 sm:pt-20 z-0 -mt-8 sm:-mt-12">
         <HeroHighlight>
           <motion.h1
             initial={{
@@ -508,7 +552,7 @@ export default function HomePage() {
               duration: 1,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-2xl px-4 sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-tight sm:leading-relaxed lg:leading-snug text-center mx-auto"
+            className="text-4xl px-4 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-neutral-700 dark:text-white max-w-6xl leading-tight sm:leading-relaxed lg:leading-snug text-center mx-auto"
           >
             Professional{" "}
             <Highlight className="text-black dark:text-white">
