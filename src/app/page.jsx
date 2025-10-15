@@ -538,11 +538,11 @@ export default function HomePage() {
       <Header showBackButton={false} />
       
       {/* Hero Section - Two Column Layout */}
-      <section className="min-h-screen flex items-center relative pt-12 sm:pt-16 md:pt-20 lg:pt-24 z-0">
+      <section className="min-h-screen flex items-center relative pt-20 sm:pt-16 md:pt-20 lg:pt-24 z-0">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
             {/* Left Column - Title and Text */}
-            <div className="order-2 lg:order-1">
+            <div className="order-1 lg:order-1">
               <HeroHighlight>
                 <motion.h1
                   initial={{
@@ -589,7 +589,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Column - Image Placeholder */}
-            <div className="order-1 lg:order-2">
+            <div className="order-2 lg:order-2">
               <motion.div
                 initial={{
                   opacity: 0,
