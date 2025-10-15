@@ -22,12 +22,12 @@ const blogPostsData = [
           <div class="grid sm:grid-cols-2 gap-4 text-sm">
             <div>
               <p class="font-semibold text-gray-900 dark:text-gray-100 dark:text-gray-100 mb-2">Most Expensive:</p>
-              <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300">🇬🇧 UK: £800 - £2,000 per tooth</p>
-              <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300">🇩🇪 Germany: €1,200 - €2,500 per tooth</p>
+              <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300">🇬🇧 UK: £500 - £1,000 per tooth</p>
+              <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300">🇩🇪 Germany: €600 - €1,200 per tooth</p>
             </div>
             <div>
               <p class="font-semibold text-gray-900 dark:text-gray-100 dark:text-gray-100 mb-2">Most Affordable:</p>
-              <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300">🇹🇷 Turkey: £120 - £240 per tooth</p>
+              <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300">🇹🇷 Turkey: £250 per tooth</p>
               <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300">🇭🇺 Hungary: £160 - £400 per tooth</p>
             </div>
           </div>
@@ -36,9 +36,9 @@ const blogPostsData = [
           </div>
         </div>
 
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">What Are Porcelain Veneers?</h2>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">What Are Dental Veneers?</h2>
         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-          Porcelain veneers are thin, custom-made ceramic shells that are bonded to the front surface of your teeth to improve their appearance. They're one of the most popular cosmetic dental procedures worldwide, capable of transforming discolored, chipped, gapped, or misaligned teeth into a beautiful, natural-looking smile.
+          Dental veneers are thin, custom-made ceramic shells that are bonded to the front surface of your teeth to improve their appearance. They're one of the most popular cosmetic dental procedures worldwide, capable of transforming discolored, chipped, gapped, or misaligned teeth into a beautiful, natural-looking smile.
         </p>
 
         <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Veneer Costs by Country (2025)</h2>
@@ -54,11 +54,11 @@ const blogPostsData = [
             </div>
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <p class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">£120 - £240</p>
-                <p class="text-sm text-gray-600">per porcelain veneer</p>
+                <p class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">£250</p>
+                <p class="text-sm text-gray-600">per dental veneer</p>
               </div>
               <div>
-                <p class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">£1,920 - £3,840</p>
+                <p class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">£4,000</p>
                 <p class="text-sm text-gray-600">full set (16 veneers)</p>
               </div>
             </div>
@@ -132,6 +132,177 @@ const blogPostsData = [
           </ol>
         </div>
 
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Factors That Affect Veneer Costs</h2>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Material Quality</h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-3">The type of ceramic material significantly impacts cost:</p>
+            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">•</span>
+                <span><strong>E-max:</strong> Premium lithium disilicate ceramic - highest quality and cost</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">•</span>
+                <span><strong>Zirconia:</strong> Ultra-strong ceramic - excellent durability</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">•</span>
+                <span><strong>Composite:</strong> More affordable but less durable option</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Number of Veneers</h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-3">Most clinics offer package discounts:</p>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Single Veneer:</p>
+                <p class="text-gray-700 dark:text-gray-300">Highest per-tooth cost</p>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900 dark:text-gray-100 mb-2">6+ Veneers:</p>
+                <p class="text-gray-700 dark:text-gray-300">Package discounts available</p>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Full Smile (16):</p>
+                <p class="text-gray-700 dark:text-gray-300">Best value per tooth</p>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Hollywood Smile:</p>
+                <p class="text-gray-700 dark:text-gray-300">Complete transformation package</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Clinic Location & Reputation</h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-3">Location significantly impacts pricing:</p>
+            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span><strong>Major Cities:</strong> Higher costs but more experienced dentists</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span><strong>Tourist Areas:</strong> Premium pricing for convenience</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span><strong>Established Clinics:</strong> Higher prices reflect experience and quality</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">The Veneer Procedure: What to Expect</h2>
+        <div class="space-y-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Step-by-Step Process</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Initial Consultation</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Digital scans, photos, treatment planning, and cost estimation</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Tooth Preparation</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Minimal enamel removal (0.5mm) to create space for veneers</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Temporary Veneers</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Protect prepared teeth while permanent veneers are crafted</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Final Fitting</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Permanent veneers bonded with special dental cement</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Recovery & Aftercare</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Immediate Aftercare</h3>
+            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Avoid hard foods for 24-48 hours</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Use soft-bristled toothbrush</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Follow dentist's cleaning instructions</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Attend follow-up appointments</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Long-term Maintenance</h3>
+            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">•</span>
+                <span>Regular dental check-ups every 6 months</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">•</span>
+                <span>Professional cleaning twice yearly</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">•</span>
+                <span>Avoid excessive force (nail biting, ice chewing)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">•</span>
+                <span>Consider night guards if you grind teeth</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Common Questions About Veneer Costs</h2>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-2">Q: Why are veneers so expensive?</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Veneers require skilled craftsmanship, high-quality materials, and precise laboratory work. Each veneer is custom-made to match your natural teeth perfectly.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-2">Q: Do insurance plans cover veneers?</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Most insurance plans consider veneers cosmetic and don't cover them. However, some plans may cover a portion if veneers are needed for structural reasons.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-2">Q: Are payment plans available?</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Many clinics offer financing options, payment plans, or work with third-party financing companies to make veneers more affordable.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-2">Q: How long do veneers last?</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">With proper care, veneers typically last 10-15 years. Some high-quality veneers can last even longer with excellent maintenance.</p>
+          </div>
+        </div>
+
         <div class="bg-yellow-50 dark:bg-yellow-900/20 p-6 rounded-xl border border-yellow-200 dark:border-yellow-800 mt-6">
           <div class="flex items-start gap-3">
             <span class="text-2xl">⚠️</span>
@@ -162,16 +333,16 @@ const blogPostsData = [
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Quick Price Overview</h3>
           <div class="space-y-3">
             <div class="flex justify-between items-center py-2 border-b border-blue-200 dark:border-blue-800">
-              <span class="font-semibold text-gray-900 dark:text-gray-100">Porcelain Veneers</span>
-              <span class="text-blue-700 dark:text-blue-300 font-bold">£120 - £240 per tooth</span>
+              <span class="font-semibold text-gray-900 dark:text-gray-100">Dental Veneers</span>
+              <span class="text-blue-700 dark:text-blue-300 font-bold">£250 per tooth</span>
             </div>
             <div class="flex justify-between items-center py-2 border-b border-blue-200 dark:border-blue-800">
               <span class="font-semibold text-gray-900 dark:text-gray-100">Zirconia Crowns</span>
-              <span class="text-blue-700 dark:text-blue-300 font-bold">£160 - £320 per crown</span>
+              <span class="text-blue-700 dark:text-blue-300 font-bold">£170 - £250 per crown</span>
             </div>
             <div class="flex justify-between items-center py-2 border-b border-blue-200 dark:border-blue-800">
               <span class="font-semibold text-gray-900 dark:text-gray-100">Dental Implants</span>
-              <span class="text-blue-700 dark:text-blue-300 font-bold">£400 - £640 per implant</span>
+              <span class="text-blue-700 dark:text-blue-300 font-bold">£300 - £1,000 per implant</span>
             </div>
             <div class="flex justify-between items-center py-2">
               <span class="font-semibold text-gray-900 dark:text-gray-100">Full Smile Makeover</span>
@@ -221,21 +392,186 @@ const blogPostsData = [
           </div>
         </div>
 
-        <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl border border-green-200 dark:border-green-800 mt-6">
-          <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Real Patient Savings Example</h3>
-          <p class="text-gray-700 dark:text-gray-300 mb-4">James from London needed 10 veneers:</p>
-          <div class="space-y-2">
-            <div class="flex justify-between">
-              <span class="text-gray-700 dark:text-gray-300">UK Private Quote:</span>
-              <span class="font-bold text-gray-900 dark:text-gray-100">£14,000</span>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Detailed Treatment Costs in Turkey</h2>
+        <div class="space-y-6">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Dental Veneers - Complete Breakdown</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Cost Structure:</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Single Veneer:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£250</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">6 Veneers Package:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£1,200</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Full Smile (16):</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£4,000</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">What's Included:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Initial consultation & digital scans</li>
+                  <li>• Tooth preparation</li>
+                  <li>• Temporary veneers</li>
+                  <li>• Permanent veneers (E-max/Zirconia)</li>
+                  <li>• Final fitting & adjustments</li>
+                  <li>• 1-year warranty</li>
+                </ul>
+              </div>
             </div>
-            <div class="flex justify-between">
-              <span class="text-gray-700 dark:text-gray-300">Turkey Quote + Travel:</span>
-              <span class="font-bold text-gray-900 dark:text-gray-100">£3,200</span>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Zirconia Crowns - Complete Breakdown</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Cost Structure:</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Single Crown:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£170-£250</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Multiple Crowns:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">Package discounts</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Full Mouth (28):</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£3,500-£5,000</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Material Options:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• <strong>Zirconia:</strong> £170-£250 (strongest)</li>
+                  <li>• <strong>E-max:</strong> £240-£320 (most aesthetic)</li>
+                  <li>• <strong>Porcelain:</strong> £120-£200 (traditional)</li>
+                  <li>• <strong>PFM:</strong> £100-£180 (metal-based)</li>
+                </ul>
+              </div>
             </div>
-            <div class="flex justify-between pt-3 border-t border-green-300">
-              <span class="font-bold text-green-900 dark:text-green-100">Total Savings:</span>
-              <span class="text-2xl font-bold text-green-700 dark:text-green-300">£10,800</span>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Dental Implants - Complete Breakdown</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Cost Structure:</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Single Implant:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£300-£1,000</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Implant + Crown:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£470-£1,250</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">All-on-4 (per arch):</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£3,500-£6,000</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Brand Options:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• <strong>Straumann:</strong> £800-£1,000 (premium)</li>
+                  <li>• <strong>Nobel Biocare:</strong> £600-£800 (reliable)</li>
+                  <li>• <strong>Osstem:</strong> £300-£500 (budget)</li>
+                  <li>• <strong>Local Brands:</strong> £200-£400 (basic)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Additional Costs to Consider</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Travel & Accommodation</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Flight (UK-Turkey):</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£200-£400</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Hotel (7 nights):</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£280-£560</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Airport Transfers:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£20-£40</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Food & Activities:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£200-£400</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Medical & Follow-up</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Pre-treatment X-rays:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£50-£100</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Post-treatment Check:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£100-£200</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Travel Insurance:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£50-£100</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Emergency Fund:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£200-£500</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Best Time to Visit Turkey for Dental Work</h2>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Seasonal Considerations</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Peak Season (June-August)</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Higher hotel prices</li>
+                  <li>• More tourists</li>
+                  <li>• Hot weather</li>
+                  <li>• Longer wait times</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Shoulder Season (April-May, Sep-Oct)</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Moderate prices</li>
+                  <li>• Pleasant weather</li>
+                  <li>• Less crowded</li>
+                  <li>• Better availability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Clinic Availability</h3>
+            <div class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong>Best Booking Times:</strong> Book 2-3 months in advance for popular clinics</p>
+              <p><strong>Flexible Schedule:</strong> Mid-week appointments often have better availability</p>
+              <p><strong>Multiple Visits:</strong> Plan for 5-7 days minimum for veneers, longer for implants</p>
             </div>
           </div>
         </div>
@@ -387,7 +723,7 @@ const blogPostsData = [
 
         <div class="grid md:grid-cols-2 gap-6">
           <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200 dark:border-blue-800">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Porcelain Veneers</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Dental Veneers</h3>
             <div class="space-y-3 text-sm">
               <div>
                 <span class="font-semibold text-gray-900 dark:text-gray-100">What they are:</span>
@@ -399,7 +735,7 @@ const blogPostsData = [
               </div>
               <div>
                 <span class="font-semibold text-gray-900 dark:text-gray-100">Cost:</span>
-                <p class="text-gray-700 dark:text-gray-300">$150-300 (Turkey) | $1,000-2,500 (USA)</p>
+                <p class="text-gray-700 dark:text-gray-300">£250 (Turkey) | £500-1,000 (UK)</p>
               </div>
               <div>
                 <span class="font-semibold text-gray-900 dark:text-gray-100">Durability:</span>
@@ -425,7 +761,7 @@ const blogPostsData = [
               </div>
               <div>
                 <span class="font-semibold text-gray-900 dark:text-gray-100">Cost:</span>
-                <p class="text-gray-700 dark:text-gray-300">$200-400 (Turkey) | $1,200-3,000 (USA)</p>
+                <p class="text-gray-700 dark:text-gray-300">£170-250 (Turkey) | £500-1,000 (UK)</p>
               </div>
               <div>
                 <span class="font-semibold text-gray-900 dark:text-gray-100">Durability:</span>
@@ -479,11 +815,205 @@ const blogPostsData = [
           </div>
         </div>
 
-        <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-xl border border-purple-200 dark:border-purple-800 mt-6">
-          <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">💡 Can You Combine Both?</h3>
-          <p class="text-gray-700 dark:text-gray-300">
-            Yes! Many smile makeovers use both treatments. For example, you might get veneers on your visible front teeth for aesthetics, and crowns on molars that need structural support. Your dentist will recommend the best combination for your needs.
-          </p>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Detailed Cost Comparison</h2>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th class="text-left py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">Treatment</th>
+                  <th class="text-right py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">Turkey</th>
+                  <th class="text-right py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">UK</th>
+                  <th class="text-right py-3 px-2 font-semibold text-gray-900 dark:text-gray-100">Savings</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr>
+                  <td class="py-3 px-2 font-medium text-gray-900 dark:text-gray-100">Single Veneer</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">£250</td>
+                  <td class="py-3 px-2 text-right text-gray-700 dark:text-gray-300">£500-£1,000</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">50-75%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-medium text-gray-900 dark:text-gray-100">Single Crown</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">£170-£250</td>
+                  <td class="py-3 px-2 text-right text-gray-700 dark:text-gray-300">£500-£1,000</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">50-75%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-medium text-gray-900 dark:text-gray-100">6 Veneers</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">£1,200</td>
+                  <td class="py-3 px-2 text-right text-gray-700 dark:text-gray-300">£3,000-£6,000</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">60-80%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-medium text-gray-900 dark:text-gray-100">Full Smile (16)</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">£4,000</td>
+                  <td class="py-3 px-2 text-right text-gray-700 dark:text-gray-300">£8,000-£16,000</td>
+                  <td class="py-3 px-2 text-right text-green-700 dark:text-green-300 font-semibold">50-75%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">When to Choose Each Treatment</h2>
+        <div class="space-y-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Choose Veneers When:</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Cosmetic Issues:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Stained or discolored teeth</li>
+                  <li>• Minor chips or cracks</li>
+                  <li>• Small gaps between teeth</li>
+                  <li>• Slightly crooked teeth</li>
+                  <li>• Worn or uneven teeth</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Tooth Condition:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Teeth are structurally sound</li>
+                  <li>• No major decay or damage</li>
+                  <li>• Good gum health</li>
+                  <li>• Adequate tooth structure</li>
+                  <li>• No previous root canals</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl border border-green-200 dark:border-green-800">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Choose Crowns When:</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Structural Issues:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Severely broken or cracked teeth</li>
+                  <li>• Large fillings or decay</li>
+                  <li>• Root canal treated teeth</li>
+                  <li>• Weak or compromised teeth</li>
+                  <li>• Teeth with extensive wear</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Functional Needs:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Need maximum strength</li>
+                  <li>• Heavy chewing forces</li>
+                  <li>• Back teeth restoration</li>
+                  <li>• Long-term durability priority</li>
+                  <li>• Complete tooth protection</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Procedure Comparison</h2>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Veneer Procedure Timeline</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Day 1: Consultation</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Digital scans, photos, treatment planning, and temporary veneers</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Day 2-3: Preparation</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Tooth preparation and impressions for permanent veneers</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Day 5-6: Final Fitting</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Permanent veneers bonded and adjusted</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Crown Procedure Timeline</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Day 1: Consultation</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">X-rays, examination, treatment planning, and temporary crown</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Day 2-3: Preparation</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Tooth reshaping and impressions for permanent crown</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-gray-100">Day 5-6: Final Fitting</h4>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm">Permanent crown cemented and adjusted</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Long-term Considerations</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Veneer Maintenance</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Lifespan:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">10-15 years</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Replacement Cost:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£250 each</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Maintenance:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">Minimal</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Risk Factors:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">Chipping, staining</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Crown Maintenance</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Lifespan:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">15-20 years</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Replacement Cost:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">£170-£250 each</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Maintenance:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">Regular check-ups</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-700 dark:text-gray-300">Risk Factors:</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">Cracking, decay underneath</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `
@@ -625,16 +1155,16 @@ const blogPostsData = [
         <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
           <div class="space-y-3">
             <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
-              <span class="font-semibold text-gray-900 dark:text-gray-100">E-max Veneers (per tooth)</span>
-              <span class="text-blue-600 font-bold">£160 - £240</span>
+              <span class="font-semibold text-gray-900 dark:text-gray-100">Dental Veneers (per tooth)</span>
+              <span class="text-blue-600 font-bold">£250</span>
             </div>
             <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
               <span class="font-semibold text-gray-900 dark:text-gray-100">Zirconia Crowns (per crown)</span>
-              <span class="text-blue-600 font-bold">£200 - £320</span>
+              <span class="text-blue-600 font-bold">£170 - £250</span>
             </div>
             <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
               <span class="font-semibold text-gray-900 dark:text-gray-100">Full Smile Makeover (16 veneers)</span>
-              <span class="text-blue-600 font-bold">£2,560 - £3,840</span>
+              <span class="text-blue-600 font-bold">£4,000</span>
             </div>
             <div class="flex justify-between items-center py-3">
               <span class="font-semibold text-gray-900 dark:text-gray-100">Hotel (per night, 4-star)</span>
@@ -687,15 +1217,268 @@ const blogPostsData = [
           </div>
         </div>
 
-        <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-xl border border-purple-200 dark:border-purple-800 mt-6">
-          <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Istanbul Travel Tips</h3>
-          <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
-            <li>✓ Get Istanbul Tourist Pass for free public transport</li>
-            <li>✓ Most clinics offer free airport pickup</li>
-            <li>✓ Turkish Lira (TRY) - USD/EUR widely accepted</li>
-            <li>✓ SIM card available at airport for data/calls</li>
-            <li>✓ Visit during shoulder season (Apr-May, Sep-Oct) for better weather</li>
-          </ul>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Top-Rated Dental Clinics in Istanbul</h2>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Clinic Selection Criteria</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Quality Indicators:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• International certifications (JCI, ISO)</li>
+                  <li>• English-speaking staff</li>
+                  <li>• Modern equipment & technology</li>
+                  <li>• Experienced cosmetic dentists</li>
+                  <li>• Positive patient reviews</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Service Features:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Airport pickup service</li>
+                  <li>• Hotel accommodation packages</li>
+                  <li>• Virtual consultations</li>
+                  <li>• Warranty on treatments</li>
+                  <li>• Follow-up care support</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Popular Clinic Areas</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Sisli District</h4>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">Modern business district with many high-end clinics</p>
+                <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                  <li>• Close to metro stations</li>
+                  <li>• Upscale shopping nearby</li>
+                  <li>• International hotels</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Beyoglu/Taksim</h4>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">Central location with excellent transport links</p>
+                <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                  <li>• Tourist-friendly area</li>
+                  <li>• Many restaurants & cafes</li>
+                  <li>• Easy airport access</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Kadikoy (Asian Side)</h4>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">Less crowded, more affordable options</p>
+                <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                  <li>• Lower accommodation costs</li>
+                  <li>• Local neighborhood feel</li>
+                  <li>• Ferry connections</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Transportation & Getting Around</h2>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">From Airport to City</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Transportation Options:</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Airport Taxi:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£15-£25</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Havaist Bus:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£3-£5</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Metro:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£1-£2</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Clinic Pickup:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">Often Free</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Travel Tips:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Book airport pickup with clinic</li>
+                  <li>• Download Istanbul transport apps</li>
+                  <li>• Get Istanbul Tourist Pass</li>
+                  <li>• Keep clinic address in Turkish</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Getting Around Istanbul</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Public Transport:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Metro: Fast and reliable</li>
+                  <li>• Tram: Scenic city routes</li>
+                  <li>• Ferry: Cross between continents</li>
+                  <li>• Bus: Extensive network</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Costs:</h4>
+                <div class="space-y-1 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Single Journey:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£0.50-£1</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Daily Pass:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£3-£5</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Weekly Pass:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£15-£25</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Cultural Experience & Sightseeing</h2>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Must-Visit Attractions</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Historic Sites:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Hagia Sophia (free with treatment)</li>
+                  <li>• Blue Mosque</li>
+                  <li>• Topkapi Palace</li>
+                  <li>• Grand Bazaar</li>
+                  <li>• Basilica Cistern</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Modern Istanbul:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Galata Tower</li>
+                  <li>• Istiklal Street</li>
+                  <li>• Bosphorus Cruise</li>
+                  <li>• Princes' Islands</li>
+                  <li>• Ortakoy Mosque</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Food & Dining</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Traditional Turkish Cuisine:</h4>
+                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                  <li>• Kebabs & grilled meats</li>
+                  <li>• Fresh seafood</li>
+                  <li>• Turkish breakfast</li>
+                  <li>• Baklava & desserts</li>
+                  <li>• Turkish tea & coffee</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Dining Costs:</h4>
+                <div class="space-y-1 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Street Food:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£2-£5</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Restaurant Meal:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£8-£15</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-700 dark:text-gray-300">Fine Dining:</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">£20-£40</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8">Practical Tips for Dental Tourism in Istanbul</h2>
+        <div class="space-y-4">
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 p-5 rounded-xl border border-yellow-200 dark:border-yellow-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">Before You Go</h3>
+            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-600 flex-shrink-0">✓</span>
+                <span>Book accommodation near your clinic for convenience</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-600 flex-shrink-0">✓</span>
+                <span>Download offline maps and translation apps</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-600 flex-shrink-0">✓</span>
+                <span>Inform your bank about international travel</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-600 flex-shrink-0">✓</span>
+                <span>Pack comfortable clothes and soft foods</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">During Your Stay</h3>
+            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Keep all treatment documents and receipts</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Take photos of your progress for reference</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Follow post-treatment care instructions carefully</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 flex-shrink-0">✓</span>
+                <span>Enjoy the city but avoid strenuous activities</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-3">After Treatment</h3>
+            <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">✓</span>
+                <span>Schedule follow-up virtual consultations</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">✓</span>
+                <span>Keep emergency contact numbers handy</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">✓</span>
+                <span>Maintain regular dental hygiene routine</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 flex-shrink-0">✓</span>
+                <span>Consider annual check-ups in Turkey</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     `

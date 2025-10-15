@@ -13,6 +13,7 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import { HeroHighlight, Highlight } from "../components/ui/hero-highlight";
 import LightRays from "../components/LightRays";
+import { Tilt } from "../../components/motion-primitives/tilt";
 import { clientAnalytics } from "../lib/analytics";
 import {
   Sparkles,
@@ -536,133 +537,195 @@ export default function HomePage() {
       
       <Header showBackButton={false} />
       
-      {/* Hero Section - Full Viewport */}
-      <section className="min-h-screen flex items-center justify-center relative pt-16 sm:pt-20 z-0 -mt-8 sm:-mt-12">
-        <HeroHighlight>
-          <motion.h1
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            animate={{
-              opacity: 1,
-              y: [50, -10, 0],
-            }}
-            transition={{
-              duration: 1,
-              ease: [0.4, 0.0, 0.2, 1],
-            }}
-            className="text-4xl px-4 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-neutral-700 dark:text-white max-w-6xl leading-tight sm:leading-relaxed lg:leading-snug text-center mx-auto"
-          >
-            Professional{" "}
-            <Highlight className="text-black dark:text-white">
-              Smile Visualization
-            </Highlight>{" "}
-            Technology
-          </motion.h1>
-          
-          <motion.p
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            animate={{
-              opacity: 1,
-              y: [30, -5, 0],
-            }}
-            transition={{
-              duration: 1,
-              ease: [0.4, 0.0, 0.2, 1],
-              delay: 0.3,
-            }}
-            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mt-4 sm:mt-6 px-4 leading-relaxed"
-          >
-            Discover your smile transformation potential with our advanced AI technology. Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations.
-          </motion.p>
-          
-          {/* Inviting CTA Button */}
-          <motion.div 
-            className="mt-12 sm:mt-16"
-            initial={{
-              opacity: 0,
-              y: 40,
-            }}
-            animate={{
-              opacity: 1,
-              y: [40, -10, 0],
-            }}
-            transition={{
-              duration: 1,
-              ease: [0.4, 0.0, 0.2, 1],
-              delay: 0.6,
-            }}
-          >
-            <div className="flex flex-col items-center gap-4 px-4">
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                Ready to see your smile transformation? Upload your photo and discover what's possible with our AI-powered technology.
-              </p>
-              <button
-                onClick={() => {
-                  // Trigger animations immediately when button is clicked
-                  setIsScrolled(true);
-                  
-                  // Scroll to the image uploader section
-                  setTimeout(() => {
-                    const uploadSection = document.getElementById('image-uploader');
-                    if (uploadSection) {
-                      uploadSection.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                      });
-                    }
-                  }, 100);
-                }}
-                className="btn-primary px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg flex items-center gap-2 sm:gap-3 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-              >
-                <Camera size={20} className="sm:w-6 sm:h-6" />
-                <span>Try AI Smile Preview</span>
-                <Sparkles size={18} className="sm:w-5 sm:h-5" />
-              </button>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>100% Free</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span>No Registration</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span>Privacy Protected</span>
-                </div>
-              </div>
+      {/* Hero Section - Two Column Layout */}
+      <section className="min-h-screen flex items-center relative pt-12 sm:pt-16 md:pt-20 lg:pt-24 z-0">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+            {/* Left Column - Title and Text */}
+            <div className="order-2 lg:order-1">
+              <HeroHighlight>
+                <motion.h1
+                  initial={{
+                    opacity: 0,
+                    y: 50,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: [50, -10, 0],
+                  }}
+                  transition={{
+                    duration: 1,
+                    ease: [0.4, 0.0, 0.2, 1],
+                  }}
+                  className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-neutral-700 dark:text-white leading-tight sm:leading-relaxed lg:leading-snug"
+                >
+                  Professional{" "}
+                  <Highlight className="text-black dark:text-white">
+                    Smile Visualization
+                  </Highlight>{" "}
+                  Technology
+                </motion.h1>
+                
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: [30, -5, 0],
+                  }}
+                  transition={{
+                    duration: 1,
+                    ease: [0.4, 0.0, 0.2, 1],
+                    delay: 0.3,
+                  }}
+                  className="text-base xs:text-lg sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-gray-600 dark:text-gray-300 mt-3 sm:mt-4 md:mt-5 lg:mt-6 leading-relaxed"
+                >
+                  Discover your smile transformation potential with our advanced AI technology. Trusted by dental professionals worldwide for accurate smile previews and verified dental clinic recommendations.
+                </motion.p>
+                
+              </HeroHighlight>
             </div>
-          </motion.div>
-        </HeroHighlight>
+
+            {/* Right Column - Image Placeholder */}
+            <div className="order-1 lg:order-2">
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: 50,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: [50, -10, 0],
+                }}
+                transition={{
+                  duration: 1,
+                  ease: [0.4, 0.0, 0.2, 1],
+                  delay: 0.4,
+                }}
+                className="relative"
+              >
+                <Tilt rotationFactor={8} className="h-full">
+                  <div className="aspect-square max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md mx-auto rounded-2xl lg:rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
+                  {/* Replace 'hero-image.jpg' with your actual image filename */}
+                  <img 
+                    src="/hero-image.jpg" 
+                    alt="Professional smile visualization technology" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to placeholder if image doesn't exist
+                      e.target.style.display = 'none';
+                      e.target.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback placeholder - hidden by default, shown if image fails to load */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20" style={{display: 'none'}}>
+                    <div className="text-center p-8">
+                      <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
+                        <Camera size={32} className="text-gray-400" />
+                      </div>
+                      <h3 className="text-lg lg:text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                        Your Image Here
+                      </h3>
+                      <p className="text-sm lg:text-base text-gray-500 dark:text-gray-400">
+                        Add your image as /public/hero-image.jpg
+                      </p>
+                    </div>
+                  </div>
+                  {/* Decorative elements */}
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-blue-500/20 rounded-full"></div>
+                  <div className="absolute bottom-6 left-6 w-6 h-6 bg-purple-500/20 rounded-full"></div>
+                  <div className="absolute top-1/2 left-4 w-4 h-4 bg-green-500/20 rounded-full"></div>
+                  </div>
+                </Tilt>
+                
+                {/* CTA Text and Button underneath the image */}
+                <motion.div 
+                  className="mt-6 lg:mt-8"
+                  initial={{
+                    opacity: 0,
+                    y: 40,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: [40, -10, 0],
+                  }}
+                  transition={{
+                    duration: 1,
+                    ease: [0.4, 0.0, 0.2, 1],
+                    delay: 0.6,
+                  }}
+                >
+                  <div className="text-center">
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                      Ready to see your smile transformation? Upload your photo and discover what's possible with our AI-powered technology.
+                    </p>
+                    <button
+                      onClick={() => {
+                        // Trigger animations immediately when button is clicked
+                        setIsScrolled(true);
+                        
+                        // Scroll to the image uploader section
+                        setTimeout(() => {
+                          const uploadSection = document.getElementById('image-uploader');
+                          if (uploadSection) {
+                            uploadSection.scrollIntoView({ 
+                              behavior: 'smooth',
+                              block: 'start'
+                            });
+                          }
+                        }, 100);
+                      }}
+                      className="btn-primary px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg flex items-center gap-2 sm:gap-3 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl mx-auto"
+                    >
+                      <Camera size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                      <span>Try AI Smile Preview</span>
+                      <Sparkles size={16} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                    </button>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-4">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span>100% Free</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>No Registration</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <span>Privacy Protected</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Main Content - Hidden initially, revealed on scroll */}
-      <main className="container mx-auto px-4 sm:px-6 pb-12 relative z-0">
+      <main className="container mx-auto px-2 xs:px-4 sm:px-6 pb-8 sm:pb-12 relative z-0">
         {/* Treatment Options Section */}
         <section className={`transition-all duration-1000 ease-out ${
           isScrolled 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
         }`}>
-          <div className="text-center mb-8">
+          <div className="text-center mb-6 sm:mb-8">
             <h2 className="sr-only">Available Treatment Options</h2>
-            <div className="inline-flex gap-3 md:gap-4 flex-wrap justify-center">
-              <Link href="/treatments#veneers" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full btn-text-sm transition-colors">
+            <div className="inline-flex gap-2 sm:gap-3 md:gap-4 flex-wrap justify-center">
+              <Link href="/treatments#veneers" className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs sm:text-sm transition-colors">
                 Veneers Specialist
               </Link>
-              <Link href="/treatments#zirconia-crowns" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full btn-text-sm transition-colors">
+              <Link href="/treatments#zirconia-crowns" className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs sm:text-sm transition-colors">
                 Zirconia Crowns
               </Link>
-              <Link href="/treatments#smile-makeover" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-full btn-text-sm transition-colors">
+              <Link href="/treatments#smile-makeover" className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-full text-xs sm:text-sm transition-colors">
                 Full Smile Makeover
               </Link>
-              <Link href="/destinations" className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full btn-text-sm transition-colors">
+              <Link href="/destinations" className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs sm:text-sm transition-colors">
                 Top Destinations
               </Link>
             </div>
@@ -670,12 +733,12 @@ export default function HomePage() {
         </section>
 
         {/* Main Upload Section */}
-        <div id="image-uploader" className={`mt-16 max-w-5xl mx-auto transition-all duration-1000 ease-out delay-200 ${
+        <div id="image-uploader" className={`mt-10 sm:mt-12 md:mt-16 max-w-5xl mx-auto transition-all duration-1000 ease-out delay-200 ${
           isScrolled 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
         }`}>
-          <div className="glass-elevated p-6 sm:p-10 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+          <div className="glass-elevated p-3 sm:p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
             {error && (
               <div className="text-center text-red-800 dark:text-red-200 bg-red-50 dark:bg-red-900/20 p-6 rounded-xl mb-8 border border-red-200 dark:border-red-800 card">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -1034,22 +1097,22 @@ export default function HomePage() {
         </div>
 
         {/* Before/After Results Section */}
-        <section className={`max-w-6xl mx-auto mt-16 md:mt-20 mb-16 md:mb-20 transition-all duration-1000 ease-out delay-600 ${
+        <section className={`max-w-6xl mx-auto mt-10 sm:mt-12 md:mt-16 lg:mt-20 mb-10 sm:mb-12 md:mb-16 lg:mb-20 transition-all duration-1000 ease-out delay-600 ${
           isScrolled 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
         }`} aria-label="Smile transformation examples">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="heading-lg text-gray-900 mb-4">
+          <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-12">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3 md:mb-4">
               See the <span className="text-blue-600">Transformation</span> Potential
             </h2>
-            <p className="text-body text-gray-600 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-4">
               Real results from our AI-powered smile visualization technology. 
               See what's possible with professional dental treatments.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Example 1 - Veneers Treatment */}
             <div className="glass-elevated p-4 md:p-6 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
               <div className="mb-4">
@@ -1100,19 +1163,19 @@ export default function HomePage() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-8 md:mt-12">
-            <div className="glass-elevated p-6 md:p-8 rounded-2xl border border-gray-200/50 max-w-2xl mx-auto">
-              <h3 className="heading-md text-gray-900 mb-3">
+          <div className="text-center mt-4 sm:mt-6 md:mt-8 lg:mt-12">
+            <div className="glass-elevated p-3 sm:p-4 md:p-6 lg:p-8 rounded-2xl border border-gray-200/50 max-w-2xl mx-auto">
+              <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">
                 Ready to See <span className="text-blue-600">Your</span> Transformation?
               </h3>
-              <p className="text-body text-gray-600 mb-6">
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 md:mb-6 px-2">
                 Upload your photo and get your personalized AI-powered smile preview in seconds. 
                 See what's possible for your own smile makeover.
               </p>
               <button
                 onClick={() => {
                   // Scroll to the upload section (the main glass-elevated container)
-                  const uploadSection = document.querySelector('.glass-elevated.p-6');
+                  const uploadSection = document.querySelector('.glass-elevated.p-3');
                   if (uploadSection) {
                     uploadSection.scrollIntoView({ 
                       behavior: 'smooth',
@@ -1120,18 +1183,26 @@ export default function HomePage() {
                     });
                   }
                 }}
-                className="btn-primary px-8 py-4 text-lg flex items-center gap-3 mx-auto transform hover:scale-105 transition-all duration-200"
+                className="btn-primary px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg flex items-center gap-2 sm:gap-3 mx-auto transform hover:scale-105 transition-all duration-200"
               >
-                <Camera size={24} />
+                <Camera size={16} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 Try Now
               </button>
-              <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mt-6">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>100% Free Preview</span>
-                <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
-                <span>No Registration Required</span>
-                <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
-                <span>Privacy Protected</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 md:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-3 sm:mt-4 md:mt-6">
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full"></div>
+                  <span>100% Free Preview</span>
+                </div>
+                <div className="hidden sm:block w-1 h-1 bg-gray-300 rounded-full"></div>
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full"></div>
+                  <span>No Registration Required</span>
+                </div>
+                <div className="hidden sm:block w-1 h-1 bg-gray-300 rounded-full"></div>
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-500 rounded-full"></div>
+                  <span>Privacy Protected</span>
+                </div>
               </div>
             </div>
           </div>
