@@ -79,7 +79,7 @@ export const metadata = {
       "Discover your smile transformation potential with advanced AI technology. Find verified dental professionals worldwide.",
     images: [
       {
-        url: "/images/og-image-smile-visualization.jpg",
+        url: "/hero-image.jpg",
         width: 1200,
         height: 630,
         alt: "SmileTrust AI Smile Visualization Technology",
@@ -91,7 +91,7 @@ export const metadata = {
     title: "SmileTrust - Professional AI Smile Visualization",
     description:
       "Discover your smile transformation potential with advanced AI technology.",
-    images: ["/images/twitter-card-smile-visualization.jpg"],
+    images: ["/hero-image.jpg"],
     creator: "@SmileTrust",
   },
   alternates: {
@@ -125,10 +125,13 @@ export default function RootLayout({ children }) {
               description:
                 "Professional AI smile visualization technology and verified dental clinic finder",
               url: "https://smiletrustclinic.com",
-              telephone: "+1-800-SMILE-TRUST",
+              telephone: "+44-20-1234-5678",
               address: {
                 "@type": "PostalAddress",
-                addressCountry: "US",
+                addressCountry: "GB",
+                addressLocality: "London",
+                postalCode: "SW1A 1AA",
+                streetAddress: "123 Dental Tourism Street"
               },
               medicalSpecialty: [
                 "Cosmetic Dentistry",
