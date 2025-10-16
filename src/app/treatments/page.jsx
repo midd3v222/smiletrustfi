@@ -69,18 +69,12 @@ const treatments = [
   }
 ];
 
-const TreatmentListItem = ({ treatment, isSelected, onClick }) => {
+const TreatmentListItem = ({ treatment }) => {
   const IconComponent = treatment.icon;
   
   return (
-    <button
-      onClick={() => onClick(treatment)}
-      className={`w-full p-4 rounded-lg text-left transition-all duration-200 ${
-        isSelected 
-          ? `bg-${treatment.color}-100 dark:bg-${treatment.color}-900/20 border-2 border-${treatment.color}-300 dark:border-${treatment.color}-700` 
-          : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
-      }`}
-    >
+    <Link href={`/treatments/${treatment.id}`}>
+      <div className="w-full p-4 rounded-lg text-left transition-all duration-200 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-600 cursor-pointer">
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 bg-${treatment.color}-100 dark:bg-${treatment.color}-900/20 rounded-lg flex items-center justify-center flex-shrink-0`}>
           <IconComponent size={20} className={`text-${treatment.color}-600 dark:text-${treatment.color}-400`} />
@@ -89,9 +83,10 @@ const TreatmentListItem = ({ treatment, isSelected, onClick }) => {
           <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">{treatment.title}</h3>
           <p className="text-gray-600 dark:text-gray-400 text-xs line-clamp-2">{treatment.description}</p>
         </div>
-        <ChevronRight size={16} className={`text-gray-400 ${isSelected ? 'rotate-90' : ''} transition-transform`} />
+        <ChevronRight size={16} className="text-gray-400 transition-transform" />
       </div>
-    </button>
+      </div>
+    </Link>
   );
 };
 
@@ -851,12 +846,6 @@ const TreatmentArticle = ({ treatment }) => {
 };
 
 export default function TreatmentsPage() {
-  const [selectedTreatment, setSelectedTreatment] = useState(null);
-
-  const handleTreatmentSelect = (treatment) => {
-    setSelectedTreatment(treatment);
-  };
-
   return (
     <>
       <PageViewTracker pageName="treatments" />
@@ -886,18 +875,44 @@ export default function TreatmentsPage() {
                       <TreatmentListItem
                         key={treatment.id}
                         treatment={treatment}
-                        isSelected={selectedTreatment?.id === treatment.id}
-                        onClick={handleTreatmentSelect}
                       />
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Right Side - Treatment Article */}
+              {/* Right Side - Call to Action */}
               <div className="lg:col-span-2">
-                <div className="glass-elevated p-6 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 h-[600px] lg:h-[700px]">
-                  <TreatmentArticle treatment={selectedTreatment} />
+                <div className="glass-elevated p-6 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 h-[600px] lg:h-[700px] flex items-center justify-center">
+                  <div className="text-center max-w-md">
+                    <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Zap size={32} className="text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                      Explore Treatment Details
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                      Click on any treatment above to learn about procedures, costs, recovery time, and what to expect.
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>Detailed procedure information</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>Cost breakdowns and comparisons</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>Recovery timeline and care tips</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>Before and after expectations</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

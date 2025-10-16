@@ -1922,7 +1922,6 @@ const categories = [
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedPost, setSelectedPost] = useState(null);
 
   // Filter posts by category
   const filteredPosts = selectedCategory === "All"
@@ -1966,10 +1965,10 @@ export default function BlogPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPosts.map((post) => (
               <Tilt key={post.id} className="h-full" rotationFactor={8}>
-                <article
-                  className="glass-elevated rounded-xl shadow-lg border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
-                  onClick={() => setSelectedPost(post)}
-                >
+                <Link href={`/blog/${post.id}`}>
+                  <article
+                    className="glass-elevated rounded-xl shadow-lg border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
+                  >
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 dark:text-blue-300 text-xs font-medium rounded-full">
@@ -1998,6 +1997,7 @@ export default function BlogPage() {
                     </div>
                   </div>
                 </article>
+                </Link>
               </Tilt>
             ))}
           </div>
@@ -2023,59 +2023,6 @@ export default function BlogPage() {
         </section>
       </main>
 
-      {/* Modal for Blog Post */}
-      {selectedPost && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full my-8 max-h-[90vh] overflow-y-auto">
-            {/* Modal Header */}
-            <div className="sticky top-0 bg-white dark:bg-gray-800 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6 flex items-start justify-between z-10">
-              <div className="flex-1 pr-4">
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 dark:text-blue-300 text-xs font-medium rounded-full inline-block mb-3">
-                  {selectedPost.category}
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 dark:text-gray-100 leading-tight">
-                  {selectedPost.title}
-                </h2>
-                <div className="flex items-center gap-2 mt-3 text-sm text-gray-600 dark:text-gray-400">
-                  <Clock size={14} />
-                  <span>{selectedPost.readTime}</span>
-                </div>
-              </div>
-              <button
-                onClick={() => setSelectedPost(null)}
-                className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              >
-                <X size={24} className="text-gray-600 dark:text-gray-400" />
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="p-6 md:p-8">
-              <div 
-                className="prose prose-lg max-w-none"
-                dangerouslySetInnerHTML={{ __html: selectedPost.fullContent }}
-              />
-
-              {/* CTA in Modal */}
-              <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800 dark:border-blue-800">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 dark:text-gray-100 mb-3">
-                  Ready to Find Your Dental Clinic?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 dark:text-gray-300 mb-4">
-                  Browse verified clinics and compare prices for your treatment.
-                </p>
-                <Link
-                  href="/"
-                  className="btn-primary inline-flex items-center gap-2"
-                  onClick={() => setSelectedPost(null)}
-                >
-                  Find Clinics Now
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
