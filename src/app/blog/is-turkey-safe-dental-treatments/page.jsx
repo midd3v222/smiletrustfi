@@ -4,10 +4,58 @@ import Link from "next/link";
 import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 export default function IsTurkeySafeBlogPost() {
   return (
-    <div className="min-h-screen w-full bg-grid-pattern relative">
+    <>
+      <Head>
+        <title>Is Turkey Safe for Dental Treatments? Complete Safety Guide 2025 | SmileTrust</title>
+        <meta name="description" content="Is Turkey safe for dental treatments? Yes! Complete 2025 safety guide covering quality standards, certifications, red flags to avoid, and how to choose safe clinics. Expert tips for safe dental tourism in Turkey." />
+        <meta name="keywords" content="is turkey safe for dental treatments, turkey dental safety, safe dental tourism turkey, turkey dental quality, turkey dental certifications, dental tourism safety turkey, turkey dental standards" />
+        <meta property="og:title" content="Is Turkey Safe for Dental Treatments? Complete Safety Guide 2025" />
+        <meta property="og:description" content="Is Turkey safe for dental treatments? Yes! Complete 2025 safety guide covering quality standards, certifications, red flags to avoid, and how to choose safe clinics." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://smiletrustclinic.com/blog/is-turkey-safe-dental-treatments" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Is Turkey Safe for Dental Treatments? Complete Safety Guide" />
+        <meta name="twitter:description" content="Is Turkey safe for dental treatments? Yes! Complete 2025 safety guide covering quality standards, certifications, red flags to avoid, and how to choose safe clinics." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Is Turkey Safe for Dental Treatments? Complete Safety Guide 2025",
+            "description": "Is Turkey safe for dental treatments? Yes! Complete 2025 safety guide covering quality standards, certifications, red flags to avoid, and how to choose safe clinics. Expert tips for safe dental tourism in Turkey.",
+            "image": "https://smiletrustclinic.com/hero-image.jpg",
+            "author": {
+              "@type": "Organization",
+              "name": "SmileTrust"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SmileTrust",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://smiletrustclinic.com/logo.png"
+              }
+            },
+            "datePublished": "2025-01-15",
+            "dateModified": "2025-01-15",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://smiletrustclinic.com/blog/is-turkey-safe-dental-treatments"
+            },
+            "articleSection": "Safety & Tips",
+            "keywords": ["is turkey safe for dental treatments", "turkey dental safety", "safe dental tourism turkey", "turkey dental quality", "turkey dental certifications", "dental tourism safety turkey"],
+            "about": {
+              "@type": "Place",
+              "name": "Turkey",
+              "description": "Safe dental tourism destination with EU-standard safety protocols and internationally trained dentists"
+            }
+          })}
+        </script>
+      </Head>
+      <div className="min-h-screen w-full bg-grid-pattern relative">
       <Header />
 
       {/* Main Content */}
@@ -53,6 +101,19 @@ export default function IsTurkeySafeBlogPost() {
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
             Turkey has become the world's leading destination for dental tourism, but safety concerns are natural. Here's everything you need to know about dental safety in Turkey.
           </p>
+
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-8 rounded-xl border border-green-200 dark:border-green-800 mt-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">The Truth About Dental Safety in Turkey</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              When considering dental treatment abroad, safety concerns are natural and completely understandable. Turkey has emerged as the world's leading destination for dental tourism, treating over 1 million international patients annually, yet many people still question whether Turkey is safe for dental treatments. The reality is that Turkey has established itself as a global leader in dental tourism safety, with clinics operating under EU-standard protocols, internationally trained dentists, and state-of-the-art facilities that rival those found in Western Europe and North America.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              The Turkish dental industry has undergone significant transformation over the past decade, with major investments in international certifications, advanced technology, and comprehensive safety protocols. Many Turkish dental clinics now hold JCI (Joint Commission International) accreditation, ISO 9001:2015 quality management certification, and maintain strict sterilization standards using autoclave systems and single-use instruments. These safety measures, combined with the use of premium materials like E-max lithium disilicate, Straumann implants, and Nobel Biocare systems, ensure that patients receive the same level of care they would expect from top-tier clinics in their home countries.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              This comprehensive safety guide will address all your concerns about dental treatment in Turkey, from quality standards and certifications to red flags to avoid and how to choose a safe clinic. Understanding these safety factors will help you make an informed decision about your dental tourism journey and ensure you receive the highest quality care while enjoying significant cost savings.
+            </p>
+          </div>
         </header>
 
         {/* Article Content */}
@@ -316,5 +377,6 @@ export default function IsTurkeySafeBlogPost() {
         </section>
       </main>
     </div>
+    </>
   );
 }

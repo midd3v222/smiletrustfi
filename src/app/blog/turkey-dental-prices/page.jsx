@@ -4,10 +4,57 @@ import Link from "next/link";
 import { ArrowLeft, Clock } from "lucide-react";
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 export default function TurkeyDentalPricesPage() {
   return (
     <>
+      <Head>
+        <title>Turkey Dental Prices 2025: Complete Cost Breakdown for UK/EU Patients | SmileTrust</title>
+        <meta name="description" content="Turkey dental prices 2025: Veneers £250, crowns £170-250, implants £300-1000. Complete cost breakdown for UK/EU patients. Save 70-85% vs UK private care. Expert guide to Turkish dental tourism costs." />
+        <meta name="keywords" content="turkey dental prices, turkey dental costs, dental tourism turkey prices, turkey veneers cost, turkey crowns cost, turkey implants cost, dental treatment turkey cost, turkey dental tourism prices" />
+        <meta property="og:title" content="Turkey Dental Prices 2025: Complete Cost Breakdown for UK/EU Patients" />
+        <meta property="og:description" content="Turkey dental prices 2025: Veneers £250, crowns £170-250, implants £300-1000. Complete cost breakdown for UK/EU patients. Save 70-85% vs UK private care." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://smiletrustclinic.com/blog/turkey-dental-prices" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Turkey Dental Prices 2025: Complete Cost Breakdown" />
+        <meta name="twitter:description" content="Turkey dental prices 2025: Veneers £250, crowns £170-250, implants £300-1000. Complete cost breakdown for UK/EU patients. Save 70-85% vs UK private care." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Turkey Dental Prices 2025: Complete Cost Breakdown for UK/EU Patients",
+            "description": "Turkey dental prices 2025: Veneers £250, crowns £170-250, implants £300-1000. Complete cost breakdown for UK/EU patients. Save 70-85% vs UK private care. Expert guide to Turkish dental tourism costs.",
+            "image": "https://smiletrustclinic.com/hero-image.jpg",
+            "author": {
+              "@type": "Organization",
+              "name": "SmileTrust"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SmileTrust",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://smiletrustclinic.com/logo.png"
+              }
+            },
+            "datePublished": "2025-01-15",
+            "dateModified": "2025-01-15",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://smiletrustclinic.com/blog/turkey-dental-prices"
+            },
+            "articleSection": "Destinations",
+            "keywords": ["turkey dental prices", "turkey dental costs", "dental tourism turkey prices", "turkey veneers cost", "turkey crowns cost", "turkey implants cost", "dental treatment turkey cost"],
+            "about": {
+              "@type": "Place",
+              "name": "Turkey",
+              "description": "Leading dental tourism destination offering high-quality dental care at affordable prices"
+            }
+          })}
+        </script>
+      </Head>
       <div className="min-h-screen w-full bg-grid-pattern relative">
         <Header />
 
@@ -53,6 +100,19 @@ export default function TurkeyDentalPricesPage() {
                 className="prose prose-lg max-w-none"
                 dangerouslySetInnerHTML={{ __html: `
                   <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-8 rounded-xl border border-green-200 dark:border-green-800">
+                      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Why Turkey Leads Dental Tourism in 2025</h2>
+                      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                        Turkey has revolutionized the dental tourism industry, establishing itself as Europe's premier destination for high-quality, affordable dental care. With over 500 modern dental clinics equipped with state-of-the-art technology and internationally trained dentists, Turkey offers the same level of care found in Western Europe at a fraction of the cost. Turkish dental prices have remained consistently competitive, with veneers costing just £250 per tooth compared to £500-£1,000 in the UK, representing savings of 70-85% for patients seeking cosmetic dental treatments.
+                      </p>
+                      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                        The Turkish dental industry has invested heavily in international certifications, with many clinics achieving JCI (Joint Commission International) accreditation and ISO 9001:2015 quality management standards. This commitment to excellence, combined with the use of premium materials like E-max lithium disilicate, Straumann implants, and Nobel Biocare systems, ensures that patients receive world-class treatment while enjoying significant cost savings. Major cities like Istanbul, Antalya, and Izmir have become hubs for dental tourism, offering comprehensive packages that often include accommodation, airport transfers, and follow-up care.
+                      </p>
+                      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        This detailed breakdown of Turkey dental prices will help you understand exactly what to expect when planning your dental treatment abroad, from initial consultation costs to complete smile makeovers, ensuring you can budget effectively for your dental tourism journey.
+                      </p>
+                    </div>
+
                     <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
                       Turkey has become Europe's leading destination for dental tourism, offering exceptional quality at 70-85% lower costs than UK private dental care.
                     </p>

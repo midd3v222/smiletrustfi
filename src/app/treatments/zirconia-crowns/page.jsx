@@ -4,10 +4,51 @@ import Link from "next/link";
 import { ArrowLeft, Shield, Clock, Star } from "lucide-react";
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 export default function ZirconiaCrownsPage() {
   return (
-    <div className="min-h-screen w-full bg-grid-pattern relative">
+    <>
+      <Head>
+        <title>Zirconia Crowns: Complete Guide to Zirconia Dental Crowns | SmileTrust</title>
+        <meta name="description" content="Complete guide to zirconia crowns: ultra-strong ceramic crowns cost £170-250 Turkey vs £500-1000 UK. Learn about zirconia crown procedure, durability (15-20 years), materials, and find verified clinics. Expert crown treatment guide 2025." />
+        <meta name="keywords" content="zirconia crowns, zirconia dental crowns, dental crowns, crown procedure, crown cost, crown turkey, crown UK, zirconia materials, crown durability, crown treatment, dental restoration" />
+        <meta property="og:title" content="Zirconia Crowns: Complete Guide to Zirconia Dental Crowns" />
+        <meta property="og:description" content="Complete guide to zirconia crowns: ultra-strong ceramic crowns cost £170-250 Turkey vs £500-1000 UK. Learn about zirconia crown procedure, durability (15-20 years), materials, and find verified clinics." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://smiletrustclinic.com/treatments/zirconia-crowns" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Zirconia Crowns: Complete Guide to Zirconia Dental Crowns" />
+        <meta name="twitter:description" content="Complete guide to zirconia crowns: ultra-strong ceramic crowns cost £170-250 Turkey vs £500-1000 UK. Learn about zirconia crown procedure, durability (15-20 years), materials, and find verified clinics." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalProcedure",
+            "name": "Zirconia Crowns",
+            "description": "Ultra-strong ceramic crowns that completely cap damaged teeth. Used for broken teeth, large fillings, root canals, and maximum durability needs.",
+            "image": "https://smiletrustclinic.com/hero-image.jpg",
+            "provider": {
+              "@type": "MedicalBusiness",
+              "name": "SmileTrust",
+              "url": "https://smiletrustclinic.com"
+            },
+            "cost": {
+              "@type": "MonetaryAmount",
+              "currency": "GBP",
+              "value": "170-250"
+            },
+            "bodyLocation": "Teeth",
+            "preparation": "More substantial tooth preparation (all around tooth) to create space for crown",
+            "procedure": "Tooth preparation, temporary crown, permanent zirconia crown cemented",
+            "followup": "Regular dental check-ups every 6 months, professional cleaning twice yearly",
+            "risks": "Minimal - zirconia is extremely strong and rarely breaks",
+            "outcome": "Strong, durable tooth restoration lasting 15-20 years with proper care",
+            "indication": "Broken teeth, large fillings, root canals, maximum strength needs",
+            "contraindication": "Minor cosmetic issues better suited for veneers, active gum disease"
+          })}
+        </script>
+      </Head>
+      <div className="min-h-screen w-full bg-grid-pattern relative">
       <Header />
 
       {/* Main Content */}
@@ -312,5 +353,6 @@ export default function ZirconiaCrownsPage() {
         </section>
       </main>
     </div>
+    </>
   );
 }

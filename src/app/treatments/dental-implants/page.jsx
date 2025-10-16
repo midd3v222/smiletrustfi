@@ -4,10 +4,51 @@ import Link from "next/link";
 import { ArrowLeft, Zap, Clock, Star, Shield } from "lucide-react";
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 export default function DentalImplantsPage() {
   return (
-    <div className="min-h-screen w-full bg-grid-pattern relative">
+    <>
+      <Head>
+        <title>Dental Implants: Complete Guide to Tooth Implant Treatment | SmileTrust</title>
+        <meta name="description" content="Complete guide to dental implants: tooth implants cost £300-1000 Turkey vs £1500-3000 UK. Learn about implant procedure, brands (Straumann, Nobel), All-on-4, recovery, and find verified clinics. Expert implant treatment guide 2025." />
+        <meta name="keywords" content="dental implants, tooth implants, implant procedure, implant cost, implant turkey, implant UK, implant brands, straumann implants, nobel implants, all-on-4 implants, implant surgery" />
+        <meta property="og:title" content="Dental Implants: Complete Guide to Tooth Implant Treatment" />
+        <meta property="og:description" content="Complete guide to dental implants: tooth implants cost £300-1000 Turkey vs £1500-3000 UK. Learn about implant procedure, brands (Straumann, Nobel), All-on-4, recovery, and find verified clinics." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://smiletrustclinic.com/treatments/dental-implants" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Dental Implants: Complete Guide to Tooth Implant Treatment" />
+        <meta name="twitter:description" content="Complete guide to dental implants: tooth implants cost £300-1000 Turkey vs £1500-3000 UK. Learn about implant procedure, brands (Straumann, Nobel), All-on-4, recovery, and find verified clinics." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalProcedure",
+            "name": "Dental Implants",
+            "description": "Titanium screws surgically placed in jawbone to replace missing teeth roots. Used for single tooth replacement, multiple teeth, or full mouth restoration.",
+            "image": "https://smiletrustclinic.com/hero-image.jpg",
+            "provider": {
+              "@type": "MedicalBusiness",
+              "name": "SmileTrust",
+              "url": "https://smiletrustclinic.com"
+            },
+            "cost": {
+              "@type": "MonetaryAmount",
+              "currency": "GBP",
+              "value": "300-1000"
+            },
+            "bodyLocation": "Jawbone",
+            "preparation": "Bone assessment, CT scans, treatment planning",
+            "procedure": "Implant placement surgery, healing period, crown attachment",
+            "followup": "Regular check-ups, professional cleaning, annual X-rays",
+            "risks": "Infection, implant failure, nerve damage (rare)",
+            "outcome": "Permanent tooth replacement lasting 20+ years with proper care",
+            "indication": "Missing teeth, failed root canals, loose dentures",
+            "contraindication": "Insufficient bone, active gum disease, uncontrolled diabetes"
+          })}
+        </script>
+      </Head>
+      <div className="min-h-screen w-full bg-grid-pattern relative">
       <Header />
 
       {/* Main Content */}
@@ -355,5 +396,6 @@ export default function DentalImplantsPage() {
         </section>
       </main>
     </div>
+    </>
   );
 }

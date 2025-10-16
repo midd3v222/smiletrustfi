@@ -4,10 +4,51 @@ import Link from "next/link";
 import { ArrowLeft, Star, Clock, Shield, Zap } from "lucide-react";
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
+import Head from "next/head";
 
 export default function VeneersPage() {
   return (
-    <div className="min-h-screen w-full bg-grid-pattern relative">
+    <>
+      <Head>
+        <title>Dental Veneers: Complete Guide to Porcelain Veneers Treatment | SmileTrust</title>
+        <meta name="description" content="Complete guide to dental veneers: porcelain veneers cost £250 in Turkey vs £500-1000 UK. Learn about veneer procedure, materials (E-max, zirconia), recovery, and find verified clinics. Expert veneer treatment guide 2025." />
+        <meta name="keywords" content="dental veneers, porcelain veneers, veneers treatment, veneers procedure, veneers cost, veneers turkey, veneers UK, veneers materials, veneers recovery, veneers guide, cosmetic dentistry veneers" />
+        <meta property="og:title" content="Dental Veneers: Complete Guide to Porcelain Veneers Treatment" />
+        <meta property="og:description" content="Complete guide to dental veneers: porcelain veneers cost £250 in Turkey vs £500-1000 UK. Learn about veneer procedure, materials (E-max, zirconia), recovery, and find verified clinics." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://smiletrustclinic.com/treatments/veneers" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Dental Veneers: Complete Guide to Porcelain Veneers Treatment" />
+        <meta name="twitter:description" content="Complete guide to dental veneers: porcelain veneers cost £250 in Turkey vs £500-1000 UK. Learn about veneer procedure, materials (E-max, zirconia), recovery, and find verified clinics." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalProcedure",
+            "name": "Dental Veneers",
+            "description": "Thin ceramic shells bonded to the front surface of teeth to improve their appearance. Used for cosmetic improvements, discoloration, minor chips, gaps, or misaligned teeth.",
+            "image": "https://smiletrustclinic.com/hero-image.jpg",
+            "provider": {
+              "@type": "MedicalBusiness",
+              "name": "SmileTrust",
+              "url": "https://smiletrustclinic.com"
+            },
+            "cost": {
+              "@type": "MonetaryAmount",
+              "currency": "GBP",
+              "value": "250"
+            },
+            "bodyLocation": "Teeth",
+            "preparation": "Minimal enamel removal (0.5mm) to create space for veneers",
+            "procedure": "Tooth preparation, temporary veneers, permanent veneers bonded with special dental cement",
+            "followup": "Regular dental check-ups every 6 months, professional cleaning twice yearly",
+            "risks": "Can chip if subjected to excessive force, may need replacement over time",
+            "outcome": "Beautiful, natural-looking smile transformation lasting 10-15 years with proper care",
+            "indication": "Cosmetic improvements, discoloration, minor chips, gaps, misaligned teeth",
+            "contraindication": "Severe tooth damage requiring crowns, active gum disease, insufficient tooth structure"
+          })}
+        </script>
+      </Head>
+      <div className="min-h-screen w-full bg-grid-pattern relative">
       <Header />
 
       {/* Main Content */}
@@ -271,5 +312,6 @@ export default function VeneersPage() {
         </section>
       </main>
     </div>
+    </>
   );
 }
